@@ -1,0 +1,129 @@
+nav.mobile-menu.vertical.menu {
+
+  & > ul.menu {
+    padding: 0;
+  }
+  ul.menu.alt-menu {
+    display: flex !important;
+    flex-direction: column;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 10 !important;
+
+    li {
+      width: 100%;
+
+      a {
+        // color: $gray;
+      }
+    }
+  }
+  & > .menu > li.is-active > a,
+  .submenu li.is-active a {
+    color: $orange;
+    &:hover, &:focus {
+      color: $orange;
+    }
+  }
+  ul.social-media-wrapper {
+    margin: 0 0 0.625rem 0;
+    text-align: left;
+
+    li {
+      border: 0;
+      display: inline-block;
+      vertical-align: top;
+      width: 2.25rem;
+      height: 2.25rem;
+      margin-left: 0;
+      text-align: center;
+      position: relative;
+      z-index: 99;
+      font-size: 1.5rem;
+    }
+    li.inline-social-search-wrapper {
+      font-size: 1.25rem;
+    }
+    li:not(.custom-button):after {
+      width: 2.25rem;
+      height: 2.25rem;
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      border-radius: 100%;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 250ms ease-out;
+    }
+    li.inline-social-search-wrapper {
+      width: auto;
+    }
+    li.custom-button {
+      width: auto;
+    }
+    li a, li a i {
+      display: block;
+      font-size: 1.5rem;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      padding: 0;
+      &:hover, &:focus {
+        background: none !important;
+      }
+    }
+    li.custom-button a {
+      padding: 0 10px;
+    }
+  }
+  form#searchform {
+    position: absolute;
+    right: 0;
+    position: relative;
+    // max-width: 200px;
+    width: 100%;
+    text-align: right;
+    border: 1px solid $gray;
+    border-radius: 3px;
+    background: $white;
+    margin: 0;
+    @media #{$break1024} {
+      margin: 0 auto;
+    }
+
+    &:after {
+      position: absolute;
+      content: '\f002';
+      font-family: fontawesome !important;
+      width: 34px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+    }
+    input#searchsubmit {
+      text-indent: -9999px;
+      margin: 0;
+      width: 34px;
+      height: 34px;
+      background: none;
+    }
+    input#s {
+      max-width: none;
+      border: 0;
+      box-shadow: none;
+      padding: 0 10px !important;
+      line-height: 34px;
+      height: 34px;
+      background: none;
+    }
+    .input-group {
+      margin: 0;
+    }
+  }
+}

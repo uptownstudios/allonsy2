@@ -5,7 +5,7 @@
 }
 
 .desktop-menu,
-.site-navigation .top-bar-left {
+body:not(.topbar) .site-navigation .top-bar-left {
   @include show-for(medium);
 }
 
@@ -21,7 +21,8 @@
 
 .off-canvas {
   > ul.menu {
-    height: 100vh;
+    // height: 100vh;
+    height: auto;
     padding: 1rem;
 
     a {

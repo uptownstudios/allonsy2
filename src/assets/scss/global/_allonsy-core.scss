@@ -1,0 +1,150 @@
+/**** TABLE OF CONTENTS ****
+
+0. VARIABLES
+1. PRELOADER STYLES
+2. GENERAL STYLES
+3. HEADER STYLES
+  3a. Header Option One Styles
+  3b. Header Option Two Styles
+  3c. Header Option Two Styles
+  3d. Mobile Off-Canvas Menu Styles
+  3e. Mobile Top Bar Menu Styles
+  3f. Sticky Header Styles
+
+4. HOME PAGE STYLES
+
+5. FOOTER STYLES
+
+** END TABLE OF CONTENTS **/
+
+
+/**** 0. VARIABLES ****/
+@import "global/bs-variables";
+
+/**** 1. PRELOADER STYLES ****/
+@import "global/preloader";
+
+/**** 2. GENERAL STYLES ****/
+@import "global/general-styles";
+
+/**** 3. HEADER STYLES ****/
+/* 3a. Header Option One Styles */
+@import "global/header-one";
+
+/* 3b. Header Option Two Styles */
+@import "global/header-two";
+
+/* 3c. Header Option Three Styles */
+@import "global/header-three";
+
+/* 3d. Mobile Off-Canvas Menu Styles */
+@import "global/off-canvas";
+
+/* 3e. Mobile Top Bar Menu Styles */
+@import "global/menu-top-bar";
+
+/* 3f. Sticky Header Styles */
+
+/* Header Overrides */
+.top-bar {
+  @media #{$break640} {
+
+  }
+}
+body.topbar .menu-icon,
+body.offcanvas .menu-icon {
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    content: '';
+    box-shadow: 0 7px 0 inherit;
+    transition: all .2s ease-out;
+    background: none !important;
+  }
+  &:after {
+    box-shadow: 0 14px 0 inherit;
+    transition: all .2s ease-out;
+  }
+  &.active:before {
+    transform: rotate(45deg);
+    top: 0;
+    left: 6px;
+    background: none !important;
+  }
+  &.active:after,
+  &.active:hover:after {
+    transform: rotate(-45deg);
+    background: none !important;
+    top: -5px;
+    left: -9px;
+    box-shadow: 0 14px 0 inherit !important;
+  }
+}
+
+
+/**** 4. HOME PAGE STYLES ****/
+.home .main-wrap.full-width {
+  max-width: 100%;
+  margin-top: 0;
+
+  .main-content {
+    margin: 0;
+    width: 100%;
+  }
+}
+@media #{$break640} {
+  .home .main-wrap .main-content {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+
+/**** 5. FOOTER STYLES ****/
+footer.footer {
+
+  .widget {
+    padding: 0 0.9375rem;
+    @media #{$break640} {
+      margin-bottom: 2.5rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  h6 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.3125rem !important;
+    text-align: left;
+  }
+  ul.menu {
+    flex-direction: column;
+
+    li {
+      display: block;
+      padding: 0;
+
+      a {
+        padding: 0;
+        display: block;
+        line-height: 1.6;
+        text-transform: capitalize;
+        @include transition(color);
+      }
+      &.is-active a {
+        background: none;
+        color: inherit;
+      }
+    }
+  }
+}

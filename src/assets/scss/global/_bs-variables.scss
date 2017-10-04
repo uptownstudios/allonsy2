@@ -1,0 +1,49 @@
+@font-face {
+  font-family: ragnarok;
+  src: url(http://localhost:3000/allonsy/wp-content/themes/allonsy2/src/assets/fonts/Ragnarok.ttf);
+}
+$fontstack: 'Open Sans', Arial, Helvetica, sans-serif;
+$ragnarok: 'ragnarok', Arial, Helvetica, sans-serif;
+$red: #a21e1e;
+$orange: #d28441;
+$blue: #3071bd;
+$white: #FFFFFF;
+$black: #000000;
+$green: green;
+$gray: #666666;
+$ltgray: #f2f2f2;
+
+// Breakpoint variables
+$break1600: "only screen and (max-width: 100em)";
+$break1200: "only screen and (max-width: 75em)";
+$break1024: "only screen and (max-width: 64em)";
+$minbreak1025: "only screen and (min-width: 64.0625rem)";
+$break972: "only screen and (max-width: 60.75em)";
+$break951: "only screen and (max-width: 59.4375em)";
+$break800: "only screen and (max-width: 50em)";
+$break767: "only screen and (max-width: 47.9375em)";
+$break640: "only screen and (max-width: 40em)";
+$break639: "only screen and (max-width: 39.9375em)";
+$break600: "only screen and (max-width: 37.5em)";
+$break480: "only screen and (max-width: 30em)";
+$break375: "only screen and (max-width: 23.4375em)";
+
+// Font size variables
+$cta: 2.5rem !important;
+$cta639: 1.75rem !important;
+$maintitle: 3rem !important;
+$maintitle639: 2.5rem !important;
+$h1: 2.5rem !important;
+$h2: 2rem !important;
+$h3: 1.5rem !important;
+$h4: 1.25rem !important;
+$h5: 1.125rem !important;
+$h6: 1.0625rem !important;
+$bodycopy: 1rem !important;
+
+@mixin transition($attr) {
+  -webkit-transition: $attr .2s ease-out;
+     -moz-transition: $attr .2s ease-out;
+      -ms-transition: $attr .2s ease-out;
+          transition: $attr .2s ease-out;
+}
