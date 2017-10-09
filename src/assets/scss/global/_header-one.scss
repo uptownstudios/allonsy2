@@ -10,7 +10,7 @@ header#masthead.header-option-one {
   background-size: cover;
   transition: all 500ms ease-out;
   @media only screen and (min-width: 64.0625em) {
-    padding: 0 0 .5rem !important;
+    padding: 1rem 0 .5rem !important;
   }
 
   #header-inner {
@@ -314,6 +314,9 @@ header#masthead.header-option-one {
       width: calc(100% - 3rem);
       margin-right: 3rem;
     }
+  }
+  nav.top-bar {
+
     .menu-search-wrapper {
       border-left: 1px solid gray;
       position: absolute;
@@ -328,6 +331,7 @@ header#masthead.header-option-one {
       text-align: center;
       line-height: 2.25rem;
       font-size: 1.25rem;
+      vertical-align: top;
       cursor: pointer !important;
       @include transition(all);
     }

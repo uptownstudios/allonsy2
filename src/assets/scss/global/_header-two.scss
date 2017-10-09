@@ -329,6 +329,9 @@ header#masthead.header-option-two {
       width: calc(100% - 3rem);
       margin-right: 3rem;
     }
+  }
+  nav.top-bar {
+
     .menu-search-wrapper {
       border-left: 1px solid gray;
       position: absolute;
@@ -343,6 +346,7 @@ header#masthead.header-option-two {
       text-align: center;
       line-height: 2.25rem;
       font-size: 1.25rem;
+      vertical-align: top;
       cursor: pointer !important;
       @include transition(all);
     }
@@ -390,8 +394,8 @@ header#masthead.header-option-two {
     }
     input#s {
       padding: 0 5px;
-      line-height: 2.125rem;
-      height: auto;
+      line-height: 2.5rem;
+      height: 2.5rem;
       box-shadow: none;
       //border: 1px solid $blue;
       border: 0;
@@ -412,6 +416,7 @@ header#masthead.header-option-two {
       border: 0;
       background: $blue;
       font-family: $fontstack !important;
+      vertical-align: top;
       @include transition(all);
       &:hover, &:focus {
         background: $orange;

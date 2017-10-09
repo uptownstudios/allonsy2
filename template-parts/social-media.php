@@ -1,8 +1,14 @@
 			<ul class="social-media-wrapper">
 				<?php $search_position = get_theme_mod('search-position'); if( $search_position == 'search-social-menu' ) { ?>
-				<li class="inline-social-search-wrapper">
+
+					<li class="menu-search-wrapper">
+						<button class="search-toggle"><i class="fa fa-search" aria-hidden="true"></i></button>
+						<?php get_search_form(); ?>
+					</li>
+
+				<!-- <li class="inline-social-search-wrapper">
 					<?php get_search_form(); ?>
-				</li>
+				</li> -->
 				<?php } ?>
 				<?php if( get_theme_mod('twitter')): ?><li class="twitter"><a href="<?php echo get_theme_mod('twitter','default'); ?>" target="_blank"><i class="fa fa-twitter"></i></a></li><?php endif; ?>
 				<?php if( get_theme_mod('facebook')): ?><li class="facebook"><a href="<?php echo get_theme_mod('facebook','default'); ?>" target="_blank"><i class="fa fa-facebook"></i></a></li><?php endif; ?>

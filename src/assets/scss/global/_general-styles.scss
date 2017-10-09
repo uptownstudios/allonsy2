@@ -22,7 +22,7 @@ a[href^=tel] {
 a {
   font-family: $fontstack;
 }
-p, li, span {
+p, li, span, time {
   font-family: $fontstack;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -99,6 +99,54 @@ span.sub-title {
 }
 body.modal-active {
   overflow: hidden;
+}
+form#searchform {
+  position: relative;
+  width: 100%;
+  max-width: rem-calc(350);
+  text-align: right;
+  border-radius: 0;
+  background: $white;
+  margin: 0 0 1rem 0;
+  @media #{$break1024} {
+    margin: 0 auto;
+  }
+
+  input#s {
+    max-width: none;
+    border: 1px solid;
+    border-right: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 rem-calc(10) !important;
+    line-height: rem-calc(40);
+    height: rem-calc(40);
+    background: $white;
+  }
+  .input-group {
+    margin: 0;
+  }
+  input#s::-webkit-input-placeholder,
+  input#s::-moz-placeholder,
+  input#s:-moz-placeholder,
+  input#s:-ms-input-placeholder {
+    font-size: .875rem !important;
+    font-family: $fontstack !important;
+  }
+  input#searchsubmit {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    padding: 0 rem-calc(10);
+    line-height: 2.25rem;
+    border: 0;
+    background: $blue;
+    font-family: $fontstack !important;
+    @include transition(all);
+    &:hover, &:focus {
+      background: $orange;
+    }
+  }
 }
 .bs-btn {
   font-size: 1.3125rem;
@@ -197,7 +245,7 @@ body.modal-active {
   margin-right: auto !important;
 }
 .entry-content {
-  overflow: hidden;
+  // overflow: hidden;
 
   h2, h3, h4, h5, h6 {
     margin-bottom: 0;
@@ -285,6 +333,13 @@ ul.social-media-wrapper {
   }
   li.custom-button a {
     padding: 0 0.625rem;
+  }
+}
+@media #{$break639} {
+  html .main-wrap .main-content,
+  html .main-wrap .sidebar {
+    margin-left: 0.9375rem;
+    margin-right: 0.9375rem;
   }
 }
 #back-top {

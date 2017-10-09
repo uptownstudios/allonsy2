@@ -13,10 +13,30 @@
  * @since FoundationPress 1.0.0
  */
 
-get_header(); ?>
+get_header();
+$title_bar = get_theme_mod('internal-title-bar');
+$blog_title = get_theme_mod('blog-page-title');
+$disable_sidebar = get_theme_mod('blog-sidebar');
+
+  if( ! $title_bar || $title_bar == 'bs-featured-image') {
+    get_template_part( 'template-parts/featured-image' );
+  }
+  if ( $title_bar == 'bs-title-bar' ) {
+    get_template_part( 'template-parts/title-bar' );
+  }
+?>
 
 <div class="main-wrap" role="main">
 	<article class="main-content">
+
+	<?php if( $title_bar === 'bs-hide-featured-image' || $title_bar === 'bs-featured-image') : ?>
+	<?php if ( has_post_thumbnail() && $title_bar === 'bs-hide-featured-image' ) :
+		the_post_thumbnail();
+	endif; ?>
+	<header>
+		<h1 class="entry-title"><?php echo $blog_title; ?></h1>
+	</header>
+	<?php endif; ?>
 	<?php if ( have_posts() ) : ?>
 
 		<?php /* Start the Loop */ ?>
@@ -42,7 +62,7 @@ get_header(); ?>
 		<?php endif; ?>
 
 	</article>
-	<?php get_sidebar(); ?>
+	<?php if( $disable_sidebar == '') { get_sidebar(); } ?>
 
 </div>
 

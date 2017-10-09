@@ -66,7 +66,7 @@
 		//});
 
 		$('button.search-toggle').click(function() {
-			$('nav.top-bar.has-search .menu-search-wrapper form#searchform').toggleClass('show');
+			$('nav.top-bar form#searchform').toggleClass('show');
 		});
 
 		$('button.menu-icon').click(function() {
@@ -80,7 +80,7 @@
 	  $('#back-top').hide();
 	  $(function () {
 	    $(window).scroll(function () {
-	      if ($(this).scrollTop() > 800) {
+	      if ($(this).scrollTop() > 600) {
 	        $('#back-top').fadeIn();
 	      } else {
 	        $('#back-top').fadeOut();

@@ -1,11 +1,23 @@
 <?php
-	global $post;
-	$author_id = $post->post_author;
-	$date_published = $post->the_date;
-?>
 
-	<header id="featured-hero" class="single-featured-hero" role="banner" style="background-image: url('<?php bloginfo('url'); ?>/wp-content/uploads/2016/06/tie-fighter-wing02.svg'); background-repeat: repeat; background-color: #a8c9e9; background-size: 290px;">
-		<h1 class="entry-title dark"><span class="entry-title-inner"><?php the_title(); ?></span><p class="entry-meta"><span class="author-name author-date">By <a href="<?php echo get_author_posts_url( $author_id ); ?>" title=""><?php the_author_meta( 'display_name', $author_id ); ?></a> | Published on <?php echo get_the_date( 'M j, Y', $post->ID ); ?></span></p></h1>
+	$default_image = get_theme_mod('default-title-bar-image');
+	$default_backup = get_stylesheet_directory_uri() . '/src/assets/images/default-title-bar-image.jpg';
+	if( $default_image === '' ) {
+		$default_image = $default_backup;
+	}
+
+	if ( has_post_thumbnail( $post->ID ) ) : ?>
+
+	<header class="featured-hero featured-hero-title-bar" role="banner" data-interchange="[<?php echo the_post_thumbnail_url('featured-small'); ?>, small], [<?php echo the_post_thumbnail_url('featured-medium'); ?>, medium], [<?php echo the_post_thumbnail_url('featured-large'); ?>, large], [<?php echo the_post_thumbnail_url('featured-xlarge'); ?>, xlarge]">
+		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<?php foundationpress_entry_meta(); ?>
 	</header>
-	<?php echo do_shortcode('[bs_social_share]'); ?>
-	<div id="init-header-change"></div>
+
+	<?php else : ?>
+
+	<header class="featured-hero featured-hero-title-bar" role="banner" style="background: url('<?php echo $default_image; ?>') no-repeat center bottom; background-size: cover;">
+		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<?php foundationpress_entry_meta(); ?>
+	</header>
+
+	<?php endif; ?>

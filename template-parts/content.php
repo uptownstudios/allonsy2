@@ -7,7 +7,8 @@
  * @package FoundationPress
  * @since FoundationPress 1.0.0
  */
-
+$title_bar = get_theme_mod('internal-title-bar');
+$blog_content = get_theme_mod('blog-content-style');
 ?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('blogpost-entry'); ?>>
@@ -16,7 +17,11 @@
 		<?php foundationpress_entry_meta(); ?>
 	</header>
 	<div class="entry-content">
-		<?php the_content( __( 'Continue reading...', 'foundationpress' ) ); ?>
+		<?php if( $blog_content === 'bs-blog-content' ) {
+			the_content( __( 'Continue reading...', 'foundationpress' ) );
+		} else {
+			the_excerpt( __( 'Continue reading...', 'foundationpress' ) );
+		} ?>
 	</div>
 	<footer>
 		<?php $tag = get_the_tags(); if ( $tag ) { ?><p><?php the_tags(); ?></p><?php } ?>

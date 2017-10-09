@@ -208,6 +208,23 @@ function newuptown_customize_register( $wp_customize ) {
     'section' => 'default_colors',
     'settings' => 'pagetitle_color',
   )));
+
+  /* Title Bar Color setting */
+  $wp_customize->add_setting('titlebar_color', array(
+    'default' => '#FFFFFF',
+    'type' => 'theme_mod',
+    'transport' => 'postMessage',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 20,
+  ));
+  /* Title Bar Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'titlebar_color',array(
+    'label' => __('Title Bar Font Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'titlebar_color',
+  )));
+
   /* Highlight Color setting */
   $wp_customize->add_setting('highlight_color', array(
     'default' => '#d28441',
@@ -717,14 +734,20 @@ function newuptown_customize_register( $wp_customize ) {
     'priority' => 42,
     'description' => __( 'Internal page options, such as title bar options, breadcrumbs, etc.', 'allonsy2' )
   ) );
+
   // Title Bar with Background Image
-  $wp_customize->add_setting( 'internal-title-bar' , array( 'default' => '' ) );
+  $wp_customize->add_setting( 'internal-title-bar' , array( 'default' => '' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'internal-title-bar', array(
-      'label' => __( 'Title Bar with Background Image?', 'allonsy2' ),
+      'label' => __( 'Title Bar Options', 'allonsy2' ),
       'section' => 'internal-pages',
-      'type' => 'checkbox',
-      'description' => 'Check this box to enable the title bar with background image on internal pages',
+      'type' => 'radio',
+      'choices' => array(
+        'bs-featured-image' => 'Featured Image',
+        'bs-title-bar' => 'Featured Image with Title &amp; Meta Info',
+        'bs-hide-featured-image' => 'Hide Title Bar'
+      ),
   ) ) );
+
   // Default Title Bar Image URL
   $wp_customize->add_setting( 'default-title-bar-image' , array( 'default' => '','sanitize_callback' => 'esc_url_raw', 'transport' => 'postMessage' ) );
   $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'default-title-bar-image', array(
@@ -732,13 +755,27 @@ function newuptown_customize_register( $wp_customize ) {
       'section' => 'internal-pages',
       'settings' => 'default-title-bar-image',
   ) ) );
-  // Enable Yoast Breadcrumbs
+  // Enable Breadcrumbs
   $wp_customize->add_setting( 'internal-breadcrumbs' , array( 'default' => '' ) );
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'internal-breadcrumbs', array(
       'label' => __( 'Enable Breadcrumbs?', 'allonsy2' ),
       'section' => 'internal-pages',
       'type' => 'checkbox',
-      'description' => 'Check this box to enable breadcrumbs. Note: You MUST have Yoast SEO plugin installed and the breadcrumbs options checked in the Yoast Advanced settings.',
+      'description' => 'Check this box to enable breadcrumbs on pages, posts, and other supported post types.',
+  ) ) );
+  // Breadcrumb Separator
+  // Blog Content Style
+  $wp_customize->add_setting( 'breadcrumb-separator' , array( 'default' => 'raquo' ));
+  $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'breadcrumb-separator', array(
+      'label' => __( 'Breadcrumb Separator', 'allonsy2' ),
+      'section' => 'internal-pages',
+      'type' => 'radio',
+      'choices' => array(
+        'raquo' => 'Double Right Arrow (&raquo;)',
+        'rsaquo' => 'Single Right Arrow (&rsaquo;)',
+        'slash' => 'Slash (&#x2F;)',
+        'bullet' => 'Bullet (&#149;)'
+      ),
   ) ) );
 
   // Add Blog Options Section
@@ -747,6 +784,34 @@ function newuptown_customize_register( $wp_customize ) {
     'priority' => 50,
     'description' => __( 'Blog options, such as about the auther and tags', 'allonsy2' )
   ) );
+
+  // Blog Page Title
+  $wp_customize->add_setting( 'blog-page-title' , array( 'default' => '' ) );
+  $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'blog-page-title', array(
+      'label' => __( 'Blog Page Title', 'allonsy2' ),
+      'section' => 'blog-options',
+      'type' => 'text',
+      'description' => 'Give the blog page a custom title.',
+  ) ) );
+  // Blog Content Style
+  $wp_customize->add_setting( 'blog-content-style' , array( 'default' => 'bs-blog-excerpt' ));
+  $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'blog-content-style', array(
+      'label' => __( 'Blog Content Style', 'allonsy2' ),
+      'section' => 'blog-options',
+      'type' => 'radio',
+      'choices' => array(
+        'bs-blog-content' => 'Show "The Content"',
+        'bs-blog-excerpt' => 'Show "The Excerpt"'
+      ),
+  ) ) );
+  // Disable Blog Sidebar
+  $wp_customize->add_setting( 'blog-sidebar' , array( 'default' => '' ) );
+  $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'blog-sidebar', array(
+      'label' => __( 'Disable the sidebar for the blog?', 'allonsy2' ),
+      'section' => 'blog-options',
+      'type' => 'checkbox',
+      'description' => 'Check this box to disable the sidebar on the blog page and single blog posts.',
+  ) ) );
   // Disable About The Author
   $wp_customize->add_setting( 'about-the-author' , array( 'default' => '' ) );
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'about-the-author', array(
@@ -823,20 +888,21 @@ header#masthead, .top-bar, .top-bar ul {
     background: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?>;
   }
 }
-#main-container p, #main-container li, #main-container span {
+#main-container p, #main-container li, #main-container span, #main-container time {
   color: <?php echo esc_attr(get_theme_mod('paragraph_color','#272e31')); ?>;
 }
-a {
+a, .breadcrumbs a {
   color: <?php echo esc_attr(get_theme_mod('link_color','#1e73be')); ?>;
   -webkit-transition: color .2s ease-out;
   -moz-transition: color .2s ease-out;
   -o-transition: color .2s ease-out;
   transition: color .2s ease-out;
 }
-a:hover, a:focus {
+a:hover, a:focus, .breadcrumbs a:hover, .breadcrumbs a:focus {
   color: <?php echo esc_attr(get_theme_mod('link_hover_color','#000000')); ?>;
 }
 header#masthead ul.social-media-wrapper li a,
+header#masthead ul.social-media-wrapper li.menu-search-wrapper button,
 nav.off-canvas ul.social-media-wrapper li a {
   color: <?php echo esc_attr(get_theme_mod('sm_color','#003a71')); ?>;
   -webkit-transition: color .2s ease-out;
@@ -846,6 +912,8 @@ nav.off-canvas ul.social-media-wrapper li a {
 }
 header#masthead ul.social-media-wrapper li a:hover,
 header#masthead ul.social-media-wrapper li a:focus,
+header#masthead ul.social-media-wrapper li.menu-search-wrapper button:hover,
+header#masthead ul.social-media-wrapper li.menu-search-wrapper button:focus,
 nav.off-canvas ul.social-media-wrapper li a:hover,
 nav.off-canvas ul.social-media-wrapper li a:focus {
   color: <?php echo esc_attr(get_theme_mod('sm_hover_color','#b01f23')); ?>;
@@ -861,7 +929,7 @@ header#masthead ul.social-media-wrapper li.custom-button a {
 header#masthead ul.social-media-wrapper li.custom-button a:hover,
 header#masthead ul.social-media-wrapper li.custom-button a:focus {
   color: #FFF;
-  background: <?php echo esc_attr(get_theme_mod('sm_hover_color','#b01f23')); ?>;
+  background: <?php echo esc_attr(get_theme_mod('sm_hover_color','#b01f23')); ?> !important;
 }
 h1 {
   color: <?php echo esc_attr(get_theme_mod('heading1_color','#003a71')); ?>;
@@ -882,7 +950,10 @@ h6 {
   color: <?php echo esc_attr(get_theme_mod('heading6_color','#003a71')); ?>;
 }
 h1.entry-title {
-  color: <?php echo esc_attr(get_theme_mod('pagetitle_color','#FFFFFF')); ?>;
+  color: <?php echo esc_attr(get_theme_mod('pagetitle_color','#003a71')); ?>;
+}
+.featured-hero-title-bar h1.entry-title {
+  color: <?php echo esc_attr(get_theme_mod('titlebar_color','#FFFFFF')); ?>;
 }
 .top-bar .top-bar-top,
 .top-bar .top-bar-right,
@@ -925,7 +996,8 @@ nav.top-bar.has-search .menu-search-wrapper button:focus {
 .top-bar .menu .dropdown {
   border-color: <?php echo esc_attr(get_theme_mod('main_nav_hover_color','#b01f23')); ?>;
 }
-.top-bar .menu .dropdown li {
+.top-bar .menu .dropdown li,
+nav.top-bar.has-search .menu-search-wrapper form#searchform {
   background: <?php echo esc_attr(get_theme_mod('main_nav_sub_bg_color','#ffffff')); ?>;
 }
 nav.off-canvas > .menu > li > a:after {

@@ -92,13 +92,31 @@ if ( ! function_exists( 'foundationpress_add_menuclass' ) ) {
  */
 
 if ( ! function_exists( 'foundationpress_breadcrumb' ) ) {
-	function foundationpress_breadcrumb( $showhome = true, $separatorclass = false ) {
+	function foundationpress_breadcrumb( $showhome = true, $separatorclass = true ) {
 
 		// Settings
-		$separator  = '&gt;';
+		$breadcrumb_separator = get_theme_mod('breadcrumb-separator');
+		switch($breadcrumb_separator) {
+			case 'raquo':
+			 	$bs_separator = '&raquo;';
+				break;
+			case 'rsaquo':
+			 	$bs_separator = '&rsaquo;';
+				break;
+			case 'slash':
+			 	$bs_separator = '&#x2F;';
+				break;
+			case 'bullet':
+			 	$bs_separator = '&#149;';
+				break;
+			default;
+				$bs_separator = '&raquo;';
+				break;
+		}
+		$separator  = $bs_separator;
 		$id         = 'breadcrumbs';
 		$class      = 'breadcrumbs';
-		$home_title = 'Homepage';
+		$home_title = 'Home';
 
 		// Get the query & post information
 		global $post,$wp_query;
