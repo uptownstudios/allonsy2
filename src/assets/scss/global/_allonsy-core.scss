@@ -50,6 +50,7 @@
 @import "global/menu-top-bar";
 
 /* 3f. Sticky Header Styles */
+@import "global/sticky-header";
 
 /* Header Overrides */
 .top-bar {
@@ -218,10 +219,25 @@ h1.entry-title {
     font-weight: 700;
   }
 }
+.attachment-post-thumbnail {
+  margin-bottom: 20px;
+}
+
+/* Full Width Page Template Styles */
+.main-wrap.full-width {
+  width: 100%;
+
+  .main-content {
+    margin-left: rem-calc(15) !important;
+    margin-right: rem-calc(15) !important;
+    width: 100%;
+  }
+}
+/* Left Sidebar Page Template Styles */
 
 
 /**** 6. BLOG PAGE AND SINGLE BLOG POST STYLES ****/
-.single-post {
+.single-post, .blog {
 
   .main-wrap.no-sidebar {
     display: flex;
@@ -262,6 +278,19 @@ h1.entry-title {
 }
 
 
+/**** 7. 404 PAGE STYLES ****/
+.error404 {
+
+  .main-wrap.no-sidebar {
+    display: flex;
+    justify-content: center;
+
+    article.main-content {
+      width: 100%;
+      max-width: 800px;
+    }
+  }
+}
 /**** 6. FOOTER STYLES ****/
 footer.footer {
 

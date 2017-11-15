@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Left Sidebar
+Template Name: No Sidebar, Narrow Content
 */
 	get_header();
 	$title_bar = get_theme_mod('internal-title-bar');
@@ -14,9 +14,9 @@ Template Name: Left Sidebar
 	}
 ?>
 
-<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper max-width-nine-seventy no-sidebar"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
 
-<div class="main-wrap sidebar-left" role="main">
+<div class="main-wrap full-width max-width-nine-seventy" role="main">
 
 <?php do_action( 'foundationpress_before_content' ); ?>
 <?php while ( have_posts() ) : the_post(); ?>
@@ -53,7 +53,6 @@ Template Name: Left Sidebar
 <?php endwhile;?>
 
 <?php do_action( 'foundationpress_after_content' ); ?>
-<?php get_sidebar(); ?>
 
 </div>
 

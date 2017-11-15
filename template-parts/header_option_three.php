@@ -5,6 +5,7 @@
 		$hide_social = get_theme_mod('hide_header_social');
 		$alt_nav = get_theme_mod('show_alt_nav');
 	?>
+	<div id="sticky-header-placeholder"></div>
 	<header id="masthead" class="site-header header-option-three <?php if( get_theme_mod( 'sticky-header' ) != '') { ?>sticky-header<?php } ?>" role="banner">
 		<div id="header-inner" class="max-width-twelve-hundred">
 			<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle() ?>>

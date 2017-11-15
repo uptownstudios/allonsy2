@@ -426,7 +426,7 @@ header#masthead.header-option-two {
 }
 
 @media #{$break767} {
-  header#masthead.header-option-one {
+  header#masthead.header-option-two {
     display: block;
 
     .logo-wrapper {
@@ -468,7 +468,7 @@ header#masthead.header-option-two {
 }
 
 @media #{$break639} {
-  header#masthead.header-option-one {
+  header#masthead.header-option-two {
     padding: 0 !important;
 
     .logo-wrapper.hide-for-small-only {

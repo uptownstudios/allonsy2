@@ -103,6 +103,68 @@ function newuptown_customize_register( $wp_customize ) {
     'settings' => 'sm_hover_color',
   )));
 
+  /* Social Media Custom Button Background Color setting */
+  $wp_customize->add_setting('sm_btn_bg_color', array(
+    'default' => '#b01f23',
+    'type' => 'theme_mod',
+    'transport' => 'postMessage',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 13,
+  ));
+  /* Social Media Custom Button Background Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'sm_btn_bg_color',array(
+    'label' => __('Social Media Custom Button Background Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'sm_btn_bg_color',
+  )));
+  /* Social Media Custom Button Background Hover Color setting */
+  $wp_customize->add_setting('sm_btn_bg_hover_color', array(
+    'default' => '#003a71',
+    'type' => 'theme_mod',
+    'transport' => 'postMessage',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 13,
+  ));
+  /* Social Media Custom Button Background Hover Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'sm_btn_bg_hover_color',array(
+    'label' => __('Social Media Custom Button Background Hover Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'sm_btn_bg_hover_color',
+  )));
+
+  /* Social Media Custom Button Text Color setting */
+  $wp_customize->add_setting('sm_btn_text_color', array(
+    'default' => '#FFFFFF',
+    'type' => 'theme_mod',
+    'transport' => 'postMessage',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 13,
+  ));
+  /* Social Media Custom Button Text Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'sm_btn_text_color',array(
+    'label' => __('Social Media Custom Button Text Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'sm_btn_text_color',
+  )));
+  /* Social Media Custom Button Text Hover Color setting */
+  $wp_customize->add_setting('sm_btn_text_hover_color', array(
+    'default' => '#FFFFFF',
+    'type' => 'theme_mod',
+    'transport' => 'postMessage',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 13,
+  ));
+  /* Social Media Custom Button Text Hover Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'sm_btn_text_hover_color',array(
+    'label' => __('Social Media Custom Button Text Hover Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'sm_btn_text_hover_color',
+  )));
+
   /* H1 Color setting */
   $wp_customize->add_setting('heading1_color', array(
     'default' => '#d28441',
@@ -744,7 +806,9 @@ function newuptown_customize_register( $wp_customize ) {
       'choices' => array(
         'bs-featured-image' => 'Featured Image',
         'bs-title-bar' => 'Featured Image with Title &amp; Meta Info',
-        'bs-hide-featured-image' => 'Hide Title Bar'
+        'bs-default-image' => 'Default Image',
+        'bs-default-bar' => 'Default Image with Title &amp; Meta Info',
+        'bs-hide-title-bar' => 'Hide Title Bar'
       ),
   ) ) );
 
@@ -918,18 +982,21 @@ nav.off-canvas ul.social-media-wrapper li a:hover,
 nav.off-canvas ul.social-media-wrapper li a:focus {
   color: <?php echo esc_attr(get_theme_mod('sm_hover_color','#b01f23')); ?>;
 }
-header#masthead ul.social-media-wrapper li.custom-button a {
-  color: #FFF;
-  background: <?php echo esc_attr(get_theme_mod('sm_color','#003a71')); ?>;
+header#masthead ul.social-media-wrapper li.custom-button a,
+nav.off-canvas ul.social-media-wrapper li.custom-button a {
+  color: <?php echo esc_attr(get_theme_mod('sm_btn_text_color','#FFFFFF')); ?>;
+  background: <?php echo esc_attr(get_theme_mod('sm_btn_bg_color','#b01f23')); ?>;
   -webkit-transition: background .2s ease-out;
   -moz-transition: background .2s ease-out;
   -o-transition: background .2s ease-out;
   transition: background .2s ease-out;
 }
 header#masthead ul.social-media-wrapper li.custom-button a:hover,
-header#masthead ul.social-media-wrapper li.custom-button a:focus {
-  color: #FFF;
-  background: <?php echo esc_attr(get_theme_mod('sm_hover_color','#b01f23')); ?> !important;
+header#masthead ul.social-media-wrapper li.custom-button a:focus,
+nav.off-canvas ul.social-media-wrapper li.custom-button a:hover,
+nav.off-canvas ul.social-media-wrapper li.custom-button a:focus {
+  color: <?php echo esc_attr(get_theme_mod('sm_btn_text_hover_color','#FFFFFF')); ?>;
+  background: <?php echo esc_attr(get_theme_mod('sm_btn_bg_hover_color','#003a71')); ?> !important;
 }
 h1 {
   color: <?php echo esc_attr(get_theme_mod('heading1_color','#003a71')); ?>;
@@ -990,7 +1057,8 @@ nav.top-bar.has-search .menu-search-wrapper button:focus {
   border: 1px solid <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?> !important;
   border-top: 4px solid <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?> !important;
 }
-.desktop-menu.menu > li > a:before {
+.desktop-menu.menu > li > a:before,
+nav.off-canvas .submenu-toggle {
   background: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }
 .top-bar .menu .dropdown {
@@ -1056,9 +1124,13 @@ nav.off-canvas .menu li.active > a {
 .top-bar .menu > li:after {
   background: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }
-.above-menu-search-wrapper form#searchform :after,
-.inline-social-search-wrapper form#searchform :after {
-  color: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
+.above-menu-search-wrapper form#searchform:after,
+.inline-social-search-wrapper form#searchform:after,
+.menu-search-wrapper form#searchform:after {
+  border-bottom-color: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?> !important;
+}
+nav.top-bar .menu-search-wrapper form#searchform {
+  background-color: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }
 .footer-container {
   background-color: <?php echo esc_attr(get_theme_mod('footer_bg_color','#FFFFFF')); ?>;

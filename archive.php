@@ -15,10 +15,21 @@
  * @since FoundationPress 1.0.0
  */
 
-get_header(); ?>
+	get_header();
+	$title_bar = get_theme_mod('internal-title-bar');
+
+	if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' || $title_bar === 'bs-featured-image' ) {
+    get_template_part( 'template-parts/archive-title-bar' );
+  }
+?>
 
 <div class="main-wrap" role="main">
 	<article class="main-content">
+		<?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
+		<header>
+			<h1 class="entry-title"><?php the_archive_title(); ?></h1>
+		</header>
+		<?php endif; ?>
 	<?php if ( have_posts() ) : ?>
 
 		<?php /* Start the Loop */ ?>

@@ -1,4 +1,7 @@
 #preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   left: 0;
   top: 0;
@@ -8,16 +11,59 @@
   overflow: visible;
   background: #FFF;
 
+  .preloader-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   img {
     padding: 25px;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // position: absolute;
+    // top: 30%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
 
     @media only screen and (max-width: 630px) {
-      padding: 40px;
+      padding: rem-calc(15) rem-calc(40) 0;
     }
+  }
+  .letter-holder {
+    display: inline-block;
+    padding: 1rem;
+  }
+  .letter {
+    float: left;
+    font-family: $fontstack;
+    font-size: rem-calc(25);
+    font-weight: 700;
+    color: $blue;
+  }
+  .animate-loading {
+    // position: absolute;
+    // left: 50%;
+    // top: 40%;
+    // transform: translateY(-50%) translateX(-50%);
+  }
+  .animate-loading .letter {
+    animation-name: loadingF;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+  }
+  .l-1 { animation-delay: .48s; }
+  .l-2 { animation-delay: .6s; }
+  .l-3 { animation-delay: .72s; }
+  .l-4 { animation-delay: .84s; }
+  .l-5 { animation-delay: .96s; }
+  .l-6 { animation-delay: 1.08s; }
+  .l-7 { animation-delay: 1.2s; }
+  .l-8 { animation-delay: 1.32s; }
+  .l-9 { animation-delay: 1.44s; }
+  .l-10 { animation-delay: 1.56s; }
+
+  @keyframes loadingF {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
   }
 }
 .admin-bar #preloader img {

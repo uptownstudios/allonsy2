@@ -14,10 +14,10 @@
   $title_bar = get_theme_mod('internal-title-bar');
   $breadcrumbs = get_theme_mod('internal-breadcrumbs');
 
-  if( ! $title_bar || $title_bar == 'bs-featured-image') {
+  if( $title_bar === 'bs-featured-image') {
     get_template_part( 'template-parts/featured-image' );
   }
-  if ( $title_bar == 'bs-title-bar' ) {
+  if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
     get_template_part( 'template-parts/title-bar' );
   }
 ?>
@@ -30,7 +30,12 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 	<article <?php post_class('main-content') ?> id="post-<?php the_ID(); ?>">
-    <?php if( $title_bar === 'bs-hide-featured-image' ) : ?>
+    <?php if( $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' || $title_bar === 'bs-hide-title-bar' ) : ?>
+
+      <?php if( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+
+    <?php endif; ?>
+    <?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
 		<header>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header>

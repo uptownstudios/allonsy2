@@ -27,7 +27,7 @@ $loading_animation_img = get_theme_mod('loading-animation-image');
 	</head>
 	<body <?php body_class(); ?>>
 
-	<?php if( $loading_animation != '' ) : ?><div id="preloader"><img src="<?php if( $loading_animation_img != '' ) { echo $loading_animation_img; } else { echo $default_loading_animation_img; }?>" width="600" class="preloader-logo"></div><?php endif; ?>
+	<?php if( $loading_animation != '' ) { get_template_part('template-parts/preloader'); } ?>
 
 	<script>window.fbAsyncInit = function() { FB.init({ appId: '317466291976025', xfbml: true, version: 'v2.5' }); };
   (function(d, s, id){ var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) {return;}

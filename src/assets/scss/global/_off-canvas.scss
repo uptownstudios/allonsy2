@@ -7,7 +7,7 @@
 
     a.custom-logo-link {
       width: 100%;
-      max-width: 250px;
+      max-width: rem-calc(250);
       display: inline-block;
 
       img {
@@ -47,7 +47,33 @@ nav.off-canvas {
   a.custom-logo-link {
     display: inline-block;
     width: 100%;
-    padding: 1rem;
+    padding: 0 1rem;
+
+    img.custom-logo {
+      display: block;
+      margin: rem-calc(10) auto;
+      width: 100%;
+      height: auto;
+    }
+  }
+  & .menu:not(.nested) > li > a {
+    font-size: rem-calc(18) !important;
+    font-weight: 700;
+  }
+  .menu.nested {
+    margin-left: 0;
+
+    & > li > a {
+      padding-left: rem-calc(30) !important;
+      white-space: normal;
+    }
+  }
+  .submenu-toggle {
+    color: $white;
+    height: rem-calc(40.38);
+    &:after {
+      border-top-color: $white;
+    }
   }
   & > ul.menu {
     padding: 0;
@@ -63,7 +89,7 @@ nav.off-canvas {
     }
   }
   ul.social-media-wrapper {
-    margin: 0 0 0.625rem 0;
+    margin: rem-calc(20) 0 rem-calc(20) 0;
     text-align: center;
 
     li {
@@ -97,25 +123,40 @@ nav.off-canvas {
     li.inline-social-search-wrapper {
       width: auto;
     }
-    li.custom-button {
-      width: auto;
-    }
     li a {
       display: block;
     }
+    li.custom-button {
+      width: auto;
+      display: block;
+      max-width: rem-calc(120);
+      margin: rem-calc(15) auto rem-calc(15);
+    }
     li.custom-button a {
-      padding: 0 10px;
+      display: block;
+      // font-weight: 700 !important;
+      padding: 0 rem-calc(10);
+      position: relative;
+      width: 100%;
+      @include transition(all);
+
+      @media #{$break1024} {
+        font-size: 1.125rem !important;
+      }
+    }
+    li.menu-search-wrapper {
+      display: none;
     }
   }
   form#searchform {
     position: absolute;
     right: 0;
     position: relative;
-    max-width: 200px;
+    max-width: rem-calc(200);
     width: 100%;
     text-align: right;
     border: 1px solid $gray;
-    border-radius: 3px;
+    border-radius: rem-calc(3);
     background: $white;
     margin: 0;
     @media #{$break1024} {
@@ -126,9 +167,9 @@ nav.off-canvas {
       position: absolute;
       content: '\f002';
       font-family: fontawesome !important;
-      width: 34px;
-      height: 34px;
-      line-height: 34px;
+      width: rem-calc(34);
+      height: rem-calc(34);
+      line-height: rem-calc(34);
       text-align: center;
       top: 0;
       right: 0;
@@ -137,17 +178,17 @@ nav.off-canvas {
     input#searchsubmit {
       text-indent: -9999px;
       margin: 0;
-      width: 34px;
-      height: 34px;
+      width: rem-calc(34);
+      height: rem-calc(34);
       background: none;
     }
     input#s {
       max-width: none;
       border: 0;
       box-shadow: none;
-      padding: 0 10px !important;
-      line-height: 34px;
-      height: 34px;
+      padding: 0 rem-calc(10) !important;
+      line-height: rem-calc(34);
+      height: rem-calc(34);
       background: none;
     }
     .input-group {

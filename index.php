@@ -22,11 +22,11 @@ $disable_sidebar = get_theme_mod('blog-sidebar');
     get_template_part( 'template-parts/featured-image' );
   }
   if ( $title_bar == 'bs-title-bar' ) {
-    get_template_part( 'template-parts/title-bar' );
+    get_template_part( 'template-parts/loop-title-bar' );
   }
 ?>
 
-<div class="main-wrap" role="main">
+<div class="main-wrap <?php if( $disable_sidebar != '') {?>no-sidebar<?php } ?>" role="main">
 	<article class="main-content">
 
 	<?php if( $title_bar === 'bs-hide-featured-image' || $title_bar === 'bs-featured-image') : ?>

@@ -68,6 +68,13 @@
 		$('button.search-toggle').click(function() {
 			$('nav.top-bar form#searchform').toggleClass('show');
 		});
+		$(document).click(function(e) {
+			var target = $(e.target);
+		  if( ! target.is('li.menu-search-wrapper, li.menu-search-wrapper *') ) {
+				$('nav.top-bar form#searchform.show').removeClass('show');
+				//$('button.search-toggle').click();
+			}
+		});
 
 		$('button.menu-icon').click(function() {
 			$(this).toggleClass('active');
@@ -188,20 +195,22 @@
 	function init() {
 		window.addEventListener('scroll', function(e){
       var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-        stickPrep = jQuery('#masthead').height() + 35,
+        stickPrep = jQuery('#masthead').height() * 2,
+				topBarHeight = jQuery('#masthead').height(),
         header = document.querySelector("body");
       if (distanceY > stickPrep) {
         classie.add(header,"sticky-prep");
-
+				$('#sticky-header-placeholder').css({'height' : topBarHeight,'display' : 'block'});
       } else {
         if (classie.has(header,"sticky-prep")) {
           classie.remove(header,"sticky-prep");
+					$('#sticky-header-placeholder').css({'height' : '0','display' : 'none'});
         }
       }
   	});
     window.addEventListener('scroll', function(e){
       var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-        stickOn = jQuery('#masthead').height() + jQuery('.top-bar-bottom').height(),
+        stickOn = jQuery('#masthead').height() * 2.5,
         header = document.querySelector("body");
       if (distanceY > stickOn) {
         classie.add(header,"sticky-header");
