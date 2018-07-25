@@ -11,7 +11,7 @@
 ?>
 
 		</section>
-		
+
 		<div id="footer-container">
 			<div class="footer-container" data-sticky-footer>
 				<footer class="footer grid-x">
@@ -196,11 +196,11 @@
 	});
 	<?php if( get_theme_mod( 'sticky-header' ) != '') { ?>
 	// Sticky Header Classie script
-	function init() {
+	$('#masthead').imagesLoaded( function init() {
 		window.addEventListener('scroll', function(e){
       var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-        stickPrep = jQuery('#masthead').height() * 2,
-				topBarHeight = jQuery('#masthead').height(),
+        stickPrep = jQuery('#masthead').outerHeight() * 2,
+				topBarHeight = jQuery('#masthead').outerHeight(),
         header = document.querySelector("body");
       if (distanceY > stickPrep) {
         classie.add(header,"sticky-prep");
@@ -214,7 +214,7 @@
   	});
     window.addEventListener('scroll', function(e){
       var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-        stickOn = jQuery('#masthead').height() * 2.5,
+        stickOn = jQuery('#masthead').outerHeight() * 2.5,
         header = document.querySelector("body");
       if (distanceY > stickOn) {
         classie.add(header,"sticky-header");
@@ -225,39 +225,40 @@
         }
       }
   	});
-	}
+	});
 	window.onload = init();
 	<?php } ?>
-	$('.bs-carousel').slick({
-	  dots: false,
-	  infinite: false,
-	  speed: 300,
-	  slidesToShow: 3,
-	  slidesToScroll: 1,
-		arrows: true,
-		prevArrow: '<button aria-hidden="true" role="presentation" type="button" class="slick-prev"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/prev-arrow.svg" alt="Previous Arrow" width="20" /></button>',
-		nextArrow: '<button aria-hidden="true" role="presentation" type="button" class="slick-next"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/next-arrow.svg" alt="Next Arrow" width="20" /></button>',
-	  responsive: [{
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-      }
-    },{
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1
-      }
-    },{
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }]
-	});
+
+	// $('.bs-carousel').slick({
+	//   dots: false,
+	//   infinite: false,
+	//   speed: 300,
+	//   slidesToShow: 3,
+	//   slidesToScroll: 1,
+	// 	arrows: true,
+	// 	prevArrow: '<button aria-hidden="true" role="presentation" type="button" class="slick-prev"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/prev-arrow.svg" alt="Previous Arrow" width="20" /></button>',
+	// 	nextArrow: '<button aria-hidden="true" role="presentation" type="button" class="slick-next"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/next-arrow.svg" alt="Next Arrow" width="20" /></button>',
+	//   responsive: [{
+  //     breakpoint: 1024,
+  //     settings: {
+  //       slidesToShow: 2,
+  //       slidesToScroll: 1,
+  //       infinite: true,
+  //     }
+  //   },{
+  //     breakpoint: 600,
+  //     settings: {
+  //       slidesToShow: 2,
+  //       slidesToScroll: 1
+  //     }
+  //   },{
+  //     breakpoint: 480,
+  //     settings: {
+  //       slidesToShow: 1,
+  //       slidesToScroll: 1
+  //     }
+  //   }]
+	// });
 
 </script>
 

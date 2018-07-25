@@ -325,7 +325,7 @@ header#masthead.header-option-three {
       }
       input#searchsubmit {
         text-indent: -9999px;
-        margin: 0;
+        margin: 0 !important;
         width: 34px;
         height: 34px;
         background: none;
@@ -414,6 +414,7 @@ header#masthead.header-option-three {
       margin-left: -10px;
     }
     .menu-search-wrapper input#searchsubmit {
+      margin: 0 !important;
       width: 100%;
     }
     .menu-search-wrapper .input-group {

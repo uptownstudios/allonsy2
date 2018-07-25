@@ -52,10 +52,16 @@ span.sub-title {
   margin: 0.625rem 0;
 }
 .pl15 {
-  padding-left: 0.9375rem;
+  padding-left: rem-calc(15);
 }
 .pr15 {
-  padding-right: 0.9375rem;
+  padding-right: rem-calc(15);
+}
+.mt15 {
+  margin-top: rem-calc(15);
+}
+.mb15 {
+  margin-bottom: rem-calc(15);
 }
 .vcard abbr {
   border: 0 !important;
@@ -103,7 +109,7 @@ body.modal-active {
 form#searchform {
   position: relative;
   width: 100%;
-  max-width: rem-calc(350);
+  max-width: rem-calc(375);
   text-align: right;
   border-radius: 0;
   background: $white;

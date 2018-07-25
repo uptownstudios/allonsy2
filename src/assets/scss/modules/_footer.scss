@@ -7,7 +7,7 @@
 .footer {
   @include xy-grid-container;
   @include xy-grid;
-  padding: rem-calc(30) 0;
+  padding: rem-calc(30) 0 !important;
 
   article {
     @include xy-cell(auto);

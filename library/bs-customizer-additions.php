@@ -1,10 +1,4 @@
 <?php
-// Add WP 4.5 Custom Logo Support in Customizer
-function theme_prefix_setup() {
-    add_theme_support( 'custom-logo' );
-}
-add_action( 'after_setup_theme', 'theme_prefix_setup' );
-
 
 // Customizer Additions
 if ( ! function_exists( 'newuptown_customize_register' ) ) {

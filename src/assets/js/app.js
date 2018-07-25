@@ -8,6 +8,18 @@ import Foundation from 'foundation-sites';
 // the line below
 //import './lib/foundation-explicit-pieces';
 
-import './lib/demosite';
+// import './lib/demosite';
+
+import './vendor/stickyfooter';
+
+// import './vendor/classie';
+
+import './vendor/slick.min';
+
+import './vendor/jquery.swipebox.min';
+
+import './vendor/imagesloaded.pkgd.min';
+
+import './vendor/jquery.waypoints.min';
 
 $(document).foundation();

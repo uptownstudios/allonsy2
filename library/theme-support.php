@@ -6,6 +6,12 @@
  * @since FoundationPress 1.0.0
  */
 
+ // Add WP 4.5 Custom Logo Support in Customizer
+ function theme_prefix_setup() {
+     add_theme_support( 'custom-logo' );
+ }
+ add_action( 'after_setup_theme', 'theme_prefix_setup' );
+
 if ( ! function_exists( 'foundationpress_theme_support' ) ) :
 function foundationpress_theme_support() {
 	// Add language support
@@ -33,7 +39,7 @@ function foundationpress_theme_support() {
 	add_theme_support( 'automatic-feed-links' );
 
 	// Add post formats support: http://codex.wordpress.org/Post_Formats
-	add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat') );
+	add_theme_support( 'post-formats', array('gallery', 'link', 'image', 'video', 'audio') );
 
 	// Declare WooCommerce support per http://docs.woothemes.com/document/third-party-custom-theme-compatibility/
 	add_theme_support( 'woocommerce' );

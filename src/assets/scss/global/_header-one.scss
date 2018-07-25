@@ -281,7 +281,7 @@ header#masthead.header-option-one {
       }
       input#searchsubmit {
         text-indent: -9999px;
-        margin: 0;
+        margin: 0 !important;
         width: 34px;
         height: 34px;
         background: none;
@@ -370,6 +370,7 @@ header#masthead.header-option-one {
       margin-left: -10px;
     }
     .menu-search-wrapper input#searchsubmit {
+      margin: 0 !important;
       width: 100%;
     }
     .menu-search-wrapper .input-group {
@@ -394,6 +395,7 @@ header#masthead.header-option-one {
       font-weight: 700;
       text-transform: uppercase;
       font-size: 1.25rem;
+      margin: 0 !important;
       padding: 0 10px;
       line-height: 2.625rem;
       height: 2.625rem;
