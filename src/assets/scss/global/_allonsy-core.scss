@@ -13,7 +13,13 @@
 
 4. HOME PAGE STYLES
 
-5. FOOTER STYLES
+5. INTERNAL PAGE STYLES
+
+6. BLOG PAGE AND SINGLE BLOG POST STYLES
+
+7. 404 PAGE STYLES
+
+8. FOOTER STYLES
 
 ** END TABLE OF CONTENTS **/
 
@@ -60,7 +66,30 @@
     li.custom-button {
 
       a {
+        align-items: center;
+        font-family: $fontstack;
+        font-size: rem-calc(15) !important;
+        font-weight: 700;
+        text-transform: uppercase;
         width: 100%;
+      }
+    }
+    li.custom-button.top-bar-my-cart {
+
+      i {
+        display: inline;
+        font-size: rem-calc(18);
+        margin-right: rem-calc(2);
+      }
+      span.cart-contents {
+        background: $white;
+        border-radius: 100%;
+        color: $blue;
+        display: inline-block;
+        line-height: rem-calc(20);
+        height: rem-calc(20);
+        margin: 0 0 0 rem-calc(5);
+        min-width: rem-calc(20);
       }
     }
   }
@@ -158,6 +187,10 @@ body.offcanvas .menu-icon {
     margin-right: 0;
     margin-left: 0;
   }
+  .main-wrap {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 
@@ -166,20 +199,29 @@ body.offcanvas .menu-icon {
   padding: 0 0.9375rem;
 
   #breadcrumbs {
+    align-items: center;
+    display: flex;
     margin: 1rem 0;
 
     li {
-      text-transform: none;
+      font-family: $fontstack !important;
+      float: none;
       font-size: rem-calc(14);
+      font-weight: 700;
+      text-transform: none;
 
       &:after {
         display: none;
       }
       a {
+        font-family: $fontstack !important;
         font-size: rem-calc(14);
+        font-weight: 700;
       }
     }
     li.separator {
+      font-size: rem-calc(14);
+      font-weight: 700;
       margin: 0 rem-calc(10);
     }
   }
@@ -234,6 +276,54 @@ h1.entry-title {
   }
 }
 /* Left Sidebar Page Template Styles */
+
+/* Sidebar Styles */
+aside.sidebar {
+  background: $ltgray;
+  padding: rem-calc(25);
+  @media #{$break951} {
+    width: 12.5rem !important;
+  }
+  @media #{$break767} {
+    order: 2 !important;
+    width: calc(100% - 1.875rem) !important;
+  }
+
+  .widget {
+    margin-bottom: rem-calc(30);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    h6 {
+      //display: none;
+      border-bottom: rem-calc(2) solid $blue;
+      font-size: rem-calc(18) !important;
+      margin-bottom: rem-calc(10);
+      padding-bottom: rem-calc(10);
+      text-transform: uppercase;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+
+      & > li {
+        position: relative;
+      }
+      & > li > a {
+        color: $green;
+        display: inline-block;
+        font-size: rem-calc(18) !important;
+        font-weight: 700;
+        margin-bottom: rem-calc(10);
+        vertical-align: middle;
+      }
+      & > li:last-child > a {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
 
 
 /**** 6. BLOG PAGE AND SINGLE BLOG POST STYLES ****/
@@ -291,7 +381,7 @@ h1.entry-title {
     }
   }
 }
-/**** 6. FOOTER STYLES ****/
+/**** 8. FOOTER STYLES ****/
 footer.footer {
 
   .widget {

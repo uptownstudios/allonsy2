@@ -84,6 +84,43 @@ if ( ! function_exists( 'foundationpress_add_menuclass' ) ) {
 }
 
 
+// Replace the WooCommerce Breadcrumbs home link URL
+add_filter( 'woocommerce_breadcrumb_home_url', 'woo_custom_breadrumb_home_url' );
+function woo_custom_breadrumb_home_url() {
+  return get_permalink( wc_get_page_id( 'shop' ) );
+}
+
+
+// Change the WooCommerce breadcrumb separator
+add_filter( 'woocommerce_breadcrumb_defaults', 'bs_wc_change_breadcrumb_delimiter' );
+function bs_wc_change_breadcrumb_delimiter( $defaults ) {
+	// Change the breadcrumb delimeter from '/' to '>'
+	// $defaults['delimiter'] = ' &gt; ';
+
+	// Settings
+	$breadcrumb_separator = get_theme_mod('breadcrumb-separator');
+	$defaults['home'] = 'Shop';
+	switch($breadcrumb_separator) {
+		case 'raquo':
+			$defaults['delimiter'] = '<span class="separator">&raquo;</span>';
+			break;
+		case 'rsaquo':
+			$defaults['delimiter'] = '<span class="separator">&rsaquo;</span>';
+			break;
+		case 'slash':
+			$defaults['delimiter'] = '<span class="separator">&#x2F;</span>';
+			break;
+		case 'bullet':
+			$defaults['delimiter'] = '<span class="separator">&#149;</span>';
+			break;
+		default;
+			$defaults['delimiter'] = '<span class="separator">&raquo;</span>';
+			break;
+	}
+	return $defaults;
+}
+
+
 /**
  * Adapted for Foundation from http://thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
  *

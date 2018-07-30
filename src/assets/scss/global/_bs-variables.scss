@@ -1,9 +1,4 @@
-@font-face {
-  font-family: ragnarok;
-  src: url(http://localhost:3000/allonsy/wp-content/themes/allonsy2/src/assets/fonts/Ragnarok.ttf);
-}
 $fontstack: 'Open Sans', Arial, Helvetica, sans-serif;
-$ragnarok: 'ragnarok', Arial, Helvetica, sans-serif;
 $red: #b01f23;
 $orange: #b65b24;
 $blue: #003a71;
@@ -17,10 +12,11 @@ $ltgray: #f2f2f2;
 $break1600: "only screen and (max-width: 100em)";
 $break1200: "only screen and (max-width: 75em)";
 $break1024: "only screen and (max-width: 64em)";
-$minbreak1025: "only screen and (min-width: 64.0625rem)";
+$minbreak1025: "only screen and (min-width: 64.0625em)";
 $break972: "only screen and (max-width: 60.75em)";
 $break951: "only screen and (max-width: 59.4375em)";
 $break800: "only screen and (max-width: 50em)";
+$break768: "only screen and (max-width: 48em)";
 $break767: "only screen and (max-width: 47.9375em)";
 $break640: "only screen and (max-width: 40em)";
 $break639: "only screen and (max-width: 39.9375em)";

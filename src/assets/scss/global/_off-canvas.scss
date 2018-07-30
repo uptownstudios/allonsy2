@@ -77,6 +77,15 @@ nav.off-canvas {
   }
   & > ul.menu {
     padding: 0;
+
+    li.current_page_parent {
+
+      a {
+        background: $red;
+        color: $white;
+
+      }
+    }
   }
   ul.menu.alt-menu {
     flex-direction: column;
@@ -129,19 +138,43 @@ nav.off-canvas {
     li.custom-button {
       width: auto;
       display: block;
-      max-width: rem-calc(120);
+      max-width: calc(100% - 2rem);
       margin: rem-calc(15) auto rem-calc(15);
     }
-    li.custom-button a {
-      display: block;
-      // font-weight: 700 !important;
-      padding: 0 rem-calc(10);
-      position: relative;
-      width: 100%;
-      @include transition(all);
+    li.custom-button {
 
-      @media #{$break1024} {
-        font-size: 1.125rem !important;
+      a {
+        align-items: center;
+        font-family: $fontstack;
+        font-size: rem-calc(15) !important;
+        font-weight: 700;
+        padding: 0 rem-calc(10);
+        position: relative;
+        text-transform: uppercase;
+        width: 100%;
+        @include transition(all);
+
+        @media #{$break1024} {
+          font-size: 1.125rem !important;
+        }
+      }
+    }
+    li.custom-button.top-bar-my-cart {
+
+      i {
+        display: inline;
+        font-size: rem-calc(18);
+        margin-right: rem-calc(2);
+      }
+      span.cart-contents {
+        background: $white;
+        border-radius: 100%;
+        color: $blue;
+        display: inline-block;
+        line-height: rem-calc(20);
+        height: rem-calc(20);
+        margin: 0 0 0 rem-calc(5);
+        min-width: rem-calc(20);
       }
     }
     li.menu-search-wrapper {
@@ -152,10 +185,10 @@ nav.off-canvas {
     position: absolute;
     right: 0;
     position: relative;
-    max-width: rem-calc(200);
+    max-width: calc(100% - 2rem);
     width: 100%;
     text-align: right;
-    border: 1px solid $gray;
+    border: 1px solid $blue;
     border-radius: rem-calc(3);
     background: $white;
     margin: 0;

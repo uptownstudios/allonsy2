@@ -938,7 +938,7 @@ function bs_customize_css() { ?>
 header#masthead, .top-bar, .top-bar ul {
   background: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?>;
 }
-@media only screen and (max-width: 39.9375rem) {
+@media only screen and (max-width: 40rem) {
   header#masthead .title-bar {
     background-color: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?> !important;
   }
@@ -949,14 +949,14 @@ header#masthead, .top-bar, .top-bar ul {
 #main-container p, #main-container li, #main-container span, #main-container time {
   color: <?php echo esc_attr(get_theme_mod('paragraph_color','#272e31')); ?>;
 }
-a, .breadcrumbs a {
+a, .breadcrumbs a, .woocommerce .woocommerce-breadcrumb a {
   color: <?php echo esc_attr(get_theme_mod('link_color','#1e73be')); ?>;
   -webkit-transition: color .2s ease-out;
   -moz-transition: color .2s ease-out;
   -o-transition: color .2s ease-out;
   transition: color .2s ease-out;
 }
-a:hover, a:focus, .breadcrumbs a:hover, .breadcrumbs a:focus {
+a:hover, a:focus, .breadcrumbs a:hover, .breadcrumbs a:focus, .woocommerce .woocommerce-breadcrumb a:hover, .woocommerce .woocommerce-breadcrumb a:focus {
   color: <?php echo esc_attr(get_theme_mod('link_hover_color','#000000')); ?>;
 }
 header#masthead ul.social-media-wrapper li a,

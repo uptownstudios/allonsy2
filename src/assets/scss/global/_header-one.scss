@@ -17,9 +17,40 @@ header#masthead.header-option-one {
     width: 100%;
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
-    @media #{$break639} {
+    @media #{$break640} {
       padding-left: 0;
       padding-right: 0;
+    }
+
+    .title-bar {
+      @media #{$break640} {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem;
+      }
+      button.menu-icon {
+        color: $blue;
+        font-size: rem-calc(10);
+        letter-spacing: -.01rem;
+        line-height: 4.25;
+        margin-top: rem-calc(-10);
+        margin-left: 0;
+        margin-right: 0;
+        text-align: left;
+        text-transform: lowercase;
+        width: rem-calc(34);
+
+        span {
+          margin-top: rem-calc(2);
+        }
+        i {
+          color: $blue;
+          display: inline;
+          font-size: rem-calc(11);
+          position: absolute;
+          right: 0;
+          bottom: rem-calc(-14);
+        }
+      }
     }
   }
 
@@ -172,7 +203,6 @@ header#masthead.header-option-one {
         font-size: 1.3125rem;
         font-weight: 700;
         font-family: $fontstack;
-        letter-spacing: 1px;
         line-height: 1;
         text-transform: uppercase;
       }
@@ -453,7 +483,7 @@ header#masthead.header-option-one {
   }
 }
 
-@media #{$break639} {
+@media #{$break640} {
   header#masthead.header-option-one {
     padding: 0 !important;
 

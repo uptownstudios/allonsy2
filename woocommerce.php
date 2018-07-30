@@ -6,42 +6,48 @@
  * @since FoundationPress 1.0.0
  */
 
-get_header(); ?>
+	get_header();
+	$title_bar = get_theme_mod('internal-title-bar');
+	$breadcrumbs = get_theme_mod('internal-breadcrumbs');
 
-<div class="row">
-	<div class="main-wrap" role="main">
+	if( $title_bar === 'bs-featured-image') {
+    get_template_part( 'template-parts/featured-image' );
+  }
+  if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
+    get_template_part( 'template-parts/woocommerce-title-bar' );
+  }
+?>
+
+<?php if( $breadcrumbs != '' ) { ?>
+	<?php if( is_shop() ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+	<?php if( !is_shop() ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php woocommerce_breadcrumb(); ?></div><?php } ?>
+<?php } ?>
+
+<?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
+<header class="woocommerce-shop-title max-width-twelve-hundred">
+	<h1 class="entry-title"><i class="fa fa-shopping-cart"></i> Shop Our Store</h1>
+	<?php if( !is_shop() ) { ?><div class="breadcrumbs-wrapper"><?php woocommerce_breadcrumb(); ?></div><?php } ?>
+</header>
+<?php endif; ?>
+
+<div class="main-wrap" role="main">
 
 	<?php do_action( 'foundationpress_before_content' ); ?>
-
-	<?php while ( woocommerce_content() ) : the_post(); ?>
-		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<header>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			</header>
+	<?php /* while ( woocommerce_content() ) : the_post(); */ ?>
+		<article class="main-content woocommerce-index" id="post-<?php the_ID(); ?>">
 			<?php do_action( 'foundationpress_page_before_entry_content' ); ?>
+
 			<div class="entry-content">
-				<?php the_content(); ?>
+				<?php if( !is_shop() ) { ?><h2 class="woocommerce-page-title"><?php woocommerce_page_title(); ?></h2><?php } ?>
+				<?php woocommerce_content(); ?>
 			</div>
-			<footer>
-				<?php
-					wp_link_pages(
-						array(
-							'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'foundationpress' ),
-							'after'  => '</p></nav>',
-						)
-					);
-				?>
-				<p><?php the_tags(); ?></p>
-			</footer>
-			<?php do_action( 'foundationpress_page_before_comments' ); ?>
-			<?php comments_template(); ?>
-			<?php do_action( 'foundationpress_page_after_comments' ); ?>
+
 		</article>
-	<?php endwhile;?>
+	<?php /* endwhile; */ ?>
 
 	<?php do_action( 'foundationpress_after_content' ); ?>
+	<?php get_sidebar('woocommerce'); ?>
 
-	</div>
-	<?php get_sidebar(); ?>
 </div>
+
 <?php get_footer();

@@ -87,6 +87,13 @@
 			$('button.menu-icon.active').removeClass('active');
 		});
 
+		// Hide WooCommerce notice on checkout page
+		$('.woocommerce-info').append('<span class="clear-notice"><i class="fa fa-times-circle" aria-hidden="hidden"></i></span>');
+		$('.woocommerce-info .clear-notice').click(function() {
+			$(this).parents('.woocommerce-info').addClass('hide-notice');
+			$('form.checkout_coupon.woocommerce-form-coupon').addClass('hide-notice');
+		});
+
 	  // Back to top script
 	  $('#back-top').hide();
 	  $(function () {
@@ -126,42 +133,42 @@
 	});
 
 	// Masonry Layout for Portfolio, Blog Posts, and Events
-	// (function ($) {
-	// 	var $container = $('.bs-isotope');
-	// 	$container.imagesLoaded(function() {
-	// 		$container.isotope({
-	// 			itemSelector: '.bs-isotope-item',
-	// 			layoutMode: 'masonry'
-	// 		});
-	// 		$container.isotope('layout').isotope();
-	// 	});
-	// 	$(window).trigger('resize');
-	// }(jQuery));
+	(function ($) {
+		var $container = $('.bs-isotope');
+		$container.imagesLoaded(function() {
+			$container.isotope({
+				itemSelector: '.bs-isotope-item',
+				layoutMode: 'masonry'
+			});
+			$container.isotope('layout').isotope();
+		});
+		$(window).trigger('resize');
+	}(jQuery));
 
 	// Lazy Load with Isotope/Masonry Layout
-	// $('.lazy-isotope-wrapper').each(function(){
-	//
-	// 	var $isotope = $('.lazy-isotope', this);
-	//
-	// 	$isotope.isotope({
-	// 		itemSelector: '.bs-isotope-item',
-	// 		layoutMode: 'masonry'
-	// 	});
-	//
-	//   $isotope[0].addEventListener('load', (function(){
-	//     var runs;
-	//     var update = function(){
-	//       $isotope.isotope('layout');
-	//       runs = false;
-	//     };
-	//     return function(){
-	//       if(!runs){
-	//         runs = true;
-	//         setTimeout(update, 33);
-	//       }
-	//     };
-	//   }()), true);
-	// });
+	$('.lazy-isotope-wrapper').each(function(){
+
+		var $isotope = $('.lazy-isotope', this);
+
+		$isotope.isotope({
+			itemSelector: '.bs-isotope-item',
+			layoutMode: 'masonry'
+		});
+
+	  $isotope[0].addEventListener('load', (function(){
+	    var runs;
+	    var update = function(){
+	      $isotope.isotope('layout');
+	      runs = false;
+	    };
+	    return function(){
+	      if(!runs){
+	        runs = true;
+	        setTimeout(update, 33);
+	      }
+	    };
+	  }()), true);
+	});
 
 	// Isotope Filters for Portfolio
 	jQuery(document).ready(function($) {
@@ -179,7 +186,7 @@
 
 	jQuery(function($) {
 		// Scroll to hash on click
-	  $('a[href*="#"]:not([href="#"])').click(function() {
+	  $('a.scroll-to-hash').click(function() {
 	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
 	      var target = $(this.hash);
 				console.log(target);

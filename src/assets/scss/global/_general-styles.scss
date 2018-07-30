@@ -52,16 +52,16 @@ span.sub-title {
   margin: 0.625rem 0;
 }
 .pl15 {
-  padding-left: rem-calc(15);
+  padding-left: rem-calc(15) !important;
 }
 .pr15 {
-  padding-right: rem-calc(15);
+  padding-right: rem-calc(15) !important;
 }
 .mt15 {
-  margin-top: rem-calc(15);
+  margin-top: rem-calc(15) !important;
 }
 .mb15 {
-  margin-bottom: rem-calc(15);
+  margin-bottom: rem-calc(15) !important;
 }
 .vcard abbr {
   border: 0 !important;
