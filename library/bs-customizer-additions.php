@@ -3,7 +3,6 @@
 // Customizer Additions
 if ( ! function_exists( 'newuptown_customize_register' ) ) {
 function newuptown_customize_register( $wp_customize ) {
-  // Create custom panels
 
   // Color Section
   $wp_customize->get_section('colors')->panel = 'theme-colors';
@@ -24,7 +23,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('paragraph_color', array(
     'default' => '#272e31',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 10,
@@ -35,11 +34,12 @@ function newuptown_customize_register( $wp_customize ) {
     'section' => 'default_colors',
     'settings' => 'paragraph_color',
   )));
+
   /* Link Color setting */
   $wp_customize->add_setting('link_color', array(
     'default' => '#1e73be',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 11,
@@ -50,11 +50,12 @@ function newuptown_customize_register( $wp_customize ) {
     'section' => 'default_colors',
     'settings' => 'link_color',
   )));
+
   /* Link Hover Color setting */
   $wp_customize->add_setting('link_hover_color', array(
     'default' => '#272e31',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 13,
@@ -70,7 +71,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('sm_color', array(
     'default' => '#1e73be',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 11,
@@ -81,11 +82,12 @@ function newuptown_customize_register( $wp_customize ) {
     'section' => 'default_colors',
     'settings' => 'sm_color',
   )));
+
   /* Social Media Icon Hover Color setting */
   $wp_customize->add_setting('sm_hover_color', array(
     'default' => '#272e31',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 13,
@@ -101,7 +103,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('sm_btn_bg_color', array(
     'default' => '#b01f23',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 13,
@@ -116,7 +118,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('sm_btn_bg_hover_color', array(
     'default' => '#003a71',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 13,
@@ -132,7 +134,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('sm_btn_text_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 13,
@@ -147,7 +149,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('sm_btn_text_hover_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 13,
@@ -163,7 +165,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('heading1_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 14,
@@ -178,7 +180,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('heading2_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 15,
@@ -193,7 +195,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('heading3_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 16,
@@ -208,7 +210,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('heading4_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 17,
@@ -223,7 +225,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('heading5_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 18,
@@ -238,7 +240,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('heading6_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 19,
@@ -253,7 +255,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('pagetitle_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 20,
@@ -269,7 +271,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('titlebar_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 20,
@@ -285,7 +287,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('highlight_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 100,
@@ -309,7 +311,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('header_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 5,
@@ -324,7 +326,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('main_nav_bar_bg_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 9,
@@ -339,7 +341,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('main_nav_color', array(
     'default' => '#272e31',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 10,
@@ -354,7 +356,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('main_nav_hover_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 11,
@@ -369,7 +371,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('main_nav_sub_bg_color', array(
     'default' => '#e1e1e1',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 12,
@@ -384,7 +386,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('main_nav_sub_li_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 13,
@@ -399,7 +401,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('main_nav_sub_li_hover_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 14,
@@ -414,7 +416,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('main_nav_sub_li_hover_bg_color', array(
     'default' => '#d28441',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 12,
@@ -426,6 +428,53 @@ function newuptown_customize_register( $wp_customize ) {
     'settings' => 'main_nav_sub_li_hover_bg_color',
   )));
 
+  /* Alt Nav color setting */
+  $wp_customize->add_setting('alt_nav_color', array(
+    'default' => '#003a71',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 9,
+  ));
+  /* Alt Nav color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'alt_nav_color',array(
+    'label' => __('Alt Nav Menu Item Color', 'allonsy2'),
+    'section' => 'header_colors',
+    'settings' => 'alt_nav_color',
+  )));
+  /* Alt Nav hover color setting */
+  $wp_customize->add_setting('alt_nav_hover_color', array(
+    'default' => '#b01f23',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 10,
+  ));
+  /* Alt Nav hover color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'alt_nav_hover_color',array(
+    'label' => __('Alt Nav Menu Item Hover Color', 'allonsy2'),
+    'section' => 'header_colors',
+    'settings' => 'alt_nav_hover_color',
+  )));
+
+  /* Header #4 Top Bar color setting */
+  $wp_customize->add_setting('header_4_topbar_color', array(
+    'default' => '#003a71',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 10,
+  ));
+  /* Header #4 Top Bar color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'header_4_topbar_color',array(
+    'label' => __('Header Option 4 Top Bar BG Color', 'allonsy2'),
+    'section' => 'header_colors',
+    'settings' => 'header_4_topbar_color',
+  )));
+
   /* Footer colors section */
   $wp_customize->add_section('footer_colors', array(
     'title' => __('Footer Colors', 'allonsy2'),
@@ -434,11 +483,88 @@ function newuptown_customize_register( $wp_customize ) {
     'panel' => 'theme-colors',
   ));
 
+  /* Pre-Footer BG color setting */
+  $wp_customize->add_setting('pre_footer_bg_color', array(
+    'default' => '#CCCCCC',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 10,
+  ));
+  /* Pre-Footer BG color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'pre_footer_bg_color',array(
+    'label' => __('Pre-Footer BG Color', 'allonsy2'),
+    'section' => 'footer_colors',
+    'settings' => 'pre_footer_bg_color',
+  )));
+  /* Pre-Footer widget heading color setting */
+  $wp_customize->add_setting('pre_footer_widget_heading_color', array(
+    'default' => '#FFFFFF',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 11,
+  ));
+  /* Pre-Footer widget heading color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'pre_footer_widget_heading_color',array(
+    'label' => __('Pre-Footer Widget Heading Color', 'allonsy2'),
+    'section' => 'footer_colors',
+    'settings' => 'pre_footer_widget_heading_color',
+  )));
+  /* Pre-Footer widget paragraph color setting */
+  $wp_customize->add_setting('pre_footer_widget_p_color', array(
+    'default' => '#000000',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 11,
+  ));
+  /* Pre-Footer widget paragraph color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'pre_footer_widget_p_color',array(
+    'label' => __('Pre-Footer Widget Paragraph Color', 'allonsy2'),
+    'section' => 'footer_colors',
+    'settings' => 'pre_footer_widget_p_color',
+  )));
+  /* Pre-Footer widget link color setting */
+  $wp_customize->add_setting('pre_footer_widget_a_color', array(
+    'default' => '#1e73be',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 12,
+  ));
+  /* Pre-Footer widget link color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'pre_footer_widget_a_color',array(
+    'label' => __('Pre-Footer Widget Link Color', 'allonsy2'),
+    'section' => 'footer_colors',
+    'settings' => 'pre_footer_widget_a_color',
+  )));
+  /* Pre-Footer widget link hover color setting */
+  $wp_customize->add_setting('pre_footer_widget_a_hover_color', array(
+    'default' => '#FFFFFF',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 13,
+  ));
+  /* Pre-Footer widget link hover color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'pre_footer_widget_a_hover_color',array(
+    'label' => __('Pre-Footer Widget Link Hover Color', 'allonsy2'),
+    'section' => 'footer_colors',
+    'settings' => 'pre_footer_widget_a_hover_color',
+  )));
+
+
   /* Footer BG color setting */
   $wp_customize->add_setting('footer_bg_color', array(
     'default' => '#272e31',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 10,
@@ -453,7 +579,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('footer_widget_heading_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 11,
@@ -468,7 +594,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('footer_widget_p_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 11,
@@ -483,7 +609,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('footer_widget_a_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 12,
@@ -498,7 +624,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('footer_widget_a_hover_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 13,
@@ -513,7 +639,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('copyright_bg_color', array(
     'default' => '#272e31',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 14,
@@ -528,7 +654,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('copyright_text_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 15,
@@ -543,7 +669,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('copyright_link_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 16,
@@ -558,7 +684,7 @@ function newuptown_customize_register( $wp_customize ) {
   $wp_customize->add_setting('copyright_link_hover_color', array(
     'default' => '#FFFFFF',
     'type' => 'theme_mod',
-    'transport' => 'postMessage',
+    'transport' => 'refresh',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'sanitize_hex_color',
     'priority' => 16,
@@ -571,7 +697,6 @@ function newuptown_customize_register( $wp_customize ) {
   )));
 
 
-
   // Add Social Media Section
   $wp_customize->add_section( 'social-media' , array(
     'title' => __( 'Social Media', 'allonsy2' ),
@@ -580,7 +705,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) );
 
   // Add Facebook Setting
-  $wp_customize->add_setting( 'facebook' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'facebook' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'facebook', array(
       'label' => __( 'Facebook', 'allonsy2' ),
       'section' => 'social-media',
@@ -588,7 +713,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add Twitter Setting
-  $wp_customize->add_setting( 'twitter' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'twitter' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'twitter', array(
       'label' => __( 'Twitter', 'allonsy2' ),
       'section' => 'social-media',
@@ -596,7 +721,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add LinkedIn Setting
-  $wp_customize->add_setting( 'linkedin' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'linkedin' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'linkedin', array(
       'label' => __( 'LinkedIn', 'allonsy2' ),
       'section' => 'social-media',
@@ -604,7 +729,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add Flickr Setting
-  $wp_customize->add_setting( 'flickr' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'flickr' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'flickr', array(
       'label' => __( 'Flickr', 'allonsy2' ),
       'section' => 'social-media',
@@ -612,7 +737,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add Instagram Setting
-  $wp_customize->add_setting( 'instagram' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'instagram' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'instagram', array(
       'label' => __( 'Instagram', 'allonsy2' ),
       'section' => 'social-media',
@@ -620,7 +745,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add YouTube Setting
-  $wp_customize->add_setting( 'youtube' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'youtube' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'youtube', array(
       'label' => __( 'YouTube', 'allonsy2' ),
       'section' => 'social-media',
@@ -628,7 +753,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add Pinterest Setting
-  $wp_customize->add_setting( 'pinterest' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'pinterest' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'pinterest', array(
       'label' => __( 'Pinterest', 'allonsy2' ),
       'section' => 'social-media',
@@ -636,7 +761,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add Vimeo Setting
-  $wp_customize->add_setting( 'vimeo' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'vimeo' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'vimeo', array(
       'label' => __( 'Vimeo', 'allonsy2' ),
       'section' => 'social-media',
@@ -644,7 +769,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add Feedly Setting
-  $wp_customize->add_setting( 'feedly' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'feedly' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'feedly', array(
       'label' => __( 'Feedly', 'allonsy2' ),
       'section' => 'social-media',
@@ -652,7 +777,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add Contact Setting
-  $wp_customize->add_setting( 'contact' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'contact' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'contact', array(
       'label' => __( 'Contact', 'allonsy2' ),
       'section' => 'social-media',
@@ -660,7 +785,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add RSS Setting
-  $wp_customize->add_setting( 'rss' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'rss' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'rss', array(
       'label' => __( 'RSS', 'allonsy2' ),
       'section' => 'social-media',
@@ -668,13 +793,13 @@ function newuptown_customize_register( $wp_customize ) {
   ) ) );
 
   // Add Custom Button Setting
-  $wp_customize->add_setting( 'custom' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'custom' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'custom', array(
       'label' => __( 'Custom Button', 'allonsy2' ),
       'section' => 'social-media',
       'settings' => 'custom',
   ) ) );
-  $wp_customize->add_setting( 'custom-text' , array( 'default' => '' ));
+  $wp_customize->add_setting( 'custom-text' , array( 'default' => '', 'transport' => 'postMessage' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'custom-text', array(
       'label' => __( 'Custom Button Text', 'allonsy2' ),
       'section' => 'social-media',
@@ -689,14 +814,14 @@ function newuptown_customize_register( $wp_customize ) {
     'description' => __( 'General settings, such as page loading animation, page loading graphic, etc.', 'allonsy2' )
   ) );
   // Loading Animation
-  $wp_customize->add_setting( 'loading-animation' , array( 'default' => '' ) );
+  $wp_customize->add_setting( 'loading-animation' , array( 'default' => '', 'transport' => 'postMessage' ) );
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'loading-animation', array(
       'label' => __( 'Enable the loading animation?', 'allonsy2' ),
       'section' => 'general-settings',
       'type' => 'checkbox',
       'description' => 'Check this box to enable the page loading animation',
   ) ) );
-  // Default Title Bar Image URL
+  // Loading Animation Image URL
   $wp_customize->add_setting( 'loading-animation-image' , array( 'default' => '','sanitize_callback' => 'esc_url_raw', 'transport' => 'postMessage' ) );
   $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'loading-animation-image', array(
       'label' => __( 'Default Loading Animation Image', 'allonsy2' ),
@@ -738,6 +863,19 @@ function newuptown_customize_register( $wp_customize ) {
       'description' => 'Check this box to show the alt nav in the header',
   ) ) );
 
+  // Show Cart Button in Alt Nav
+  if ( class_exists( 'WooCommerce' ) ) {
+
+    $wp_customize->add_setting( 'cart_in_alt_nav' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cart_in_alt_nav', array(
+        'label' => __( 'Show Cart Button in Alt Nav?', 'allonsy2' ),
+        'section' => 'header-options',
+        'type' => 'checkbox',
+        'description' => 'Check this box to show the cart button to alt nav',
+    ) ) );
+
+  }
+
   // Search Position in Header
   $wp_customize->add_setting( 'search-position' , array( 'default' => 'search-menu' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'search-position', array(
@@ -759,9 +897,10 @@ function newuptown_customize_register( $wp_customize ) {
       'section' => 'header-options',
       'type' => 'radio',
       'choices' => array(
-        'menu-right' => 'Logo Left, Menu Right',
-        'menu-bottom' => 'Logo Left, Menu Bottom',
-        'menu-center' => 'Logo Center, Menu Bottom & Center'
+        'menu-right' => 'Option 1 - Logo Left, Menu Right',
+        'menu-bottom' => 'Option 2 - Logo Left, Menu Bottom',
+        'menu-center' => 'Option 3 - Logo Center, Menu Bottom & Center',
+        'menu-top-bottom' => 'Option 4 - Logo Left, Menu Right, Alt Nav & Social on Top',
       ),
   ) ) );
 
@@ -771,6 +910,16 @@ function newuptown_customize_register( $wp_customize ) {
     'priority' => 41,
     'description' => __( 'Choose options for the footer.', 'allonsy2' )
   ) );
+
+  // Pre-Footer
+  $wp_customize->add_setting( 'pre-footer-widgets' , array( 'default' => '' ));
+  $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'pre-footer-widgets', array(
+      'label' => __( 'Pre-Footer?', 'allonsy2' ),
+      'description' => 'Check this box to enable the pre-footer widget area, which will be an include on all pages.',
+      'section' => 'footer-options',
+      'type' => 'checkbox'
+  ) ) );
+
   // Footer Columns
   $wp_customize->add_setting( 'footer-columns' , array( 'default' => 'columns-4' ));
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'footer-columns', array(
@@ -778,6 +927,7 @@ function newuptown_customize_register( $wp_customize ) {
       'section' => 'footer-options',
       'type' => 'radio',
       'choices' => array(
+        'columns-1' => '1 Column',
         'columns-2' => '2 Columns',
         'columns-3' => '3 Columns',
         'columns-4' => '4 Columns'
@@ -896,7 +1046,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) );
 
   // Add Copyright Text Field
-  $wp_customize->add_setting( 'copyright' , array( 'default' => '' ) );
+  $wp_customize->add_setting( 'copyright' , array( 'default' => '', 'transport' => 'postMessage' ) );
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'copyright', array(
       'label' => __( 'Copyright', 'allonsy2' ),
       'section' => 'copyright-text',
@@ -920,7 +1070,7 @@ function newuptown_customize_register( $wp_customize ) {
   ) );
 
   // Add Google Analytics Tracking Field
-  $wp_customize->add_setting( 'analytics' , array( 'default' => '' ) );
+  $wp_customize->add_setting( 'analytics' , array( 'default' => '', 'transport' => 'postMessage' ) );
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'analytics-code', array(
       'label' => __( 'Analytics Code', 'allonsy2' ),
       'type' => 'textarea',
@@ -935,15 +1085,15 @@ add_action( 'customize_register', 'newuptown_customize_register' );
 
 function bs_customize_css() { ?>
 <style type="text/css" id="bs-customizer-css">
-header#masthead, .top-bar, .top-bar ul {
-  background: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?>;
+header#masthead, .top-bar, .top-bar ul.social-media-wrapper, .top-bar-left, .top-bar-right, .top-bar-top, .top-bar-bottom {
+  background-color: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?>;
 }
 @media only screen and (max-width: 40rem) {
   header#masthead .title-bar {
     background-color: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?> !important;
   }
   .off-canvas.position-right {
-    background: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?>;
+    background-color: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?>;
   }
 }
 #main-container p, #main-container li, #main-container span, #main-container time {
@@ -977,9 +1127,10 @@ nav.off-canvas ul.social-media-wrapper li a:focus {
   color: <?php echo esc_attr(get_theme_mod('sm_hover_color','#b01f23')); ?>;
 }
 header#masthead ul.social-media-wrapper li.custom-button a,
-nav.off-canvas ul.social-media-wrapper li.custom-button a {
-  color: <?php echo esc_attr(get_theme_mod('sm_btn_text_color','#FFFFFF')); ?>;
-  background: <?php echo esc_attr(get_theme_mod('sm_btn_bg_color','#b01f23')); ?>;
+nav.off-canvas ul.social-media-wrapper li.custom-button a,
+.alt-nav-my-cart a {
+  color: <?php echo esc_attr(get_theme_mod('sm_btn_text_color','#FFFFFF')); ?> !important;
+  background: <?php echo esc_attr(get_theme_mod('sm_btn_bg_color','#b01f23')); ?> !important;
   -webkit-transition: background .2s ease-out;
   -moz-transition: background .2s ease-out;
   -o-transition: background .2s ease-out;
@@ -988,9 +1139,23 @@ nav.off-canvas ul.social-media-wrapper li.custom-button a {
 header#masthead ul.social-media-wrapper li.custom-button a:hover,
 header#masthead ul.social-media-wrapper li.custom-button a:focus,
 nav.off-canvas ul.social-media-wrapper li.custom-button a:hover,
-nav.off-canvas ul.social-media-wrapper li.custom-button a:focus {
-  color: <?php echo esc_attr(get_theme_mod('sm_btn_text_hover_color','#FFFFFF')); ?>;
+nav.off-canvas ul.social-media-wrapper li.custom-button a:focus,
+.alt-nav-my-cart a:hover,
+.alt-nav-my-cart a:focus {
+  color: <?php echo esc_attr(get_theme_mod('sm_btn_text_hover_color','#FFFFFF')); ?> !important;
   background: <?php echo esc_attr(get_theme_mod('sm_btn_bg_hover_color','#003a71')); ?> !important;
+}
+.top-bar-my-cart a span.cart-contents,
+.alt-nav-my-cart a span.cart-contents {
+  background: <?php echo esc_attr(get_theme_mod('sm_btn_text_color','#FFFFFF')); ?> !important;
+  color: <?php echo esc_attr(get_theme_mod('sm_btn_bg_color','#b01f23')); ?> !important;
+}
+.top-bar-my-cart a:hover span.cart-contents,
+.top-bar-my-cart a:focus span.cart-contents,
+.alt-nav-my-cart a:hover span.cart-contents,
+.alt-nav-my-cart a:focus span.cart-contents {
+  background: <?php echo esc_attr(get_theme_mod('sm_btn_text_hover_color','#FFFFFF')); ?> !important;
+  color: <?php echo esc_attr(get_theme_mod('sm_btn_bg_hover_color','#003a71')); ?> !important;
 }
 h1 {
   color: <?php echo esc_attr(get_theme_mod('heading1_color','#003a71')); ?>;
@@ -1016,11 +1181,30 @@ h1.entry-title {
 .featured-hero-title-bar h1.entry-title {
   color: <?php echo esc_attr(get_theme_mod('titlebar_color','#FFFFFF')); ?>;
 }
-.top-bar .top-bar-top,
-.top-bar .top-bar-right,
-.top-bar .top-bar-bottom,
-.top-bar .top-bar-left {
-  background: <?php echo esc_attr(get_theme_mod('main_nav_bar_bg_color','#FFFFFF')); ?>;
+.top-bar .top-bar-bottom, ul.desktop-menu,
+ul.desktop-menu + .menu-search-wrapper, .desktop-menu + .menu-search-wrapper button.search-toggle {
+  background-color: <?php echo esc_attr(get_theme_mod('main_nav_bar_bg_color','#FFFFFF')); ?> !important;
+}
+header#masthead.header-option-two ul.desktop-menu,
+header#masthead.header-option-three ul.desktop-menu {
+  position: relative;
+}
+header#masthead.header-option-two ul.desktop-menu:before,
+header#masthead.header-option-two ul.desktop-menu:after,
+header#masthead.header-option-three ul.desktop-menu:before,
+header#masthead.header-option-three ul.desktop-menu:after {
+  background-color: <?php echo esc_attr(get_theme_mod('main_nav_bar_bg_color','#FFFFFF')); ?> !important;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: 100%;
+  width: 100%;
+}
+header#masthead.header-option-two ul.desktop-menu:after,
+header#masthead.header-option-three ul.desktop-menu:after {
+  left: 100%;
+  right: auto;
 }
 .top-bar .menu > li > a,
 nav.off-canvas > .menu > li > a,
@@ -1033,8 +1217,18 @@ nav.top-bar.has-search .menu-search-wrapper button {
   transition: color .2s ease-out;
 }
 .alt-nav-wrapper .menu > li > a {
-  color: <?php echo esc_attr(get_theme_mod('main_nav_color','#003a71')); ?>;
+  color: <?php echo esc_attr(get_theme_mod('alt_nav_color','#003a71')); ?> !important;
 }
+.alt-nav-wrapper .menu > li > a:hover,
+.alt-nav-wrapper .menu > li > a:focus {
+  color: <?php echo esc_attr(get_theme_mod('alt_nav_hover_color','#b01f23')); ?> !important;
+}
+header#masthead.header-option-four .top-bar-top,
+header#masthead.header-option-four .top-bar-top:before,
+header#masthead.header-option-four .top-bar-top:after {
+  background-color: <?php echo esc_attr(get_theme_mod('header_4_topbar_color','#003a71')); ?> !important;
+}
+
 nav.top-bar.has-search .menu-search-wrapper button:hover,
 nav.top-bar.has-search .menu-search-wrapper button:focus,
 .top-bar .menu > li > a:hover,
@@ -1105,6 +1299,9 @@ nav.off-canvas .submenu li.is-active a {
 .highlight-brc {
   border-right-color: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }
+header#masthead form#searchform {
+  background-color: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
+}
 .top-bar .menu .dropdown li a {
   color: <?php echo esc_attr(get_theme_mod('main_nav_sub_li_color','#b01f23')); ?>;
 }
@@ -1126,9 +1323,39 @@ nav.off-canvas .menu li.active > a {
 nav.top-bar .menu-search-wrapper form#searchform {
   background-color: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }
+.pre-footer-container {
+  background-color: <?php echo esc_attr(get_theme_mod('pre_footer_bg_color','#CCCCCC')); ?>;
+}
+.pre-footer-container .pre-footer h1,
+.pre-footer-container .pre-footer h2,
+.pre-footer-container .pre-footer h3,
+.pre-footer-container .pre-footer h4,
+.pre-footer-container .pre-footer h5,
+.pre-footer-container .pre-footer h6 {
+  color: <?php echo esc_attr(get_theme_mod('pre_footer_widget_heading_color','#003a71')); ?>;
+}
+.pre-footer-container .pre-footer p, .pre-footer-container .pre-footer li, .pre-footer-container .pre-footer span, .pre-footer-container .pre-footer .vcard abbr {
+  color: <?php echo esc_attr(get_theme_mod('pre_footer_widget_p_color','#000000')); ?>;
+}
+.pre-footer-container .pre-footer a,
+.pre-footer-container .pre-footer ul.menu li a {
+  color: <?php echo esc_attr(get_theme_mod('pre_footer_widget_a_color','#1e73be')); ?>;
+}
+.pre-footer-container .pre-footer a:hover,
+.pre-footer-container .pre-footer a:focus,
+.pre-footer-container .pre-footer ul.menu li a:hover,
+.pre-footer-container .pre-footer ul.menu li a:focus,
+.pre-footer-container .pre-footer ul.menu li.active > a {
+  color: <?php echo esc_attr(get_theme_mod('pre_footer_widget_a_hover_color','#000000')); ?>;
+}
 .footer-container {
   background-color: <?php echo esc_attr(get_theme_mod('footer_bg_color','#FFFFFF')); ?>;
 }
+.footer-container .footer h1,
+.footer-container .footer h2,
+.footer-container .footer h3,
+.footer-container .footer h4,
+.footer-container .footer h5,
 .footer-container .footer h6 {
   color: <?php echo esc_attr(get_theme_mod('footer_widget_heading_color','#003a71')); ?>;
 }

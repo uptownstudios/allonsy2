@@ -53,6 +53,7 @@ require_once( 'library/responsive-images.php' );
 
 /** BS Custom Function Additions */
 require_once( 'library/bs-custom-functions.php' );
+require_once( 'library/bs-custom-shortcodes.php' );
 require_once( 'library/bs-woocommerce-functions.php' );
 require_once( 'library/bs-custom-post-types.php' );
 require_once( 'library/bs-customizer-additions.php' );

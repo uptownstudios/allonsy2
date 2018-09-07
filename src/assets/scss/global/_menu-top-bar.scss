@@ -1,7 +1,30 @@
-nav.mobile-menu.vertical.menu {
+// body.topbar header#masthead .top-bar nav#mobile-menu .menu > li > a {
+//   padding: rem-calc(10) 0 !important;
+// }
+body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
 
+  padding: rem-calc(15);
+  width: 100%;
+
+  .submenu-toggle {
+    background: $red;
+    color: $white;
+    height: rem-calc(40.38);
+    &:after {
+      border-top-color: $white;
+    }
+  }
   & > ul.menu {
     padding: 0;
+
+    li.current_page_parent {
+
+      a {
+        background: $red;
+        color: $white;
+
+      }
+    }
   }
   ul.menu.alt-menu {
     display: flex !important;
@@ -12,22 +35,40 @@ nav.mobile-menu.vertical.menu {
 
     li {
       width: 100%;
+    }
+  }
+  & .menu:not(.nested) > li > a {
+    font-size: rem-calc(18) !important;
+    font-weight: 700;
+    padding: rem-calc(11) 0 !important;
+    text-transform: uppercase;
+  }
+  & .menu.nested {
+    margin-left: 0;
 
-      a {
-        // color: $gray;
-      }
+    & > li > a {
+      font-size: rem-calc(16) !important;
+      font-weight: 600;
+      padding: rem-calc(10) rem-calc(20) !important;
+      text-transform: none !important;
+      white-space: normal;
     }
   }
   & > .menu > li.is-active > a,
   .submenu li.is-active a {
-    color: $orange;
+    color: $red;
     &:hover, &:focus {
-      color: $orange;
+      color: $red;
     }
   }
   ul.social-media-wrapper {
     margin: 0 0 0.625rem 0;
     text-align: left;
+
+    @media #{$break640} {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     li {
       border: 0;
@@ -36,10 +77,16 @@ nav.mobile-menu.vertical.menu {
       width: 2.25rem;
       height: 2.25rem;
       margin-left: 0;
+      margin-bottom: rem-calc(8);
       text-align: center;
       position: relative;
       z-index: 99;
       font-size: 1.5rem;
+      flex-grow: 1;
+
+      a, i {
+        width: 100% !important;
+      }
     }
     li.inline-social-search-wrapper {
       font-size: 1.25rem;
@@ -61,33 +108,70 @@ nav.mobile-menu.vertical.menu {
     li.inline-social-search-wrapper {
       width: auto;
     }
+    li.menu-search-wrapper {
+      display: none;
+    }
     li.custom-button {
-      width: auto;
+      width: 100%;
+
+      a {
+        align-items: center;
+        font-family: $fontstack;
+        font-size: rem-calc(15) !important;
+        font-weight: 700;
+        padding: 0 rem-calc(10);
+        position: relative;
+        text-transform: uppercase;
+        width: 100%;
+        @include transition(all);
+
+        &:hover, &:focus {
+          background: $black !important;
+        }
+      }
+    }
+    li.custom-button.top-bar-my-cart {
+
+      i {
+        display: inline;
+        font-size: rem-calc(18);
+        margin-right: rem-calc(2);
+      }
+      span.cart-contents {
+        background: $white;
+        border-radius: 100%;
+        color: $blue;
+        display: inline-block;
+        line-height: rem-calc(20);
+        height: rem-calc(20);
+        margin: 0 0 0 rem-calc(5);
+        min-width: rem-calc(20);
+      }
     }
     li a, li a i {
       display: block;
       font-size: 1.5rem;
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
+      width: rem-calc(36);
+      height: rem-calc(36);
+      line-height: rem-calc(36);
       padding: 0;
       &:hover, &:focus {
         background: none !important;
       }
     }
     li.custom-button a {
-      padding: 0 10px;
+      padding: 0 rem-calc(10);
     }
   }
   form#searchform {
     position: absolute;
     right: 0;
     position: relative;
-    // max-width: 200px;
+    max-width: 100%;
     width: 100%;
     text-align: right;
-    border: 1px solid $gray;
-    border-radius: 3px;
+    border: rem-calc(1) solid $gray;
+    border-radius: rem-calc(3);
     background: $white;
     margin: 0;
     @media #{$break1024} {
@@ -95,31 +179,38 @@ nav.mobile-menu.vertical.menu {
     }
 
     &:after {
-      position: absolute;
+      color: $white;
       content: '\f002';
+      cursor: pointer;
       font-family: fontawesome !important;
-      width: 34px;
-      height: 34px;
-      line-height: 34px;
+      height: rem-calc(34);
+      line-height: rem-calc(34);
+      position: absolute;
+      right: 0;
       text-align: center;
       top: 0;
-      right: 0;
-      cursor: pointer;
+      width: rem-calc(34);
+      pointer-events: none;
     }
     input#searchsubmit {
       text-indent: -9999px;
       margin: 0;
-      width: 34px;
-      height: 34px;
-      background: none;
+      width: rem-calc(34);
+      height: rem-calc(34);
+      background: $red;
+      color: $white;
+
+      &:hover, &:focus {
+        background: $black;
+      }
     }
     input#s {
       max-width: none;
       border: 0;
       box-shadow: none;
-      padding: 0 10px !important;
-      line-height: 34px;
-      height: 34px;
+      padding: 0 rem-calc(10) !important;
+      line-height: rem-calc(34);
+      height: rem-calc(34);
       background: none;
     }
     .input-group {
