@@ -1,7 +1,11 @@
+<?php
+	$cart_in_alt_nav = get_theme_mod('cart_in_alt_nav');
+?>
+
 			<ul class="social-media-wrapper">
 				<?php $search_position = get_theme_mod('search-position'); if( $search_position == 'search-social-menu' ) { ?>
 
-					<li class="menu-search-wrapper">
+					<li class="inline-social-search-wrapper menu-search-wrapper">
 						<button class="search-toggle"><i class="fa fa-search" aria-hidden="true"></i></button>
 						<?php get_search_form(); ?>
 					</li>
@@ -21,7 +25,8 @@
 				<?php if( get_theme_mod('contact')): ?><li class="contact"><a href="<?php echo get_theme_mod('contact','default'); ?>"><i class="fa fa-envelope-o"></i></a></li><?php endif; ?>
 				<?php if( get_theme_mod('rss')): ?><li class="rss"><a href="<?php echo get_theme_mod('rss','default'); ?>" target="_blank"><i class="fa fa-rss"></i></a></li><?php endif; ?>
 				<?php if( get_theme_mod('custom')): ?><li class="custom-button"><a href="<?php echo get_theme_mod('custom','default'); ?>" target="_blank"><?php echo get_theme_mod('custom-text','default'); ?></a></li><?php endif; ?>
-				<?php if( class_exists( 'WooCommerce' ) ) { ?>
+
+				<?php if( class_exists( 'WooCommerce' ) && !$cart_in_alt_nav ) { ?>
 				<li class="custom-button top-bar-my-cart">
 					<a href="<?php echo get_permalink( wc_get_page_id( 'cart' ) ); ?>"><i class="fa fa-shopping-cart"></i> My Cart <span class="cart-contents"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?></span></a>
 				</li>

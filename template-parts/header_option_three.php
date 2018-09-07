@@ -4,6 +4,7 @@
 		$search_position = get_theme_mod('search-position');
 		$hide_social = get_theme_mod('hide_header_social');
 		$alt_nav = get_theme_mod('show_alt_nav');
+		$menu_layout = get_theme_mod('wpt_mobile_menu_layout');
 	?>
 	<div id="sticky-header-placeholder"></div>
 	<header id="masthead" class="site-header header-option-three <?php if( get_theme_mod( 'sticky-header' ) != '') { ?>sticky-header<?php } ?>" role="banner">
@@ -13,7 +14,7 @@
 					<div class="title-bar-title">
 						<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
 					</div>
-					<button class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
+					<button class="menu-icon <?php if ( $menu_layout === 'topbar' ) { ?>menu-type-topbar<?php } ?>" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"><span class="keep-together">Menu <i class="fa fa-caret-right" aria-hidden="hidden"></i></span></button>
 					<!-- <span class="site-mobile-title title-bar-title">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 					</span> -->
@@ -22,7 +23,9 @@
 
 			<nav class="site-navigation top-bar <?php if( $search_position == 'search-menu' ) { ?>has-search<?php } ?>" role="navigation">
 				<div class="top-bar-top">
-					<?php if( $alt_nav != '' ): ?><div class="alt-nav-wrapper hide-for-small-only"><?php foundationpress_top_bar_alt(); ?></div><?php endif; ?>
+
+					<?php if( $alt_nav ) : get_template_part('template-parts/alt-nav'); endif; ?>
+
 					<div class="site-desktop-title top-bar-title">
 						<div class="logo-wrapper hide-for-small-only">
 							<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>

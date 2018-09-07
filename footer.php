@@ -7,12 +7,21 @@
  * @package FoundationPress
  * @since FoundationPress 1.0.0
  */
-
+ $pre_footer = get_theme_mod('pre-footer-widgets');
 ?>
 
 		</section>
 
 		<div id="footer-container">
+
+			<?php if( is_active_sidebar('pre-footer-widgets') && $pre_footer ) : ?>
+				<div class="pre-footer-container">
+          <div class="pre-footer">
+					  <?php dynamic_sidebar('pre-footer-widgets'); ?>
+          </div>
+				</div>
+			<?php endif; ?>
+
 			<div class="footer-container" data-sticky-footer>
 				<footer class="footer grid-x">
 					<?php do_action( 'foundationpress_before_footer' ); ?>
@@ -74,7 +83,7 @@
 		});
 		$(document).click(function(e) {
 			var target = $(e.target);
-		  if( ! target.is('li.menu-search-wrapper, li.menu-search-wrapper *') ) {
+		  if( ! target.is('.menu-search-wrapper, .menu-search-wrapper *') ) {
 				$('nav.top-bar form#searchform.show').removeClass('show');
 				//$('button.search-toggle').click();
 			}
@@ -135,13 +144,15 @@
 	// Masonry Layout for Portfolio, Blog Posts, and Events
 	(function ($) {
 		var $container = $('.bs-isotope');
-		$container.imagesLoaded(function() {
-			$container.isotope({
-				itemSelector: '.bs-isotope-item',
-				layoutMode: 'masonry'
+		if($container) {
+			$container.imagesLoaded(function() {
+				$container.isotope({
+					itemSelector: '.bs-isotope-item',
+					layoutMode: 'masonry'
+				});
+				$container.isotope('layout').isotope();
 			});
-			$container.isotope('layout').isotope();
-		});
+		}
 		$(window).trigger('resize');
 	}(jQuery));
 
@@ -233,7 +244,7 @@
       }
   	});
 	});
-	window.onload = init();
+	// window.onload = init();
 	<?php } ?>
 
 	// $('.bs-carousel').slick({
