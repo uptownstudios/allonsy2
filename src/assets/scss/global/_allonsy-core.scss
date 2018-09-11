@@ -249,7 +249,7 @@ h1.entry-title {
   position: relative;
 
   &:before {
-    background: rgba(0,0,0,.25);
+    background: rgba(0,0,0,.35);
     content: '';
     position: absolute;
     top: 0;
@@ -258,9 +258,14 @@ h1.entry-title {
     left: 0;
     z-index: 1;
   }
-  time, p.byline.author {
+  h1.entry-title {
+    text-shadow: 0 rem-calc(2) rem-calc(1) $black;
+  }
+  time, p.byline.author, p.search-query {
     color: $white !important;
+    margin-bottom: 0;
     position: relative;
+    text-shadow: 0 rem-calc(2) rem-calc(1) $black;
     z-index: 10;
   }
   p.byline.author a {
@@ -352,7 +357,7 @@ aside.sidebar {
 
 
 /**** 6. BLOG PAGE AND SINGLE BLOG POST STYLES ****/
-.single-post, .blog {
+.single-post, .blog, .search-results {
 
   .main-wrap.no-sidebar {
     display: flex;
@@ -364,19 +369,22 @@ aside.sidebar {
     }
   }
   .about-the-author-wrap {
-    background: $ltgray;
+    // background: $ltgray;
     display: flex;
     margin: rem-calc(32) 0;
     padding: rem-calc(15);
 
     .author-image {
-      width: rem-calc(90);
-      padding-right: rem-calc(10);
+      border-radius: 100%;
+      margin-right: rem-calc(10);
+      height: rem-calc(80);
+      overflow: hidden;
+      width: rem-calc(80);
 
       img {
-        width: 100%;
         height: auto;
-        mix-blend-mode: multiply;
+        //mix-blend-mode: multiply;
+        width: 100%;
       }
     }
     .author-description {
@@ -387,6 +395,9 @@ aside.sidebar {
       }
       p strong {
         font-size: 115%;
+      }
+      &.no-avatar {
+        width: 100%;
       }
     }
   }

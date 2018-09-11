@@ -1,5 +1,6 @@
 <?php
 	$cart_in_alt_nav = get_theme_mod('cart_in_alt_nav');
+	global $woocommerce;
 ?>
 
 <div class="alt-nav-wrapper hide-for-small-only">

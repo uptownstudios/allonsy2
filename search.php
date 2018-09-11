@@ -6,16 +6,32 @@
  * @since FoundationPress 1.0.0
  */
 
-get_header(); ?>
+	get_header();
+	global $wp_query;
+	$title_bar = get_theme_mod('internal-title-bar');
+	$disable_sidebar = get_theme_mod('blog-sidebar');
+	$total_results = $wp_query->found_posts;
 
-<div class="main-wrap" role="main">
+	if( $title_bar === 'bs-featured-image') {
+    get_template_part( 'template-parts/featured-image' );
+  }
+  if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
+    get_template_part( 'template-parts/search-title-bar' );
+  }
+
+?>
+
+<div class="main-wrap <?php if( $disable_sidebar != '') {?>no-sidebar<?php } ?>" role="main">
 
 <?php do_action( 'foundationpress_before_content' ); ?>
 
 <article <?php post_class('main-content') ?> id="search-results">
-	<header>
-	    <h1 class="entry-title"><?php _e( 'Search Results for', 'foundationpress' ); ?> "<?php echo get_search_query(); ?>"</h1>
-	</header>
+
+	<?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
+		<header>
+			<h1 class="entry-title"><?php _e( 'Search Results for', 'foundationpress' ); ?> "<?php echo get_search_query(); ?> (<?php echo $total_results; ?>)"</h1>
+		</header>
+	<?php endif; ?>
 
 	<?php if ( have_posts() ) : ?>
 
@@ -45,7 +61,7 @@ get_header(); ?>
 </article>
 
 <?php do_action( 'foundationpress_after_content' ); ?>
-<?php get_sidebar(); ?>
+<?php if( $disable_sidebar == '') { get_sidebar(); } ?>
 
 </div>
 

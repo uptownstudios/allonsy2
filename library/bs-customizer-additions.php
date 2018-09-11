@@ -283,6 +283,68 @@ function newuptown_customize_register( $wp_customize ) {
     'settings' => 'titlebar_color',
   )));
 
+  /* Image Caption Color setting */
+  $wp_customize->add_setting('figcaption_bg_color', array(
+    'default' => '#F2F2F2',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 20,
+  ));
+  /* Image Caption Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'figcaption_bg_color',array(
+    'label' => __('Image Caption BG Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'figcaption_bg_color',
+  )));
+  /* Image Caption Text Color setting */
+  $wp_customize->add_setting('figcaption_color', array(
+    'default' => '#000000',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 20,
+  ));
+  /* Image Caption Text Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'figcaption_color',array(
+    'label' => __('Image Caption Font Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'figcaption_color',
+  )));
+
+  /* About the Author Color setting */
+  $wp_customize->add_setting('about_author_bg_color', array(
+    'default' => '#F2F2F2',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 20,
+  ));
+  /* About the Author Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'about_author_bg_color',array(
+    'label' => __('About the Author BG Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'about_author_bg_color',
+  )));
+  /* About the Author Text Color setting */
+  $wp_customize->add_setting('about_author_color', array(
+    'default' => '#000000',
+    'type' => 'theme_mod',
+    'transport' => 'refresh',
+    'capability' => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
+    'priority' => 20,
+  ));
+  /* About the Author Text Color control */
+  $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'about_author_color',array(
+    'label' => __('About the Author Font Color', 'allonsy2'),
+    'section' => 'default_colors',
+    'settings' => 'about_author_color',
+  )));
+
   /* Highlight Color setting */
   $wp_customize->add_setting('highlight_color', array(
     'default' => '#d28441',
@@ -1028,6 +1090,14 @@ function newuptown_customize_register( $wp_customize ) {
       'type' => 'checkbox',
       'description' => 'Check this box to disable the about the auther section on single blog posts.',
   ) ) );
+  // Disable Author Avatar
+  $wp_customize->add_setting( 'author-avatar' , array( 'default' => '' ) );
+  $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'author-avatar', array(
+      'label' => __( 'Hide the Author\'s Avatar?', 'allonsy2' ),
+      'section' => 'blog-options',
+      'type' => 'checkbox',
+      'description' => 'Check this box to hide the author avatar in the about the auther section on single blog posts.',
+  ) ) );
   // Show Post Tags
   $wp_customize->add_setting( 'show-post-tags' , array( 'default' => '' ) );
   $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'show-post-tags', array(
@@ -1180,6 +1250,17 @@ h1.entry-title {
 }
 .featured-hero-title-bar h1.entry-title {
   color: <?php echo esc_attr(get_theme_mod('titlebar_color','#FFFFFF')); ?>;
+}
+#main-container .about-the-author-wrap {
+  background-color: <?php echo esc_attr(get_theme_mod('about_author_bg_color','#F2F2F2')); ?>;
+}
+#main-container .about-the-author-wrap .author-description p,
+#main-container .about-the-author-wrap .author-description p strong {
+  color: <?php echo esc_attr(get_theme_mod('about_author_color','#000000')); ?>;
+}
+.entry-content figure.wp-caption figcaption.wp-caption-text {
+  background-color: <?php echo esc_attr(get_theme_mod('figcaption_bg_color','#F2F2F2')); ?>;
+  color: <?php echo esc_attr(get_theme_mod('figcaption_color','#000000')); ?>;
 }
 .top-bar .top-bar-bottom, ul.desktop-menu,
 ul.desktop-menu + .menu-search-wrapper, .desktop-menu + .menu-search-wrapper button.search-toggle {

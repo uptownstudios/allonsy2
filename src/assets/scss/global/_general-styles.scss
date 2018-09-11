@@ -258,6 +258,14 @@ form#searchform {
   h2 + h3, h3 + h4, h4 + h5, h5 + h6 {
     margin-top: 1rem;
   }
+  figure.wp-caption {
+
+    figcaption.wp-caption-text {
+      font-size: rem-calc(14);
+      font-style: italic;
+      padding: rem-calc(4);
+    }
+  }
   ul.row {
     margin-left: 1.25rem;
   }

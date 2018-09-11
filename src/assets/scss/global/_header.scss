@@ -330,8 +330,8 @@ header#masthead {
       justify-content: flex-end;
 
       & > li {
-        margin-left: rem-calc(5);
-        padding-left: rem-calc(5);
+        margin-left: rem-calc(8);
+        padding-left: rem-calc(8);
         border-left: rem-calc(1) solid $gray;
         border-right: 0;
         &:first-child {
@@ -344,7 +344,7 @@ header#masthead {
           background: none;
           font-family: $fontstack;
           font-size: rem-calc(16);
-          font-weight: 500;
+          font-weight: 700;
           line-height: 1;
           padding: 0 !important;
           text-transform: uppercase;
