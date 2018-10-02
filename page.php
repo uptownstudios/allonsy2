@@ -15,10 +15,10 @@
   $breadcrumbs = get_theme_mod('internal-breadcrumbs');
 
   if( $title_bar === 'bs-featured-image') {
-    get_template_part( 'template-parts/featured-image' );
+    get_template_part( 'template-parts/title-bars/featured-image' );
   }
   if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
-    get_template_part( 'template-parts/title-bar' );
+    get_template_part( 'template-parts/title-bars/title-bar' );
   }
 ?>
 

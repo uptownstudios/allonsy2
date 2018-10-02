@@ -3,7 +3,7 @@ header#masthead {
   left: 0;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 0 rem-calc(8);
+  padding: rem-calc(10) 0 rem-calc(8);
   position: relative;
   transition: all 500ms ease-out;
   top: 0;
@@ -62,6 +62,7 @@ header#masthead {
     }
   }
   nav.top-bar {
+    align-items: flex-start;
     background: none;
     display: flex;
     flex-wrap: wrap;
@@ -182,6 +183,7 @@ header#masthead {
           pointer-events: none;
           position: absolute;
           top: rem-calc(17);
+          z-index: 10;
         }
         &:after {
           border: solid transparent;
@@ -222,6 +224,7 @@ header#masthead {
         input#searchsubmit {
           background: $blue;
           border: 0;
+          border-radius: 0 !important;
           font-family: $fontstack !important;
           font-size: rem-calc(18);
           font-weight: 700;
@@ -283,7 +286,7 @@ header#masthead {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: rem-calc(5) 0 rem-calc(10) 0;
+    margin: 0 0 rem-calc(10) 0;
     width: 100%;
 
     .alt-nav-my-cart {
@@ -443,7 +446,9 @@ header#masthead {
   .menu .dropdown li:after {
     display: none;
   }
-  .menu > li.is-active:hover .dropdown {
+  .menu > li.is-active:hover .dropdown,
+  .menu > li.is-active:focus .dropdown,
+  .menu > li:focus-within .dropdown {
     visibility: visible;
     opacity: 1;
     margin-top: 0;

@@ -31,13 +31,13 @@
 			</div>
 			<div id="copyright-container">
 				<footer id="copyright" class="max-width-twelve-hundred grid-x <?php if( get_theme_mod('social-copyright') != '' ) { ?>has-social<?php } ?>">
-					<?php if( get_theme_mod('social-copyright') != '') { ?><div class="small-12 medium-9 large-9 cell"><?php } ?>
+					<?php if( get_theme_mod('social-copyright') != '') { ?><div class="small-12 medium-7 large-7 cell"><?php } ?>
 					<?php if( get_theme_mod('copyright')): ?>
 						<p>&copy; <?php echo date('Y'); ?> <?php echo get_theme_mod('copyright','default'); ?></p>
 					<?php else: ?>
 						<p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 					<?php endif; ?>
-					<?php if( get_theme_mod('social-copyright') != '' ) { ?></div><div class="small-12 medium-3 large-3 cell"><?php echo do_shortcode('[bs_social_urls]');?></div><?php } ?>
+					<?php if( get_theme_mod('social-copyright') != '' ) { ?></div><div class="small-12 medium-5 large-5 cell"><?php echo do_shortcode('[bs_social_urls]');?></div><?php } ?>
 				</footer>
 			</div>
 		</div>
@@ -54,6 +54,8 @@
 </div><!-- Close off-canvas content -->
 <?php endif; ?>
 
+<?php wp_footer(); ?>
+
 <script type="text/javascript">
 
 	var windowWidth;
@@ -69,15 +71,32 @@
 
 	jQuery(document).ready(function($) {
 
-		//$(window).imagesLoaded(function() {
+		$(window).imagesLoaded(function() {
 
 			// Site Preloader
 			$('#preloader').addClass('loaded')
 			$('#preloader.loaded').delay(250).fadeOut(1000, function() {
 				$(this).hide();
 			});
-		//});
+		});
 
+    $('li.menu-item-has-children > a').on('focus focusout', function() {
+      $(this).parents().toggleClass('is-active');
+    });
+
+    // Toggle large font size mode
+    $('button.a11y-fontsize').click(function() {
+			$('html').toggleClass('fontsize');
+      $(this).toggleClass('a11y-active');
+		});
+
+    // Toggle high contrast mode
+    $('button.a11y-contrast').click(function() {
+			$('html').toggleClass('contrast');
+      $(this).toggleClass('a11y-active');
+		});
+
+    // Toggle search box in header
 		$('button.search-toggle').click(function() {
 			$('nav.top-bar form#searchform').toggleClass('show');
 		});
@@ -102,6 +121,12 @@
 			$(this).parents('.woocommerce-info').addClass('hide-notice');
 			$('form.checkout_coupon.woocommerce-form-coupon').addClass('hide-notice');
 		});
+
+    // Add class to inputs with labels below
+    $('input + label').parents('li.gfield').find('span').addClass('has-label-below');
+
+    // Add class to labels above address fields
+    $('.ginput_complex.ginput_container_address').parents('li.gfield').find('label.gfield_label').addClass('ginput_container_address_label');
 
 	  // Back to top script
 	  $('#back-top').hide();
@@ -141,59 +166,54 @@
 		floatLabel(".floatLabel textarea");
 	});
 
-	// Masonry Layout for Portfolio, Blog Posts, and Events
-	(function ($) {
+	// Isotope Filters for Portfolio
+	jQuery(document).ready(function($) {
+
+    // Lazy Load with Isotope/Masonry Layout
+    var $lazycontainer = $('.lazy-isotope-wrapper');
+    if($lazycontainer) {
+    	$lazycontainer.each(function() {
+
+        // cache container
+    		var $lazyisotope = $('.lazy-isotope');
+    		$lazyisotope.isotope({
+    			itemSelector: '.bs-isotope-item',
+    			layoutMode: 'masonry'
+    		});
+    	  $lazyisotope[0].addEventListener('load', (function() {
+    	    var runs;
+    	    var update = function(){
+    	      $lazyisotope.isotope('layout').isotope();
+    	      runs = false;
+    	    };
+    	    return function(){
+    	      if(!runs){
+    	        runs = true;
+    	        setTimeout(update, 33);
+    	      }
+    	    };
+    	  }()), true);
+        $(window).trigger('resize');
+    	});
+    }
+
+		// cache container
 		var $container = $('.bs-isotope');
-		if($container) {
+    if($container) {
 			$container.imagesLoaded(function() {
 				$container.isotope({
 					itemSelector: '.bs-isotope-item',
-					layoutMode: 'masonry'
 				});
 				$container.isotope('layout').isotope();
 			});
 		}
-		$(window).trigger('resize');
-	}(jQuery));
 
-	// Lazy Load with Isotope/Masonry Layout
-	$('.lazy-isotope-wrapper').each(function(){
-
-		var $isotope = $('.lazy-isotope', this);
-
-		$isotope.isotope({
-			itemSelector: '.bs-isotope-item',
-			layoutMode: 'masonry'
-		});
-
-	  $isotope[0].addEventListener('load', (function(){
-	    var runs;
-	    var update = function(){
-	      $isotope.isotope('layout');
-	      runs = false;
-	    };
-	    return function(){
-	      if(!runs){
-	        runs = true;
-	        setTimeout(update, 33);
-	      }
-	    };
-	  }()), true);
+		// $(window).trigger('resize');
 	});
 
-	// Isotope Filters for Portfolio
-	jQuery(document).ready(function($) {
-		// cache container
-		var $container = $('.portfolio-container');
-		// filter items when filter link is clicked
-		$('#filters a').click(function(){
-		  var selector = $(this).attr('data-filter');
-		  $container.isotope({ filter: selector });
-			$('#filters a.active').not(this).removeClass('active');
-			$(this).addClass('active');
-		  return false;
-		});
-	});
+  $('.portfolio-filter-toggle a').click(function() {
+    $('ul#filters').slideToggle('slow');
+  });
 
 	jQuery(function($) {
 		// Scroll to hash on click
@@ -247,40 +267,8 @@
 	// window.onload = init();
 	<?php } ?>
 
-	// $('.bs-carousel').slick({
-	//   dots: false,
-	//   infinite: false,
-	//   speed: 300,
-	//   slidesToShow: 3,
-	//   slidesToScroll: 1,
-	// 	arrows: true,
-	// 	prevArrow: '<button aria-hidden="true" role="presentation" type="button" class="slick-prev"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/prev-arrow.svg" alt="Previous Arrow" width="20" /></button>',
-	// 	nextArrow: '<button aria-hidden="true" role="presentation" type="button" class="slick-next"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/next-arrow.svg" alt="Next Arrow" width="20" /></button>',
-	//   responsive: [{
-  //     breakpoint: 1024,
-  //     settings: {
-  //       slidesToShow: 2,
-  //       slidesToScroll: 1,
-  //       infinite: true,
-  //     }
-  //   },{
-  //     breakpoint: 600,
-  //     settings: {
-  //       slidesToShow: 2,
-  //       slidesToScroll: 1
-  //     }
-  //   },{
-  //     breakpoint: 480,
-  //     settings: {
-  //       slidesToShow: 1,
-  //       slidesToScroll: 1
-  //     }
-  //   }]
-	// });
-
 </script>
 
-<?php wp_footer(); ?>
 <?php do_action( 'foundationpress_before_closing_body' ); ?>
 </body>
 </html>

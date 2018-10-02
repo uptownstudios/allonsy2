@@ -134,7 +134,7 @@ if ( comments_open() ) :
 						_e( 'Comment', 'foundationpress' );
 					?>
 			</label>
-			<textarea name="comment" id="comment" tabindex="4"></textarea>
+			<textarea name="comment" id="comment" rows="5" tabindex="4"></textarea>
 		</p>
 		<p id="allowed_tags" class="small"><strong>XHTML:</strong>
 			<?php

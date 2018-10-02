@@ -9,6 +9,13 @@
   get_header();
   $title_bar = get_theme_mod('internal-title-bar');
   $single_post_layout = get_theme_mod('single-post-layout');
+  /* BLOG PAGE LAYOUT CHOICES
+      'single-sidebar-right' => 'Sidebar Right',
+      'single-sidebar-left' => 'Sidebar Left',
+      'single-full-width' => 'Full Width, No Sidebar',
+      'single-narrow-content' => 'No Sidebar, Narrow Content',
+  */
+
   $share_buttons = get_theme_mod('show-share-buttons');
   $share_buttons_position = get_theme_mod('share-buttons-position');
   $share_buttons_count = get_theme_mod('share-buttons-count');
@@ -17,7 +24,7 @@
     get_template_part( 'template-parts/title-bars/featured-image' );
   }
   if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
-    get_template_part( 'template-parts/title-bars/blog-title-bar' );
+    get_template_part( 'template-parts/title-bars/service-title-bar' );
   }
 ?>
 
@@ -40,20 +47,14 @@
 		<?php do_action( 'foundationpress_post_before_entry_content' ); ?>
 		<div class="entry-content">
 
-      <?php if( $share_buttons && $share_buttons_position === 'top' ) { echo do_shortcode('[bs_social_share show_count="' . $share_buttons_count . '"]'); } ?>
+      <?php if( has_post_thumbnail() ) { ?><div class="service-featured-image mb15 alignright"><?php the_post_thumbnail(); ?></div><?php } ?>
 
 			<?php the_content(); ?>
-
-      <?php if( $share_buttons && $share_buttons_position === 'bottom' ) { echo do_shortcode('[bs_social_share show_count="' . $share_buttons_count . '"]'); } ?>
 
       <?php if( get_theme_mod('show-post-tags') != '' ) { ?>
 			<p class="post-tags"><?php the_tags(); ?></p>
       <?php } ?>
 		</div>
-
-		<?php if( get_theme_mod('about-the-author') == '' ) {
-		get_template_part( 'template-parts/about-author' );
-		} ?>
 
 		<footer>
       <?php the_post_navigation( array(
@@ -69,7 +70,6 @@
 <?php endwhile;?>
 
 <?php do_action( 'foundationpress_after_content' ); ?>
-
 <?php if( $single_post_layout === 'single-sidebar-right' || $single_post_layout === 'single-sidebar-left') { get_sidebar(); } ?>
 </div>
 <?php get_footer();

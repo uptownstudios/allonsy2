@@ -1,0 +1,129 @@
+.bs-social-share-outer {
+  margin: rem-calc(30) auto 0;
+  max-width: rem-calc(830);
+  padding: 0 rem-calc(15);
+}
+.bs-social-share-container {
+  margin: 0 auto rem-calc(30);;
+  width: auto;
+
+  .bs-social-share-inner {
+    display: flex;
+    margin-left: rem-calc(-16);
+    @media #{$break640} {
+      margin-left: rem-calc(-4);
+    }
+
+    .single-social-share {
+      font-size: rem-calc(24);
+      line-height: rem-calc(24);
+      margin-left: rem-calc(16);
+      text-align: center;
+      width: calc(20% - 1rem);
+      @include transition(all);
+      @media #{$break640} {
+        margin-left: rem-calc(4);
+        width: calc(20% - 0.25rem);
+      }
+
+      a {
+        display: block;
+        text-align: center;
+      }
+      a i {
+        @include transition(all);
+      }
+      &.social-share-twitter {
+
+        a i {
+          color: $twitter;
+        }
+      }
+      &.social-share-facebook {
+
+        a i {
+          color: $facebook;
+        }
+      }
+      &.social-share-google {
+
+        a i {
+          color: $googleplus;
+        }
+      }
+      &.social-share-linkedin {
+
+        a i {
+          color: $linkedin;
+        }
+      }
+      &.social-share-pinterest {
+
+        a i {
+          color: $pinterest;
+        }
+      }
+      &:hover, &:focus {
+
+        a i {
+          color: $blue !important;
+        }
+      }
+    }
+    &.show-count {
+
+      .single-social-share {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: rem-calc(5);
+
+        a {
+          text-align: left;
+          width: calc(100% - 1.5rem);
+        }
+        a i {
+          color: $white;
+        }
+        &.social-share-twitter {
+          background: $twitter;
+        }
+        &.social-share-facebook {
+          background: $facebook;
+          color: $white;
+        }
+        &.social-share-google {
+          background: $googleplus;
+          color: $white;
+        }
+        &.social-share-linkedin {
+          background: $linkedin;
+          color: $white;
+        }
+        &.social-share-pinterest {
+          background: $pinterest;
+          color: $white;
+        }
+        span {
+          background: $white;
+          //border-radius: 100%;
+          color: $black;
+          display: inline-block;
+          font-size: rem-calc(14);
+          font-weight: 700;
+          line-height: rem-calc(18);
+          margin-left: rem-calc(5);
+          padding: rem-calc(3);
+          width: rem-calc(24);
+        }
+        &:hover, &:focus {
+          background: $blue !important;
+
+          a i {
+            color: $white !important;
+          }
+        }
+      }
+    }
+  }
+}

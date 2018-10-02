@@ -1,0 +1,136 @@
+.screen-reader-shortcut {
+  position: absolute;
+  top: rem-calc(-9999);
+
+  &:focus {
+    left: 6px;
+    top: 7px;
+    height: auto;
+    width: auto;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 23px 14px;
+    background: #f1f1f1;
+    color: #0073aa;
+    z-index: 100000;
+    line-height: normal;
+    text-decoration: none;
+    box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
+  }
+}
+.tooltip {
+  background: $ltyellow;
+  border-radius: rem-calc(3);
+  border: rem-calc(1) solid $blue;
+  color: $black;
+  font-size: rem-calc(14);
+  font-weight: 700;
+  max-width: rem-calc(220);
+  padding: rem-calc(6) rem-calc(10);
+  width: auto;
+
+  &.right:before {
+    border: inset rem-calc(6) !important;
+    border-color: transparent $ltyellow transparent transparent !important;
+    z-index: 10;
+  }
+  &.right:after {
+
+    border: inset rem-calc(8) !important;
+    border-color: transparent $blue transparent transparent !important;
+    content: '';
+    display: block;
+    height: 0;
+    left: auto;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    z-index: 1;
+  }
+}
+div#a11y-toolbar {
+  border: rem-calc(1) solid $gray;
+  border-radius: 0 rem-calc(5) rem-calc(5) 0;
+  box-shadow: rem-calc(1) rem-calc(4) rem-calc(5) $black;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+
+  div#a11y-fontsize, div#a11y-contrast {
+
+    button {
+      background: rgba(255,255,255,.85);
+      border-left: 0;
+      cursor: pointer;
+      font-size: rem-calc(22);
+      padding: rem-calc(10) rem-calc(6);
+      width: 100%;
+      @include transition(all);
+
+      &:hover, &:focus {
+        background: $white;
+      }
+      &.a11y-fontsize {
+        border-radius: 0 rem-calc(4) 0 0;
+        border-bottom: rem-calc(1) solid $gray;
+      }
+      &.a11y-contrast {
+        border-radius: 0 0 rem-calc(4) 0;
+      }
+      &.a11y-active {
+        background: $gray;
+        color: $white;
+
+        &.a11y-fontsize {
+          border-bottom: rem-calc(1) solid $ltgray !important;
+        }
+      }
+      span[data-tooltip] {
+        border: 0;
+        cursor: pointer;
+        display: block;
+        text-decoration: none;
+      }
+    }
+  }
+  &.a11y-left {
+    border-left: 0;
+    @media #{$break640} {
+      bottom: rem-calc(15);
+      top: auto;
+      transform: none;
+    }
+  }
+  &.a11y-right {
+    box-shadow: rem-calc(-1) rem-calc(4) rem-calc(5) $black;
+    border-radius: rem-calc(5) 0 0 rem-calc(5);
+    border-right: 0;
+    right: 0;
+    @media #{$break640} {
+      bottom: 0;
+      top: auto;
+      transform: translateY(-100%);
+    }
+
+    div#a11y-fontsize, div#a11y-contrast {
+
+      button {
+
+        &.a11y-fontsize {
+          border-radius: rem-calc(4) 0 0 0;
+        }
+        &.a11y-contrast {
+          // border-radius: 0 0 0 rem-calc(3);
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}

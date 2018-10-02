@@ -25,11 +25,27 @@ a {
 p, li, span, time {
   font-family: $fontstack;
 }
+.pipe-separator {
+  display: inline-block;
+  font-size: 125%;
+  line-height: rem-calc(25);
+  margin: 0 rem-calc(6);
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: $fontstack;
   font-weight: 700;
   line-height: 1.1;
   text-align: left;
+
+  &.aligncenter {
+    text-align: center;
+  }
+  &.alignleft {
+    text-align: left;
+  }
+  &.alignright {
+    text-align: right;
+  }
 }
 h2, h2 span {
   font-size: $h2;
@@ -45,6 +61,49 @@ h5, h5 span {
 }
 h6, h6 span {
   font-size: $h6;
+}
+.section-heading {
+  float: none !important;
+
+  span.section-heading-inner {
+    display: inline-block;
+    line-height: 1.1;
+    margin-bottom: rem-calc(20) !important;
+    padding-bottom: rem-calc(10) !important;
+    position: relative;
+
+    &:after {
+      background: $blue;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: rem-calc(3);
+      left: 0;
+      max-width: rem-calc(150);
+      position: absolute;
+      width: 100%;
+    }
+  }
+  &.aligncenter {
+
+    span.section-heading-inner {
+
+      &:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  &.alignright {
+
+    span.section-heading-inner {
+
+      &:after {
+        left: 100%;
+        transform: translateX(-100%);
+      }
+    }
+  }
 }
 span.sub-title {
   display: block;
@@ -75,6 +134,57 @@ span.sub-title {
   margin: 0 auto;
   //padding: 0 0.9375rem;
 }
+ul.pagination {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+
+  li {
+    display: inline-block;
+
+    span.current {
+
+    }
+    a {
+
+    }
+  }
+}
+
+/* Foundation 6 Tabs Styles */
+.tabs {
+  border: 0;
+  // border-bottom: rem-calc(1) solid $blue;
+
+  .tabs-title {
+    margin-right: rem-calc(4);
+
+    a {
+      background: $blue;
+      border: rem-calc(1) solid $blue;
+      bottom: rem-calc(-1);
+      color: $white;
+      font-size: rem-calc(16);
+      font-weight: 600;
+      padding: rem-calc(15) rem-calc(20);
+      position: relative;
+      text-decoration: none !important;
+    }
+    &.is-active {
+
+      a {
+        background: $ltgray;
+        border-bottom: rem-calc(1) solid $ltgray;
+        color: $black;
+      }
+    }
+  }
+}
+.tabs-content {
+  background: $ltgray;
+  border-top: rem-calc(1) solid $blue;
+}
+
 .off-canvas-content #footer-container {
   max-width: none;
   margin: 0 auto;
@@ -117,11 +227,12 @@ form#searchform {
     content: '\f002';
     cursor: pointer;
     display: block;
-    font-family: fontawesome;
+    font-family: "Font Awesome 5 Pro", 'fontawesome';
     font-size: rem-calc(18);
+    font-weight: 900;
     pointer-events: none;
     position: absolute;
-    right: rem-calc(10);
+    right: rem-calc(8);
     top: rem-calc(5);
   }
   .input-group {
@@ -137,17 +248,18 @@ form#searchform {
     }
   }
   input#searchsubmit {
-    background: $blue;
+    background: $blue !important;
     text-indent: -9999px;
     min-width: rem-calc(36);
+    padding: 0;
     @include transition(all);
 
     &:hover, &:focus {
-      background: $black;
+      background: $black !important;
     }
   }
 }
-.bs-btn {
+.bs-btn, .gform_footer input.gform_button, #respond .button {
   font-size: 1.3125rem;
   font-weight: 700 !important;
   line-height: 1 !important;
@@ -168,13 +280,19 @@ form#searchform {
   border: 2px solid $black;
   color: $white;
 }
-.bs-btn.bs-btn-red {
+.bs-btn.bs-btn-red,
+.gform_footer input.gform_button,
+#respond .button {
   background: $red;
   border: 2px solid $red;
   color: $white !important;
 }
 .bs-btn.bs-btn-red:hover,
-.bs-btn.bs-btn-red:focus {
+.bs-btn.bs-btn-red:focus,
+.gform_footer input.gform_button:hover,
+.gform_footer input.gform_button:focus,
+#respond .button:hover,
+#respond .button:focus {
   background: $black;
   border: 2px solid $black;
   color: $white !important;
@@ -202,7 +320,11 @@ form#searchform {
   color: $black;
 }
 .bs-btn:hover,
-.bs-btn:focus {
+.bs-btn:focus,
+.gform_footer input.gform_button:hover,
+.gform_footer input.gform_button:focus,
+#respond .button:hover,
+#respond .button:focus {
   background: $black;
   border: 2px solid $black;
   color: $white;
@@ -253,7 +375,8 @@ form#searchform {
   // overflow: hidden;
 
   h2, h3, h4, h5, h6 {
-    margin-bottom: 0;
+    line-height: 1.2;
+    margin-bottom: rem-calc(5);
   }
   h2 + h3, h3 + h4, h4 + h5, h5 + h6 {
     margin-top: 1rem;
@@ -335,23 +458,21 @@ form#searchform {
 }
 #back-top {
   position: fixed;
-  bottom: 0.9375rem;
-  right: 0.9375rem;
+  bottom: rem-calc(15);
+  right: 0;
   z-index: 100;
 }
 #back-top a {
-  width: 2.5rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
-  text-align: center;
-  background: $black;
   color: $white;
   display: inline-block;
+  height: rem-calc(40);
+  line-height: rem-calc(40);
   opacity: .75;
+  text-align: center;
+  width: rem-calc(47);
   @include transition(all);
 }
 #back-top a:hover,
 #back-top a:focus {
   opacity: 1;
-  background: $black;
 }

@@ -8,6 +8,7 @@
 	*/
 	$title_bar = get_theme_mod('internal-title-bar');
 	$default_image = get_theme_mod('default-title-bar-image');
+	$default_image_repeat = get_theme_mod('default-title-bar-repeat');
 	$default_backup = get_stylesheet_directory_uri() . '/src/assets/images/default-title-bar-image.jpg';
 
 	if( $default_image === '' ) {

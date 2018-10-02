@@ -19,30 +19,35 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+$show_hide_related = get_theme_mod('show_related');
 
-if ( $related_products ) : ?>
+if( $show_hide_related === 'show-related' ) : 
 
-	<section class="related products">
+	if ( $related_products ) : ?>
 
-		<h3><?php esc_html_e( 'Related products', 'woocommerce' ); ?></h3>
+		<section class="related products">
 
-		<?php woocommerce_product_loop_start(); ?>
+			<h3><?php esc_html_e( 'Related products', 'woocommerce' ); ?></h3>
 
-			<?php foreach ( $related_products as $related_product ) : ?>
+			<?php woocommerce_product_loop_start(); ?>
 
-				<?php
-				 	$post_object = get_post( $related_product->get_id() );
+				<?php foreach ( $related_products as $related_product ) : ?>
 
-					setup_postdata( $GLOBALS['post'] =& $post_object );
+					<?php
+					 	$post_object = get_post( $related_product->get_id() );
 
-					wc_get_template_part( 'content', 'product' ); ?>
+						setup_postdata( $GLOBALS['post'] =& $post_object );
 
-			<?php endforeach; ?>
+						wc_get_template_part( 'content', 'product' ); ?>
 
-		<?php woocommerce_product_loop_end(); ?>
+				<?php endforeach; ?>
 
-	</section>
+			<?php woocommerce_product_loop_end(); ?>
 
-<?php endif;
+		</section>
+
+	<?php endif;
+
+	endif;
 
 wp_reset_postdata();

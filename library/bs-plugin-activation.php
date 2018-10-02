@@ -92,9 +92,9 @@ function allonsy_register_required_plugins() {
 
 		// WP PLUGINS FROM REPO
 		array(
-			'name'			=> 'Category Order and Taxonomy Terms Order',
-			'slug'			=> 'taxonomy-terms-order',
-			'required'	=> false,
+			'name'			=> 'Responsive Lightbox',
+			'slug'			=> 'responsive-lightbox',
+			'required'	=> true,
 		),
 		array(
 			'name'      => 'iThemes Security',
@@ -115,6 +115,11 @@ function allonsy_register_required_plugins() {
 			'name'      => 'Sitemap',
 			'slug'      => 'sitemap',
 			'required'  => false,
+		),
+		array(
+			'name'			=> 'Category Order and Taxonomy Terms Order',
+			'slug'			=> 'taxonomy-terms-order',
+			'required'	=> false,
 		),
 
 		// This is an example of the use of 'is_callable' functionality. A user could - for instance -

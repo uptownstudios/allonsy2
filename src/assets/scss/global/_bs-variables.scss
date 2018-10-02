@@ -2,11 +2,22 @@ $fontstack: 'Open Sans', Arial, Helvetica, sans-serif;
 $red: #b01f23;
 $orange: #b65b24;
 $blue: #003a71;
+$bluealpha: rgba(0,58,113,0.85);
 $white: #FFFFFF;
 $black: #000000;
+$almostblack: #333333;
 $green: #008000;
 $gray: #666666;
 $ltgray: #f2f2f2;
+$gold: #b99c00;
+$ltyellow: #fef3a1;
+
+// Social Media Colors
+$facebook: #3b5998;
+$twitter: #00aced;
+$googleplus: #dd4b39;
+$linkedin: #007bb6;
+$pinterest: #cb2027;
 
 // Breakpoint variables
 $break1600: "only screen and (max-width: 100em)";
@@ -22,6 +33,7 @@ $break640: "only screen and (max-width: 40em)";
 $break639: "only screen and (max-width: 39.9375em)";
 $break600: "only screen and (max-width: 37.5em)";
 $break480: "only screen and (max-width: 30em)";
+$break400: "only screen and (max-width: 25em)";
 $break375: "only screen and (max-width: 23.4375em)";
 
 // Font size variables

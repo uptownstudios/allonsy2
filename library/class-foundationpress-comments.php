@@ -62,6 +62,8 @@ class Foundationpress_Comments extends Walker_Comment {
 
 			<div class="author-meta vcard author">
 
+			<time datetime="<?php echo comment_date( 'c' ) ?>"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf( get_comment_date(), get_comment_time() ) ?></a></time>
+
 			<?php
 				/* translators: %s: comment author link */
 				printf( __(
@@ -69,8 +71,7 @@ class Foundationpress_Comments extends Walker_Comment {
 					get_comment_author_link()
 				);
 			?>
-			<time datetime="<?php echo comment_date( 'c' ) ?>"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf( get_comment_date(), get_comment_time() ) ?></a></time>
-
+			
 			</div><!-- /.comment-author -->
 
 		</header>

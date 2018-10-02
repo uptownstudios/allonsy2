@@ -7,10 +7,10 @@ Template Name: No Sidebar, Narrow Content
 	$breadcrumbs = get_theme_mod('internal-breadcrumbs');
 
 	if( $title_bar === 'bs-featured-image') {
-		get_template_part( 'template-parts/featured-image' );
+		get_template_part( 'template-parts/title-bars/featured-image' );
 	}
 	if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
-		get_template_part( 'template-parts/title-bar' );
+		get_template_part( 'template-parts/title-bars/title-bar' );
 	}
 ?>
 
@@ -35,20 +35,6 @@ Template Name: No Sidebar, Narrow Content
 		<div class="entry-content">
 			<?php the_content(); ?>
 		</div>
-		<footer>
-			<?php
-				wp_link_pages(
-					array(
-						'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'foundationpress' ),
-						'after'  => '</p></nav>',
-					)
-				);
-			?>
-			<p><?php the_tags(); ?></p>
-		</footer>
-		<?php do_action( 'foundationpress_page_before_comments' ); ?>
-		<?php comments_template(); ?>
-		<?php do_action( 'foundationpress_page_after_comments' ); ?>
 	</article>
 <?php endwhile;?>
 

@@ -3,6 +3,21 @@
 // Edits to WooCommerce breadcrumbs are in /allonsy2/library/navigation.php
 
 
+// Change stupid WooCommerce pagination arrow to &laquo; and &raquo; instead
+add_filter( 'woocommerce_pagination_args', 	'rocket_woo_pagination' );
+function rocket_woo_pagination( $args ) {
+	$args['prev_text'] = '&laquo;';
+	$args['next_text'] = '&raquo;';
+	return $args;
+}
+
+
+// Change thumbnail size in WC galleries
+add_filter( 'woocommerce_gallery_thumbnail_size', function( $size ) {
+  return 'thumbnail';
+} );
+
+
 // Add parent category to body class
 function woo_custom_taxonomy_in_body_class( $classes ){
   $custom_terms = get_the_terms(0, 'product_cat');
@@ -91,3 +106,52 @@ function woo_rename_tabs( $tabs ) {
 	return $tabs;
 }
 add_filter( 'woocommerce_product_tabs', 'woo_rename_tabs', 98 );
+
+
+// Move related products into tabs
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+$show_hide_related = get_theme_mod('show_related');
+if( $show_hide_related === 'show-related' ):
+
+  function bs_related_product_tab( $tabs ) {
+    $custom_tab = array(
+    	'custom_tab' =>  array(
+        'title' => __('Related Products','woocommerce'),
+        'priority' => 50000,
+      	'callback' => 'woo_custom_product_tab_content'
+      )
+    );
+    return array_merge( $custom_tab, $tabs );
+  }
+  function woo_custom_product_tab_content() {
+  	woocommerce_related_products();
+  }
+  add_filter( 'woocommerce_product_tabs', 'bs_related_product_tab' );
+
+endif;
+
+
+// This snippet removes the action that inserts thumbnails to products in the loop
+// and re-adds the function customized with our wrapper in it.
+// It applies to all archives with products.
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+
+if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ) {
+  function woocommerce_template_loop_product_thumbnail() {
+    echo woocommerce_get_product_thumbnail();
+  }
+}
+if ( ! function_exists( 'woocommerce_get_product_thumbnail' ) ) {
+  function woocommerce_get_product_thumbnail( $size = 'shop_catalog', $placeholder_width = 0, $placeholder_height = 0  ) {
+    global $post, $woocommerce;
+    $output = '<div class="image-wrapper">';
+
+    if ( has_post_thumbnail() ) {
+      $output .= get_the_post_thumbnail( $post->ID, $size );
+    }
+    $output .= '</div>';
+    return $output;
+  }
+}

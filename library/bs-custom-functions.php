@@ -1,6 +1,22 @@
 <?php
 
-// Allow the upload of SVG graphics to Media Library
+/**** TABLE OF CONTENTS ****/
+
+// 1. Allow the upload of SVG graphics to Media Library
+// 2. Add 'mobile' to body class on mobile device
+// 3. Add not-home to body class
+// 4. Adding portfolio items into search results with posts and pages
+// 5. ACF Local Field Groups
+// 6. Enqueue Scripts
+// 7. Shortcodes in widgets
+// 8. Custom pagination
+// 9. Add new image sizes
+// 10. Custom Excerpt Length
+
+/**** TABLE OF CONTENTS ****/
+
+
+// 1. Allow the upload of SVG graphics to Media Library
 function cc_mime_types($mimes) {
   $mimes['svg'] = 'image/svg+xml';
   return $mimes;
@@ -8,7 +24,7 @@ function cc_mime_types($mimes) {
 add_filter('upload_mimes', 'cc_mime_types');
 
 
-// Add 'mobile' to body class on mobile device
+// 2. Add 'mobile' to body class on mobile device
 function my_body_classes($c) {
     wp_is_mobile() ? $c[] = 'mobile' : null;
     return $c;
@@ -16,7 +32,7 @@ function my_body_classes($c) {
 add_filter('body_class','my_body_classes');
 
 
-// Add not-home to body class
+// 3. Add not-home to body class
 function add_not_home_body_class($classes) {
     if( !is_front_page() ) $classes[] = 'not-home';
     return $classes;
@@ -24,7 +40,7 @@ function add_not_home_body_class($classes) {
 add_filter('body_class','add_not_home_body_class');
 
 
-// Not sure what this is for
+// 4. Adding portfolio items into search results with posts and pages
 add_filter('pre_get_posts', 'query_post_type');
 function query_post_type($query) {
   if ( is_archive() && (is_category() || is_tag()) && empty( $query->query_vars['suppress_filters'] ) ) {
@@ -39,33 +55,74 @@ function query_post_type($query) {
 }
 
 
-// Set ACF portfolio thumbnail as featured image
-function acf_set_featured_image( $value, $post_id, $field  ){
-    if($value != ''){
-	    //Add the value which is the image ID to the _thumbnail_id meta data for the current post
-	    add_post_meta($post_id, '_thumbnail_id', $value);
-    }
-    return $value;
-}
-// acf/update_value/name={$field_name} - filter for a specific field based on it's name
-//$thumb = get_field('bs_portfolio_thumbnail');
-add_filter('acf/update_value/name=bs_portfolio_thumbnail', 'acf_set_featured_image', 10, 3);
+// 5. ACF Local Field Groups - Portfolio Options (just a gallery of images, but perhaps more to come)
+if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array(
+	'key' => 'group_5b998f4137260',
+	'title' => 'Portfolio Options',
+	'fields' => array(
+		array(
+			'key' => 'field_5b998f5e1a4fc',
+			'label' => 'Additional Images',
+			'name' => 'portfolio_additional_images',
+			'type' => 'gallery',
+			'instructions' => 'Advanced Custom Fields PRO plugin must be installed and activated',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'min' => '',
+			'max' => '',
+			'insert' => 'append',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'bs_portfolio',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+endif;
 
 
-// Enqueue Scripts
+// 6. Enqueue Scripts
 function bs_scripts_enqueue() {
 	wp_enqueue_script( 'isotope', get_stylesheet_directory_uri() . '/src/assets/js/vendor/isotope.pkgd.min.js', array( 'jquery' ) );
   wp_enqueue_script( 'classie', get_stylesheet_directory_uri() . '/src/assets/js/vendor/classie.js', array( 'jquery' ) );
-	wp_enqueue_script( 'bsimagesloaded', get_stylesheet_directory_uri() . '/src/assets/js/vendor/imagesloaded.pkgd.min.js', array( 'jquery' ) );
+	// wp_enqueue_script( 'bsimagesloaded', get_stylesheet_directory_uri() . '/src/assets/js/vendor/imagesloaded.pkgd.min.js', array( 'jquery' ) );
 }
 add_action( 'wp_enqueue_scripts', 'bs_scripts_enqueue' );
 
 
-// Shortcodes in widgets
+// 7. Shortcodes in widgets
 add_filter('widget_text', 'do_shortcode');
 
 
-// Custom pagination
+// 8. Custom pagination
 function custom_pagination($numpages = '', $pagerange = '', $paged='') {
   if (empty($pagerange)) { $pagerange = 2; }
 
@@ -93,8 +150,8 @@ function custom_pagination($numpages = '', $pagerange = '', $paged='') {
   $paginate_links = paginate_links($pagination_args);
 
   if ($paginate_links) {
-    echo "<nav class='custom-pagination'>";
-      echo "<span class='page-numbers page-num'>Page " . $paged . " of " . $numpages . "</span><span class='pipe-separator'>|</span>";
+    echo "<nav class='custom-pagination center-text' role='navigation' aria-label='Paginiation'>";
+      //echo "<span class='page-numbers page-num'>Page " . $paged . " of " . $numpages . "</span><span class='pipe-separator'>|</span>";
       echo $paginate_links;
     echo "</nav>";
   }
@@ -102,7 +159,19 @@ function custom_pagination($numpages = '', $pagerange = '', $paged='') {
 }
 
 
-// Add new image size for blog featured image
+// 9. Add new image sizes
 if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'bs_blog', 800, 500, true ); //(cropped)
 }
+
+
+// 10. Custom Excerpt Length
+function bs_custom_excerpt_length( $length ) {
+  $bs_excerpt_length = get_theme_mod('blog-excerpt-length');
+  if ( $bs_excerpt_length ) {
+    return $bs_excerpt_length;
+  } else {
+    return 45;
+  }
+}
+add_filter( 'excerpt_length', 'bs_custom_excerpt_length', 999 );

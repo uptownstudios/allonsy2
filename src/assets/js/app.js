@@ -20,6 +20,8 @@ import './vendor/jquery.swipebox.min';
 
 import './vendor/imagesloaded.pkgd.min';
 
+import './vendor/lazysizes.min.js';
+
 import './vendor/jquery.waypoints.min';
 
 $(document).foundation();

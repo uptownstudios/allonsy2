@@ -9,28 +9,34 @@
 	get_header();
 	$title_bar = get_theme_mod('internal-title-bar');
 	$breadcrumbs = get_theme_mod('internal-breadcrumbs');
+	$shop_layout = get_theme_mod('shop-layout');
 
-	if( $title_bar === 'bs-featured-image') {
-    get_template_part( 'template-parts/featured-image' );
-  }
-  if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
-    get_template_part( 'template-parts/woocommerce-title-bar' );
-  }
+	if( !is_shop() ) {
+		if( $title_bar === 'bs-featured-image') {
+	    get_template_part( 'template-parts/title-bars/featured-image' );
+	  }
+	  if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
+	    get_template_part( 'template-parts/title-bars/woocommerce-title-bar' );
+	  }
+	} else {
+		if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' || $title_bar === 'bs-featured-image') {
+	    get_template_part( 'template-parts/title-bars/woocommerce-title-bar' );
+	  }
+	}
 ?>
 
 <?php if( $breadcrumbs != '' ) { ?>
-	<?php if( is_shop() ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
-	<?php if( !is_shop() ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php woocommerce_breadcrumb(); ?></div><?php } ?>
+	<?php if( is_shop() ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred shop-layout-<?php echo $shop_layout; ?>"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+	<?php if( !is_shop() ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred shop-layout-<?php echo $shop_layout; ?>"><?php woocommerce_breadcrumb(); ?></div><?php } ?>
 <?php } ?>
 
 <?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
-<header class="woocommerce-shop-title max-width-twelve-hundred">
+<header class="woocommerce-shop-title max-width-twelve-hundred shop-layout-<?php echo $shop_layout; ?>">
 	<h1 class="entry-title"><i class="fa fa-shopping-cart"></i> Shop Our Store</h1>
-	<?php if( !is_shop() ) { ?><div class="breadcrumbs-wrapper"><?php woocommerce_breadcrumb(); ?></div><?php } ?>
 </header>
 <?php endif; ?>
 
-<div class="main-wrap" role="main">
+<div class="main-wrap shop-layout-<?php echo $shop_layout; ?>" role="main">
 
 	<?php do_action( 'foundationpress_before_content' ); ?>
 	<?php /* while ( woocommerce_content() ) : the_post(); */ ?>
@@ -46,7 +52,7 @@
 	<?php /* endwhile; */ ?>
 
 	<?php do_action( 'foundationpress_after_content' ); ?>
-	<?php get_sidebar('woocommerce'); ?>
+	<?php if( $shop_layout === 'sidebar-right' || $shop_layout === 'sidebar-left' ): get_sidebar('woocommerce'); endif; ?>
 
 </div>
 

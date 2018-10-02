@@ -4,8 +4,8 @@ function my_custom_post_current_portfolio() {
 	$labels = array(
 		'name'               => _x( 'Portfolio', 'post type general name' ),
 		'singular_name'      => _x( 'Portfolio', 'post type singular name' ),
-		'add_new'            => _x( 'Add New Item', 'portfolio' ),
-		'add_new_item'       => __( 'Add New Item' ),
+		'add_new'            => _x( 'Add New', 'portfolio' ),
+		'add_new_item'       => __( 'Add New' ),
 		'edit_item'          => __( 'Edit Portfolio Item' ),
 		'new_item'           => __( 'New Portfolio Item' ),
 		'all_items'          => __( 'All Portfolio Items' ),
@@ -28,17 +28,9 @@ function my_custom_post_current_portfolio() {
     'menu_icon'            => 'dashicons-schedule',
 		'rewrite'							 => array('slug' => 'project'),
 	);
-	register_post_type( 'portfolio', $args );
+	register_post_type( 'bs_portfolio', $args );
 }
 add_action( 'init', 'my_custom_post_current_portfolio' );
-
-//Add new image size for Projects featured image
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'portfolio', 500, 500, true ); //(cropped)
-}
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'portfolio-gallery', 800, 800, false ); //(not cropped)
-}
 
 // Category Taxonomy
 function portfolio_tax_category() {
@@ -62,7 +54,7 @@ function portfolio_tax_category() {
 		'query_var' => true,
 		'show_admin_column' => true,
 	);
-	register_taxonomy( 'portfolio-cat', 'portfolio', $args );
+	register_taxonomy( 'portfolio-cat', 'bs_portfolio', $args );
 }
 add_action( 'init', 'portfolio_tax_category', 0 );
 
@@ -72,8 +64,8 @@ function my_custom_post_services() {
 	$labels = array(
 		'name'               => _x( 'Services', 'post type general name' ),
 		'singular_name'      => _x( 'Service', 'post type singular name' ),
-		'add_new'            => _x( 'Add New Service', 'service' ),
-		'add_new_item'       => __( 'Add New Service' ),
+		'add_new'            => _x( 'Add New', 'service' ),
+		'add_new_item'       => __( 'Add New' ),
 		'edit_item'          => __( 'Edit Service' ),
 		'new_item'           => __( 'New Service' ),
 		'all_items'          => __( 'All Services' ),
@@ -100,11 +92,6 @@ function my_custom_post_services() {
 	register_post_type( 'service', $args );
 }
 add_action( 'init', 'my_custom_post_services' );
-
-// Add new image size for Service featured image
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'service', 500, 500, true ); //(cropped)
-}
 
 // Category Taxonomy
 function service_tax_category() {
