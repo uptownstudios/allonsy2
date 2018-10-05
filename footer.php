@@ -31,13 +31,13 @@
 			</div>
 			<div id="copyright-container">
 				<footer id="copyright" class="max-width-twelve-hundred grid-x <?php if( get_theme_mod('social-copyright') != '' ) { ?>has-social<?php } ?>">
-					<?php if( get_theme_mod('social-copyright') != '') { ?><div class="small-12 medium-7 large-7 cell"><?php } ?>
+					<?php if( get_theme_mod('social-copyright') != '') { ?><div class="small-12 medium-12 large-7 cell"><?php } ?>
 					<?php if( get_theme_mod('copyright')): ?>
 						<p>&copy; <?php echo date('Y'); ?> <?php echo get_theme_mod('copyright','default'); ?></p>
 					<?php else: ?>
 						<p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 					<?php endif; ?>
-					<?php if( get_theme_mod('social-copyright') != '' ) { ?></div><div class="small-12 medium-5 large-5 cell"><?php echo do_shortcode('[bs_social_urls]');?></div><?php } ?>
+					<?php if( get_theme_mod('social-copyright') != '' ) { ?></div><div class="small-12 medium-12 large-5 cell"><?php echo do_shortcode('[bs_social_urls]');?></div><?php } ?>
 				</footer>
 			</div>
 		</div>
@@ -80,21 +80,52 @@
 			});
 		});
 
+    // Set Cookie for a11y buttons to make persistent across page loads
+    var $fontsize_cookie = Cookies.get('toggle-fontsize');
+    var $contrast_cookie = Cookies.get('toggle-contrast');
+    //Cookies.set('toggle-fontsize', 'false');
+    //Cookies.set('toggle-contrast', 'false');
+		if( $fontsize_cookie == 'true' ) {
+			$('html').addClass('a11y-fontsize');
+      $('button.a11y-fontsize').addClass('a11y-active');
+		// } else {
+		// 	$('html').removeClass('a11y-fontsize');
+    //   $('button.a11y-fontsize').removeClass('a11y-active');
+		}
+    if( $contrast_cookie == 'true' ) {
+			$('html').addClass('a11y-contrast');
+      $('button.a11y-contrast').addClass('a11y-active');
+		// } else {
+		// 	$('html').removeClass('a11y-contrast');
+    //   $('button.a11y-contrast').removeClass('a11y-active');
+		}
+
+    // Toggle large font size mode
+    function setFontsizeCookie() {
+      fontsizeCookieVal = $('html').hasClass('a11y-fontsize') ? 'true' : 'false';
+      Cookies.set('toggle-fontsize', fontsizeCookieVal, { expires: 7 });
+    }
+    $('button.a11y-fontsize').click(function() {
+      $('html').toggleClass('a11y-fontsize');
+      $(this).toggleClass('a11y-active');
+      setFontsizeCookie();
+    });
+
+    // Toggle high contrast mode
+    function setContrastCookie() {
+      contrastCookieVal = $('html').hasClass('a11y-contrast') ? 'true' : 'false';
+      Cookies.set('toggle-contrast', contrastCookieVal, { expires: 7 });
+    }
+    $('button.a11y-contrast').click(function() {
+      $('html').toggleClass('a11y-contrast');
+      $(this).toggleClass('a11y-active');
+      setContrastCookie();
+    });
+
+
     $('li.menu-item-has-children > a').on('focus focusout', function() {
       $(this).parents().toggleClass('is-active');
     });
-
-    // Toggle large font size mode
-    $('button.a11y-fontsize').click(function() {
-			$('html').toggleClass('fontsize');
-      $(this).toggleClass('a11y-active');
-		});
-
-    // Toggle high contrast mode
-    $('button.a11y-contrast').click(function() {
-			$('html').toggleClass('contrast');
-      $(this).toggleClass('a11y-active');
-		});
 
     // Toggle search box in header
 		$('button.search-toggle').click(function() {
@@ -212,7 +243,8 @@
 	});
 
   $('.portfolio-filter-toggle a').click(function() {
-    $('ul#filters').slideToggle('slow');
+    $('ul.filter-portfolio-category').slideToggle('slow');
+    return false;
   });
 
 	jQuery(function($) {

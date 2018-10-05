@@ -10,6 +10,12 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
+ *
+ * UPTOWN UPDATE NOTES: I convered col-1 and col-2 into Foundation6 tabs. I also
+ * move the Review and Payment section into the tabs instead of them being
+ * separate and below the billing and shipping forms.
+ *
+ *
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
@@ -38,33 +44,38 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-		<ul class="billing-shipping-tabs tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
+		<ul id="deeplinked-tabs" class="billing-shipping-tabs tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="500" data-auto-focus data-tabs>
 			<li class="tabs-title is-active"><a href="#billing_show">Billing Info</a></li>
 			<li class="tabs-title"><a href="#shipping_show">Shipping Info</a></li>
+			<li class="tabs-title"><a href="#payment_show">Review &amp; Payment</a></li>
 		</ul>
 		<div class="billing-shipping-wrapper tabs-content" data-tabs-content="deeplinked-tabs" id="customer_details">
 			<div class="billing-details tabs-panel is-active" id="billing_show">
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
+				<p class="tabs-title checkout-cont-btn"><a class="button" href="#shipping_show">Continue</a></p>
 			</div>
 
 			<div class="shipping-details tabs-panel" id="shipping_show">
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
+				<p class="tabs-title checkout-cont-btn"><a class="button" href="#payment_show">Continue</a></p>
+			</div>
+
+			<div class="payment-details tabs-panel" id="payment_show">
+				<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
+
+				<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+
+				<div id="order_review" class="woocommerce-checkout-review-order">
+					<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+				</div>
+
+				<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 			</div>
 		</div>
 
 		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
 	<?php endif; ?>
-
-	<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
-
-	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-
-	<div id="order_review" class="woocommerce-checkout-review-order">
-		<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-	</div>
-
-	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 </form>
 

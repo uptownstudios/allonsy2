@@ -134,3 +134,140 @@ div#a11y-toolbar {
     }
   }
 }
+
+/**** TOGGLE FONTSIZE STYLES ****/
+html.a11y-fontsize {
+
+  .bs-btn, .button,
+  header#masthead .alt-nav-wrapper .alt-nav-my-cart a,
+  .top-bar-social ul li.custom-button a,
+  nav.off-canvas ul.social-media-wrapper li.custom-button a,
+  nav.off-canvas .alt-nav-my-cart a {
+    font-size: rem-calc(20) !important;
+  }
+  p, a, li, span, time, strong, em, code {
+    font-size: rem-calc(20);
+  }
+  h2, h2 span, h2 a {
+    font-size: rem-calc(34) !important;
+  }
+  h3, h3 span, h3 a,
+  body.woocommerce ul.products > li.product > a .woocommerce-loop-product__title, body.woocommerce-page ul.products > li.product > a .woocommerce-loop-product__title, div.woocommerce ul.products > li.product > a .woocommerce-loop-product__title {
+    font-size: rem-calc(30) !important;
+  }
+  h4, h4 span, h4 a,
+  h5, h5 span, h5 a,
+  h6, h6 span, h6 a {
+    font-size: rem-calc(26) !important;
+  }
+  nav.off-canvas .menu > li > a,
+  header#masthead .menu > li > a {
+    font-size: rem-calc(24) !important;
+    letter-spacing: rem-calc(-1);
+  }
+  header#masthead .site-title-bar.title-bar button.menu-icon span {
+    font-size: rem-calc(10) !important;
+  }
+  .breadcrumbs-wrapper #breadcrumbs li,
+  .breadcrumbs-wrapper #breadcrumbs li a,
+  body.woocommerce .breadcrumbs-wrapper nav.woocommerce-breadcrumb, body.woocommerce-page .breadcrumbs-wrapper nav.woocommerce-breadcrumb,
+  body.woocommerce .breadcrumbs-wrapper nav.woocommerce-breadcrumb span.separator, body.woocommerce-page .breadcrumbs-wrapper nav.woocommerce-breadcrumb span.separator, div.woocommerce .breadcrumbs-wrapper nav.woocommerce-breadcrumb span.separator,
+  body.woocommerce .breadcrumbs-wrapper nav.woocommerce-breadcrumb a, body.woocommerce-page .breadcrumbs-wrapper nav.woocommerce-breadcrumb a, div.woocommerce .breadcrumbs-wrapper nav.woocommerce-breadcrumb a {
+    font-size: rem-calc(18);
+  }
+  .entry-content {
+
+    figure.wp-caption figcaption.wp-caption-text {
+      font-size: rem-calc(20);
+    }
+  }
+  label,
+  .gform_wrapper .top_label .gfield_label {
+    font-size: rem-calc(20);
+    line-height: 1.2;
+  }
+  .gform_wrapper form .gform_body li.gfield .ginput_complex input + label {
+    font-size: rem-calc(16) !important;
+    line-height: 1;
+  }
+  h1.entry-title {
+    font-size: rem-calc(40) !important;
+  }
+  aside.sidebar {
+
+    .widget {
+
+      h6 {
+        font-size: rem-calc(24) !important;
+      }
+      li, li a {
+        font-size: rem-calc(22) !important;
+        line-height: 1.4;
+      }
+    }
+  }
+  #footer-container {
+
+    .pre-footer {
+
+      h4 {
+        font-size: rem-calc(28) !important;
+      }
+      p, a, li, span, time, strong, em {
+        font-size: rem-calc(20);
+      }
+    }
+    .footer-container {
+
+      h6 {
+        font-size: rem-calc(28) !important;
+      }
+      p, a, li, span, time, strong, em {
+        font-size: rem-calc(20);
+      }
+    }
+    #copyright {
+
+      p, a, li, span, time, strong, em {
+        font-size: rem-calc(20);
+      }
+    }
+  }
+}
+
+html.a11y-contrast {
+
+  a, abbr, article, aside, basefont, bdi, big, blink, blockquote, body, button, canvas, caption, center, code, col, colgroup, command, dd, details, dir, div, dl, dt, embed, fieldset, figcaption, figure, font, footer, form, header, hgroup, html, iframe, img, input, kbd, label, legend, li, listing, mark, marquee, menu, meter, multicol, nav, nobr, object, ol, option, p, plaintext, pre, progress, q, s, section, select, small, span, strike, sub, summary, sup, table, td, textarea, th, time, tr, tt, ul, var, xmp, body.woocommerce ul.products > li.product > a span.price span.amount, body.woocommerce-page ul.products > li.product > a span.price span.amount, div.woocommerce ul.products > li.product > a span.price span.amount, #main-container h2, #main-container h2 span, #main-container h3, #main-container h3 span, #main-container h4, #main-container h4 span, #main-container h5, #main-container h5 span, #main-container h6, #main-container h6 span, .pre-footer-container .pre-footer h1, .pre-footer-container .pre-footer h2, .pre-footer-container .pre-footer h3, .pre-footer-container .pre-footer h4, .pre-footer-container .pre-footer h5, .pre-footer-container .pre-footer h6, .footer-container .footer h1, .footer-container .footer h2, .footer-container .footer h3, .footer-container .footer h4, .footer-container .footer h5, .footer-container .footer h6, span.required, body.woocommerce span.required, body.woocommerce-page span.required, div.woocommerce span.required {
+    color: #F3F3F3 !important;
+  }
+  a {
+    color: yellow !important;
+  }
+  #main-container a, .pre-footer-container a, .footer-container .footer a, #copyright a {
+    text-decoration: underline !important;
+  }
+  a, abbr, acronym, address, article, aside, b, basefont, bdi, big, blink, blockquote, body, canvas, caption, center, cite, code, col, colgroup, command, dd, details, dfn, dir, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h1 a, h1 a b, h1 abbr, h1 center, h1 span, h2, h2 a, h2 a b, h2 abbr, h2 center, h2 span, h3, h3 a, h3 a b, h3 abbr, h3 center, h3 span, h4, h4 a, h4 a b, h4 abbr, h4 center, h4 span, h5, h5 a, h5 a b, h5 abbr, h5 center, h5 span, h6, h6 a, h6 a b, h6 abbr, h6 center, h6 span, header, hgroup, html, i, iframe, input, kbd, label, legend, li, listing, mark, marquee, menu, meter, multicol, nav, nobr, object, ol, option, p, plaintext, pre, progress, q, s, section, small, span, strike, strong, sub, summary, sup, table, td, textarea, th, time, tr, tt, u, ul, var, xmp, .bs-btn, .button, header#masthead .top-bar-social ul.social-media-wrapper li.custom-button a {
+    // background: $black !important;
+    background-color: $black !important;
+    color: #F3F3F3 !important;
+  }
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"], textarea, select {
+    background-color: $white !important;
+    color: $black !important;
+  }
+  img {
+    background: #808080 !important;
+    background-color: #808080 !important;
+    mix-blend-mode: unset !important;
+  }
+  body.woocommerce-page .woocommerce-tabs ul.tabs.wc-tabs li.active,
+  body.woocommerce-page .woocommerce-tabs ul.tabs.wc-tabs li.active a {
+    background: $white !important;
+  }
+  body.woocommerce span.onsale:before, body.woocommerce-page span.onsale:before, div.woocommerce span.onsale:before {
+    border-top-color: $black;
+  }
+  body.woocommerce span.onsale:after, body.woocommerce-page span.onsale:after, div.woocommerce span.onsale:after {
+    border-bottom-color: $black;
+  }
+}

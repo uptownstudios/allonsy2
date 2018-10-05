@@ -3,6 +3,11 @@
 // Edits to WooCommerce breadcrumbs are in /allonsy2/library/navigation.php
 
 
+// Remove coupon form from top of checkout page so I can include it in a different place
+// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+// add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_checkout_coupon_form' );
+
+
 // Change stupid WooCommerce pagination arrow to &laquo; and &raquo; instead
 add_filter( 'woocommerce_pagination_args', 	'rocket_woo_pagination' );
 function rocket_woo_pagination( $args ) {

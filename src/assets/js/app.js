@@ -14,9 +14,11 @@ import './vendor/stickyfooter';
 
 // import './vendor/classie';
 
-import './vendor/slick.min';
+// import './vendor/slick.min';
 
-import './vendor/jquery.swipebox.min';
+import './vendor/js.cookie.js';
+
+// import './vendor/jquery.swipebox.min';
 
 import './vendor/imagesloaded.pkgd.min';
 

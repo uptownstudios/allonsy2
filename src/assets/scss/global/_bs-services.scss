@@ -189,6 +189,11 @@
       margin-bottom: rem-calc(25);
       padding-bottom: rem-calc(25);
 
+      &:last-of-type {
+        border-bottom: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
       .service-thumbnail {
         order: 2;
         width: rem-calc(300);

@@ -347,6 +347,7 @@ h1.entry-title {
 }
 body:not(.home) .main-wrap {
   margin-top: rem-calc(40);
+  margin-bottom: rem-calc(40);
 }
 
 /* 5d. Full Width Page Template Styles */
@@ -415,6 +416,7 @@ aside.sidebar {
       margin: 0;
 
       & > li {
+        margin-bottom: rem-calc(10);
         position: relative;
       }
       & > li > a {
@@ -422,7 +424,6 @@ aside.sidebar {
         display: inline-block;
         font-size: rem-calc(18) !important;
         font-weight: 700;
-        margin-bottom: rem-calc(10);
         vertical-align: middle;
       }
       & > li:last-child > a {
@@ -625,6 +626,7 @@ ul.pagination {
 .single-post, .blog, .search-results, .single-service, .archive, .tag {
 
   .main-wrap {
+    margin-bottom: rem-calc(40);
 
     &.no-sidebar {
       display: flex;
@@ -793,21 +795,12 @@ ul.pagination {
     display: flex;
     flex-wrap: wrap;
     margin-left: rem-calc(-30);
-    margin-top: rem-calc(-30);
-    @media #{$break800} {
-      margin-left: rem-calc(-15);
-      margin-top: rem-calc(-15);
-    }
+    margin-bottom: rem-calc(-45) !important;
 
     article.bs-single-post {
-      margin-top: rem-calc(30);
+      margin-bottom: rem-calc(45);
       padding-left: rem-calc(30);
 
-      @media #{$break800} {
-        margin-top: rem-calc(15);
-        padding-left: rem-calc(15);
-        // width: 50%;
-      }
       @media #{$break600} {
         width: 100%;
       }
@@ -885,7 +878,7 @@ ul.pagination {
       article.bs-single-post {
         width: 33.3333%;
 
-        @media #{$break800} {
+        @media #{$break767} {
           width: 50%;
         }
         @media #{$break600} {

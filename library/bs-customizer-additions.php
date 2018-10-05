@@ -1519,6 +1519,9 @@ nav.off-canvas .submenu li.is-active a {
 .menu-icon:focus::before {
   box-shadow: 0 7px 0 <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }
+form#searchform {
+  background: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?> !important;
+}
 .highlight-bg {
   background-color: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }

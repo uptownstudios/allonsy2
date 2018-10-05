@@ -15,6 +15,13 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
+ *
+ * UPTOWN UPDATE NOTES: I added the 'Return to shop' button beneath the 'Proceed
+ * to Checkout' button. I also moved the 'Update Cart' button from
+ * /woocommerce/cart/cart.php to this file, and placed above the 'Proceed to
+ * Checkout' button.
+ *
+ *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
@@ -26,6 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
+
+<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 
 <a href="<?php echo esc_url( wc_get_checkout_url() );?>" class="checkout-button button alt wc-forward">
 	<?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
