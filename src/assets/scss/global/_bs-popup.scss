@@ -1,0 +1,53 @@
+div#bs-sitewide-popup {
+
+  .bs-popup-overlay {
+    background: rgba(0,0,0,.85);
+    bottom: 0;
+    cursor: pointer !important;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  .bs-popup-inner {
+    background: $white;
+    border: rem-calc(2) solid $blue;
+    left: 50%;
+    margin: 0 auto;
+    max-height: 80vh;
+    max-width: calc(100% - 1.875rem);
+    padding: rem-calc(30);
+    position: fixed;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: rem-calc(600);
+    z-index: 1001;
+
+    h2, h3, h4, h5, h6 {
+      color: $blue;
+    }
+    p {
+      color: $black;
+    }
+  }
+  .bs-popup-close {
+    color: $white;
+    cursor: pointer !important;
+    font-size: rem-calc(40);
+    line-height: rem-calc(80);
+    height: rem-calc(80);
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: rem-calc(80);
+    z-index: 1001;
+  }
+  .bs-popup-hide-forever {
+    font-weight: 700;
+  }
+}

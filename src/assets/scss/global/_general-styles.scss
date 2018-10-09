@@ -154,6 +154,7 @@ ul.pagination {
 /* Foundation 6 Tabs Styles */
 .tabs {
   border: 0;
+  overflow: hidden;
 
   .tabs-title {
     margin-right: rem-calc(4);
@@ -170,21 +171,23 @@ ul.pagination {
       color: $white;
       font-size: rem-calc(16);
       font-weight: 700;
-      padding: rem-calc(15) rem-calc(20);
+      padding: rem-calc(12) rem-calc(15);
       position: relative;
       text-decoration: none !important;
+      @include transition(padding);
       @media #{$break767} {
         border-top: 0;
         border-bottom: rem-calc(1) solid $ltgray;
+        box-shadow: 0 rem-calc(-2) rem-calc(7) #001e61;
       }
     }
     &.is-active {
 
       a {
-        background: $ltgray;
+        background: $red;
         border-bottom: rem-calc(1) solid $ltgray;
-        color: $black;
-
+        color: $white;
+        padding: rem-calc(17) rem-calc(15);
       }
       &:first-child {
 

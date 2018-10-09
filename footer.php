@@ -8,6 +8,8 @@
  * @since FoundationPress 1.0.0
  */
  $pre_footer = get_theme_mod('pre-footer-widgets');
+ $popup_delay = get_theme_mod('bs_pop_up_delay');
+ $popup_content = get_theme_mod('bs_pop_up_content');
 ?>
 
 		</section>
@@ -46,6 +48,15 @@
   		<a href="#" title="Back to top"><i class="fa fa-chevron-up"></i></a>
 		</div>
 
+    <div id="bs-sitewide-popup" class="bs-sitewide-popup" style="display: none;">
+      <div class="bs-popup-overlay"></div>
+      <a href="#" class="bs-popup-close"><i class="far fa-times"></i></a>
+      <div class="bs-popup-inner">
+        <?php echo apply_filters('the_content', $popup_content); ?>
+        <p style="margin-bottom: 0;"><a class="bs-popup-hide-forever" href="#">Never show this again</a></p>
+      </div>
+    </div>
+
 		<?php do_action( 'foundationpress_layout_end' ); ?>
 
 <?php if ( get_theme_mod( 'wpt_mobile_menu_layout' ) === 'offcanvas' ) : ?>
@@ -83,21 +94,13 @@
     // Set Cookie for a11y buttons to make persistent across page loads
     var $fontsize_cookie = Cookies.get('toggle-fontsize');
     var $contrast_cookie = Cookies.get('toggle-contrast');
-    //Cookies.set('toggle-fontsize', 'false');
-    //Cookies.set('toggle-contrast', 'false');
 		if( $fontsize_cookie == 'true' ) {
 			$('html').addClass('a11y-fontsize');
       $('button.a11y-fontsize').addClass('a11y-active');
-		// } else {
-		// 	$('html').removeClass('a11y-fontsize');
-    //   $('button.a11y-fontsize').removeClass('a11y-active');
 		}
     if( $contrast_cookie == 'true' ) {
 			$('html').addClass('a11y-contrast');
       $('button.a11y-contrast').addClass('a11y-active');
-		// } else {
-		// 	$('html').removeClass('a11y-contrast');
-    //   $('button.a11y-contrast').removeClass('a11y-active');
 		}
 
     // Toggle large font size mode
@@ -122,6 +125,66 @@
       setContrastCookie();
     });
 
+    // Popup
+    $(window).imagesLoaded(function() {
+      $('.bs-sitewide-popup').delay(6000).fadeIn('slow');
+    });
+    var $popup_cookie = Cookies.get('hide-sitewide-popup');
+		if( $popup_cookie == 'true' ) {
+      $('.bs-sitewide-popup').remove();
+		}
+    $('a.bs-popup-hide-forever').click(function() {
+      $('.bs-sitewide-popup').fadeOut('fast');
+      Cookies.set('hide-sitewide-popup', 'true', { expires: 30 });
+      return false;
+    });
+
+
+    // $('.input-number-increment').click(function() {
+    //   var $input = $(this).parents('.input-number-group').find('.input-number');
+    //   var val = parseInt($input.val(), 10);
+    //   $input.val(val + 1);
+    // });
+    // $('.input-number-decrement').click(function() {
+    //   var $input = $(this).parents('.input-number-group').find('.input-number');
+    //   var val = parseInt($input.val(), 10);
+    //   $input.val(val - 1);
+    // })
+    function bsAddQuantityBoxes(a) {
+      var b, c = !1;
+      a || (a = ".qty"),
+      b = jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").find(a),
+      b.length && (jQuery.each(b, function(a, b) {
+        "date" !== jQuery(b).prop("type") && "hidden" !== jQuery(b).prop("type") && (jQuery(b).parent().hasClass("buttons_added") || (jQuery(b).parent().addClass("buttons_added").prepend('<input type="button" value="-" class="input-group-button input-number-decrement minus" />'),
+        jQuery(b).addClass("input-text").after('<input type="button" value="+" class="input-group-button input-number-increment plus" />'),
+        c = !0))
+      }),
+      c && (jQuery("input" + a + ":not(.product-quantity input" + a + ")").each(function() {
+        var a = parseFloat(jQuery(this).attr("min"));
+        a && 0 < a && parseFloat(jQuery(this).val()) < a && jQuery(this).val(a)
+      }),
+      jQuery(".plus, .minus").unbind("click"),
+      jQuery(".plus, .minus").on("click", function() {
+        var b = jQuery(this).parent().find(a)
+          , c = parseFloat(b.val())
+          , d = parseFloat(b.attr("max"))
+          , e = parseFloat(b.attr("min"))
+          , f = b.attr("step");
+        c && "" !== c && "NaN" !== c || (c = 0),
+        "" !== d && "NaN" !== d || (d = ""),
+        "" !== e && "NaN" !== e || (e = 0),
+        "any" !== f && "" !== f && void 0 !== f && "NaN" !== parseFloat(f) || (f = 1),
+        jQuery(this).is(".plus") ? d && (d == c || c > d) ? b.val(d) : b.val(c + parseFloat(f)) : e && (e == c || c < e) ? b.val(e) : 0 < c && b.val(c - parseFloat(f)),
+        b.trigger("change")
+      })))
+    }
+    jQuery(window).on("load", function() {
+      bsAddQuantityBoxes()
+    }),
+    jQuery(document).ajaxComplete(function() {
+      bsAddQuantityBoxes()
+    });
+
 
     $('li.menu-item-has-children > a').on('focus focusout', function() {
       $(this).parents().toggleClass('is-active');
@@ -137,6 +200,9 @@
 				$('nav.top-bar form#searchform.show').removeClass('show');
 				//$('button.search-toggle').click();
 			}
+      if( target.is('.bs-popup-overlay, .bs-popup-close') ) {
+        $('.bs-sitewide-popup').fadeOut('fast');
+      }
 		});
 
 		$('button.menu-icon').click(function() {
