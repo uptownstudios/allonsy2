@@ -97,22 +97,24 @@ nav.off-canvas {
   }
   ul.social-media-wrapper {
     margin: rem-calc(20) 0 rem-calc(15) 0;
-    text-align: center;
+    padding: 0 rem-calc(15);
+    text-align: left;
 
     li {
       display: inline-block;
       font-size: 1.5rem;
       height: rem-calc(36);
-      width: rem-calc(36);
+      width: 15.26874%;
     }
     li a {
       display: block;
+      text-align: center;
     }
     li.custom-button {
       width: auto;
       display: block;
-      max-width: calc(100% - 2rem);
-      margin: rem-calc(15) auto 0;
+      max-width: 100%;
+      margin: rem-calc(15) 0 0 0;
 
       a {
         display: block;
@@ -203,7 +205,6 @@ nav.off-canvas {
       color: $white;
       content: '\f002';
       cursor: pointer;
-      font-family: fontawesome !important;
       height: rem-calc(34);
       line-height: rem-calc(34);
       position: absolute;

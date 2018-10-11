@@ -37,9 +37,11 @@
 
 8. SERVICES STYLES
 
-9. 404 PAGE STYLES
+9. STAFF STYLES
 
-10. FOOTER STYLES
+10. 404 PAGE STYLES
+
+11. FOOTER STYLES
 
 ** END TABLE OF CONTENTS **/
 
@@ -287,7 +289,7 @@ h1.entry-title {
     text-align: center;
     text-shadow: 0 rem-calc(2) rem-calc(1) $black;
   }
-  time, p.byline.author, p.bs-post-date, p.bs-post-cats, p.bs-post-comments, p.search-query, ul li {
+  time, p.byline.author, p.bs-post-date, p.bs-post-cats, p.bs-post-comments, p.search-query, ul li, span.staff-title {
     margin-bottom: 0;
     position: relative;
     text-shadow: 0 rem-calc(2) rem-calc(1) $black;
@@ -623,11 +625,31 @@ ul.pagination {
 
 
 /**** 6. BLOG PAGE AND SINGLE BLOG POST STYLES ****/
-.single-post, .blog, .search-results, .single-service, .archive, .tag {
+.single-post, .blog, .search-results, .single-service, .archive, .tag, .single-staff {
 
   .main-wrap {
     margin-bottom: rem-calc(40);
 
+    .main-content {
+
+      .bs-entry-meta {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: rem-calc(32);
+
+        p {
+          border-right: rem-calc(2) solid $blue;
+          margin: 0 rem-calc(10) 0 0;
+          padding: 0 rem-calc(10) 0 0;
+
+          &:last-of-type {
+            border-right: 0;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
     &.no-sidebar {
       display: flex;
       justify-content: center;
@@ -747,7 +769,10 @@ ul.pagination {
   .blog-footer {
 
     a {
+      font-size: rem-calc(14);
       font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
     }
   }
   &.bs-blog-loop-list {
@@ -1046,7 +1071,11 @@ section#respond {
 @import "global/bs-services";
 
 
-/**** 9. 404 PAGE STYLES ****/
+/**** 9. STAFF STYLES ****/
+@import "global/bs-staff";
+
+
+/**** 10. 404 PAGE STYLES ****/
 .error404 {
 
   .main-wrap.no-sidebar {
@@ -1061,7 +1090,7 @@ section#respond {
 }
 
 
-/**** 10. FOOTER STYLES ****/
+/**** 11. FOOTER STYLES ****/
 footer.footer {
 
   .widget {

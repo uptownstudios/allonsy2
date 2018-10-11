@@ -14,7 +14,7 @@
 					<div class="title-bar-title">
 						<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
 					</div>
-					<button class="menu-icon <?php if ( $menu_layout === 'topbar' ) { ?>menu-type-topbar<?php } ?>" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"><span class="keep-together">Menu <i class="fa fa-caret-right" aria-hidden="hidden"></i></span></button>
+					<button class="menu-icon <?php if ( $menu_layout === 'topbar' ) { ?>menu-type-topbar<?php } ?>" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"><span class="keep-together">Menu <i class="fas fa-caret-right" aria-hidden="hidden"></i></span></button>
 					<!-- <span class="site-mobile-title title-bar-title">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 					</span> -->

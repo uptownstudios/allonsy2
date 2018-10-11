@@ -1491,6 +1491,9 @@ header#masthead.header-option-three ul.desktop-menu:after {
   left: 100%;
   right: auto;
 }
+.top-bar nav.mobile-menu.vertical.menu ul {
+  background-color: <?php echo esc_attr(get_theme_mod('main_nav_sub_bg_color','#FFFFFF')); ?>;
+}
 .top-bar .menu > li > a,
 nav.off-canvas > .menu > li > a,
 nav.off-canvas .submenu li a,
@@ -1501,6 +1504,8 @@ nav.top-bar.has-search .menu-search-wrapper button {
   -o-transition: color .2s ease-out;
   transition: color .2s ease-out;
 }
+.top-bar nav.mobile-menu.vertical.menu ul li.current-menu-ancestor > a,
+.top-bar nav.mobile-menu.vertical.menu ul li.current-menu-item > a,
 nav.off-canvas ul.menu li.current_page_parent a {
   color: <?php echo esc_attr(get_theme_mod('main_nav_hover_color','#003a71')); ?>;
 }

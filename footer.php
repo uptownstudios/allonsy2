@@ -8,8 +8,10 @@
  * @since FoundationPress 1.0.0
  */
  $pre_footer = get_theme_mod('pre-footer-widgets');
+ $popup_enabled = get_theme_mod('bs_pop_up_enable');
  $popup_delay = get_theme_mod('bs_pop_up_delay');
  $popup_content = get_theme_mod('bs_pop_up_content');
+ $a11y_toolbar = get_theme_mod('show-a11y-toolbar');
 ?>
 
 		</section>
@@ -48,6 +50,7 @@
   		<a href="#" title="Back to top"><i class="fa fa-chevron-up"></i></a>
 		</div>
 
+    <?php if( $popup_enabled ): ?>
     <div id="bs-sitewide-popup" class="bs-sitewide-popup" style="display: none;">
       <div class="bs-popup-overlay"></div>
       <a href="#" class="bs-popup-close"><i class="far fa-times"></i></a>
@@ -56,6 +59,7 @@
         <p style="margin-bottom: 0;"><a class="bs-popup-hide-forever" href="#">Never show this again</a></p>
       </div>
     </div>
+    <?php endif; ?>
 
 		<?php do_action( 'foundationpress_layout_end' ); ?>
 
@@ -91,6 +95,7 @@
 			});
 		});
 
+    <?php if( $a11y_toolbar ): ?>
     // Set Cookie for a11y buttons to make persistent across page loads
     var $fontsize_cookie = Cookies.get('toggle-fontsize');
     var $contrast_cookie = Cookies.get('toggle-contrast');
@@ -102,7 +107,6 @@
 			$('html').addClass('a11y-contrast');
       $('button.a11y-contrast').addClass('a11y-active');
 		}
-
     // Toggle large font size mode
     function setFontsizeCookie() {
       fontsizeCookieVal = $('html').hasClass('a11y-fontsize') ? 'true' : 'false';
@@ -113,7 +117,6 @@
       $(this).toggleClass('a11y-active');
       setFontsizeCookie();
     });
-
     // Toggle high contrast mode
     function setContrastCookie() {
       contrastCookieVal = $('html').hasClass('a11y-contrast') ? 'true' : 'false';
@@ -124,7 +127,9 @@
       $(this).toggleClass('a11y-active');
       setContrastCookie();
     });
+    <?php endif; ?>
 
+    <?php if( $popup_enabled ): ?>
     // Popup
     $(window).imagesLoaded(function() {
       $('.bs-sitewide-popup').delay(6000).fadeIn('slow');
@@ -138,18 +143,10 @@
       Cookies.set('hide-sitewide-popup', 'true', { expires: 30 });
       return false;
     });
+    <?php endif; ?>
 
 
-    // $('.input-number-increment').click(function() {
-    //   var $input = $(this).parents('.input-number-group').find('.input-number');
-    //   var val = parseInt($input.val(), 10);
-    //   $input.val(val + 1);
-    // });
-    // $('.input-number-decrement').click(function() {
-    //   var $input = $(this).parents('.input-number-group').find('.input-number');
-    //   var val = parseInt($input.val(), 10);
-    //   $input.val(val - 1);
-    // })
+    // Custom quantity input buttons on div.quantity (mainly in WC)
     function bsAddQuantityBoxes(a) {
       var b, c = !1;
       a || (a = ".qty"),
@@ -200,9 +197,11 @@
 				$('nav.top-bar form#searchform.show').removeClass('show');
 				//$('button.search-toggle').click();
 			}
+      <?php if( $popup_enabled ): ?>
       if( target.is('.bs-popup-overlay, .bs-popup-close') ) {
         $('.bs-sitewide-popup').fadeOut('fast');
       }
+      <?php endif; ?>
 		});
 
 		$('button.menu-icon').click(function() {

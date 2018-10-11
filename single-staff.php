@@ -9,6 +9,7 @@
   get_header();
   $title_bar = get_theme_mod('internal-title-bar');
   $single_post_layout = get_theme_mod('single-post-layout');
+  $staff_title = get_post_meta( $post->ID, '_staff_title', true );
   /* BLOG PAGE LAYOUT CHOICES
       'single-sidebar-right' => 'Sidebar Right',
       'single-sidebar-left' => 'Sidebar Left',
@@ -16,15 +17,8 @@
       'single-narrow-content' => 'No Sidebar, Narrow Content',
   */
 
-  $share_buttons = get_theme_mod('show-share-buttons');
-  $share_buttons_position = get_theme_mod('share-buttons-position');
-  $share_buttons_count = get_theme_mod('share-buttons-count');
-
-	if( $title_bar === 'bs-featured-image') {
-    get_template_part( 'template-parts/title-bars/featured-image' );
-  }
-  if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
-    get_template_part( 'template-parts/title-bars/service-title-bar' );
+  if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' || $title_bar === 'bs-featured-image' ) {
+    get_template_part( 'template-parts/title-bars/staff-title-bar' );
   }
 ?>
 
@@ -33,21 +27,23 @@
 <?php do_action( 'foundationpress_before_content' ); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 	<article <?php post_class('main-content') ?> id="post-<?php the_ID(); ?>">
-    <?php if( $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' || $title_bar === 'bs-hide-title-bar' ) : ?>
 
-      <?php if( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-
-    <?php endif; ?>
     <?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
 		<header>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
-			<ul class="service-category"><li><i class="far fa-sitemap"></i></li><?php $terms = get_the_terms( $post->ID , 'service-cat' ); foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
+      <?php if( $staff_title || $terms ): ?>
+			<p><span class="staff-title"><i class="far fa-bookmark"></i> <?php echo $staff_title; ?></span></p>
+      <?php $terms = get_the_terms( $post->ID , 'staff-cat' );
+      if ( $terms ): ?>
+        <ul class="staff-category"><li><i class="far fa-building"></i></li><?php foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
+      <?php endif; ?>
+      <?php endif; ?>
 		</header>
 		<?php endif; ?>
 		<?php do_action( 'foundationpress_post_before_entry_content' ); ?>
 		<div class="entry-content">
 
-      <?php if( has_post_thumbnail() ) { ?><div class="service-featured-image mb15 alignright"><?php the_post_thumbnail(); ?></div><?php } ?>
+      <?php if( has_post_thumbnail() ) { ?><div class="staff-featured-image mb15 alignright"><?php the_post_thumbnail(); ?></div><?php } ?>
 
 			<?php the_content(); ?>
 
@@ -63,9 +59,6 @@
       ) ); ?>
 		</footer>
 
-		<?php do_action( 'foundationpress_post_before_comments' ); ?>
-		<?php comments_template(); ?>
-		<?php do_action( 'foundationpress_post_after_comments' ); ?>
 	</article>
 <?php endwhile;?>
 

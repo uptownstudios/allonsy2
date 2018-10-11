@@ -483,6 +483,15 @@ form#searchform {
       width: rem-calc(36);
     }
   }
+  @media #{$break1024} {
+    .small-12.medium-12.large-7 {
+      margin-bottom: rem-calc(10);
+      
+      p {
+        text-align: center;
+      }
+    }
+  }
 }
 #back-top {
   position: fixed;

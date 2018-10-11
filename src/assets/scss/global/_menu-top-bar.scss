@@ -16,15 +16,6 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
   }
   & > ul.menu {
     padding: 0;
-
-    li.current_page_parent {
-
-      a {
-        background: $red;
-        color: $white;
-
-      }
-    }
   }
   ul.menu.alt-menu {
     display: flex !important;
@@ -130,7 +121,8 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
         }
       }
     }
-    li.custom-button.top-bar-my-cart {
+    li.custom-button.top-bar-my-cart,
+    li.custom-button.alt-nav-my-cart {
 
       i {
         display: inline;
@@ -161,6 +153,45 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
     }
     li.custom-button a {
       padding: 0 rem-calc(10);
+    }
+  }
+  .alt-nav-my-cart {
+    text-align: center;
+
+    a {
+      align-items: center;
+      background: $red;
+      color: $white;
+      display: block;
+      font-family: $fontstack;
+      font-size: rem-calc(15) !important;
+      font-weight: 700;
+      max-width: 100%;
+      margin: rem-calc(7) 0 rem-calc(15);
+      padding: rem-calc(8) rem-calc(10);
+      text-transform: uppercase;
+      width: 100%;
+      @include transition(all);
+
+      &:hover, &:focus {
+        background: $blue;
+      }
+    }
+    i {
+      display: inline;
+      font-size: rem-calc(18);
+      margin-right: rem-calc(2);
+    }
+    span.cart-contents {
+      background: $white;
+      border-radius: 100%;
+      color: $blue;
+      display: inline-block;
+      line-height: rem-calc(20);
+      height: rem-calc(20);
+      margin: 0 0 0 rem-calc(5);
+      min-width: rem-calc(20);
+      text-align: center;
     }
   }
   form#searchform {
@@ -205,13 +236,13 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
       }
     }
     input#s {
-      max-width: none;
+      background: $white;
       border: 0;
       box-shadow: none;
-      padding: 0 rem-calc(10) !important;
-      line-height: rem-calc(34);
       height: rem-calc(34);
-      background: none;
+      line-height: rem-calc(34);
+      max-width: none;
+      padding: 0 rem-calc(10) !important;
     }
     .input-group {
       margin: 0;

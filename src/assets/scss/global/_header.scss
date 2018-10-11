@@ -43,12 +43,13 @@ header#masthead {
         margin-top: rem-calc(2);
       }
       i {
+        bottom: rem-calc(-11.015);
         color: $blue;
         display: inline;
         font-size: rem-calc(11);
+        line-height: 0.7;
         position: absolute;
         right: 0;
-        bottom: rem-calc(-14);
       }
       &.menu-type-topbar {
 
@@ -432,7 +433,7 @@ header#masthead {
     line-height: 1;
     font-size: rem-calc(15);
     font-weight: 400;
-    padding: rem-calc(12) rem-calc(20) rem-calc(13) !important;
+    padding: rem-calc(12) rem-calc(15) rem-calc(13) !important;
     display: block;
     position: relative;
     @include transition(all);

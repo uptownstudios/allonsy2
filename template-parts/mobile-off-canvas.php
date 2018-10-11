@@ -21,7 +21,7 @@
 				<div class="custom-button alt-nav-my-cart">
 					<a href="<?php echo get_permalink( wc_get_page_id( 'cart' ) ); ?>"><i class="fas fa-shopping-bag"></i> My Cart <span class="cart-contents"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?></span></a>
 				</div>
-				<?php } ?>
+			<?php } ?>
       <?php if( $hide_social == '' ): get_search_form(); endif; ?>
     </nav>
 

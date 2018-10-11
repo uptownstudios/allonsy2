@@ -209,6 +209,9 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
           &.last {
             margin: 0;
           }
+          &.last + li.product.first {
+            margin: rem-calc(45) 0 !important;
+          }
         }
         .image-wrapper {
           border: 0;
@@ -324,6 +327,7 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
 
     &:after {
       background: $green;
+      border-radius: 100%;
       bottom: rem-calc(2);
       color: $white;
       line-height: rem-calc(35);
@@ -331,7 +335,12 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
       padding: rem-calc(5);
       position: absolute;
       right: rem-calc(2);
+      text-align: center;
       top: 0;
+      width: rem-calc(42);
+    }
+    &.added:after {
+      border-radius: 0;
     }
     & + a.added_to_cart {
       font-weight: 700;
@@ -1649,27 +1658,53 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
   }
   .woocommerce-error, .woocommerce-info, .woocommerce-message {
     background: $ltgray;
-    padding: rem-calc(15) rem-calc(15) rem-calc(15) rem-calc(40);
+    font-weight: 700;
+    padding: rem-calc(15) rem-calc(15) rem-calc(15) rem-calc(45);
+    position: relative;
 
     a.button {
       margin-left: rem-calc(10);
     }
     &:before {
-      left: rem-calc(15);
+      align-items: center;
+      color: $white !important;
+      // left: rem-calc(15);
+      display: flex;
+      height: 100%;
+      left: 0 !important;
+      padding: 0 rem-calc(10);
+      position: absolute;
+      top: 0;
     }
   }
   .woocommerce-message {
-    border-top-color: $green;
+    border-top-color: $ltgreen;
 
-    & *, &:before {
+    a {
       color: $green;
+    }
+    &:before {
+      background: $ltgreen;
     }
   }
   .woocommerce-error {
     border-top-color: $red;
 
-    & *, &:before {
+    a {
       color: $red;
+    }
+    &:before {
+      background: $red;
+    }
+  }
+  .woocommerce-info {
+    border-top-color: $ltblue;
+
+    a {
+      color: $ltblue;
+    }
+    &:before {
+      background: $ltblue;
     }
   }
 }
