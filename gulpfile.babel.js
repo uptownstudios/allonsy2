@@ -4,6 +4,7 @@ import plugins       from 'gulp-load-plugins';
 import yargs         from 'yargs';
 import browser       from 'browser-sync';
 import gulp          from 'gulp';
+import uncss         from 'postcss-uncss';
 import rimraf        from 'rimraf';
 import yaml          from 'js-yaml';
 import fs            from 'fs';
@@ -92,6 +93,24 @@ function sass() {
     .pipe($.if(REVISIONING && PRODUCTION || REVISIONING && DEV, $.rev()))
     .pipe(gulp.dest(PATHS.dist + '/assets/css'))
     .pipe($.if(REVISIONING && PRODUCTION || REVISIONING && DEV, $.rev.manifest()))
+    .pipe(gulp.dest(PATHS.dist + '/assets/css'))
+    .pipe(browser.reload({ stream: true }));
+}
+
+function renderCss() {
+  return gulp.src('dist/assets/css/app.css')
+    .pipe($.if(PRODUCTION, $.uncss({
+      html: ['http://127.0.0.1/allonsy/','http://127.0.0.1/allonsy/*'],
+      ignore: [
+        '/foundation-mq/','/^\.is-.*/',
+        '/open/','/show/','/loaded/','/active/',
+        '/a11y-fontsize/','/a11y-contrast/','/a11y-active/',
+        // '.input-number-increment','.plus','.input-number-decrement','.minus',
+        // '.clear-notice','.hide-notice','.has-label-below',
+        // '.ginput_container_address_label','.mobile','.home','.not-home',
+        // '.sticky-prep','.sticky-header','.logged-in','.admin-bar'
+      ]
+    })))
     .pipe(gulp.dest(PATHS.dist + '/assets/css'))
     .pipe(browser.reload({ stream: true }));
 }
@@ -234,7 +253,7 @@ function watch() {
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
-  gulp.series(clean, gulp.parallel(sass, 'webpack:build', images, copy)));
+  gulp.series(clean, gulp.parallel(sass,'webpack:build', images, copy)/*,renderCss*/));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',

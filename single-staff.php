@@ -10,6 +10,8 @@
   $title_bar = get_theme_mod('internal-title-bar');
   $single_post_layout = get_theme_mod('single-post-layout');
   $staff_title = get_post_meta( $post->ID, '_staff_title', true );
+  $staff_email = get_post_meta( $post->ID, '_staff_email', true );
+  $staff_phone = get_post_meta( $post->ID, '_staff_phone', true );
   /* BLOG PAGE LAYOUT CHOICES
       'single-sidebar-right' => 'Sidebar Right',
       'single-sidebar-left' => 'Sidebar Left',
@@ -31,8 +33,11 @@
     <?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
 		<header>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php if( $staff_title || $terms ): ?>
-			<p><span class="staff-title"><i class="far fa-bookmark"></i> <?php echo $staff_title; ?></span></p>
+      <?php if( $staff_title || $staff_email || $staff_phone ||$terms ): ?>
+			<p>
+        <?php if( $staff_title ): ?><span class="staff-meta staff-title"><i class="far fa-bookmark"></i> <?php echo $staff_title; ?></span><?php endif; ?>
+        <?php if( $staff_email ): ?><span class="staff-meta staff-email"><i class="far fa-envelope"></i> <?php echo $staff_email; ?></span><?php endif; ?>
+        <?php if( $staff_phone ): ?><span class="staff-meta staff-phone"><i class="far fa-phone"></i> <?php echo $staff_phone; ?></span><?php endif; ?></p>
       <?php $terms = get_the_terms( $post->ID , 'staff-cat' );
       if ( $terms ): ?>
         <ul class="staff-category"><li><i class="far fa-building"></i></li><?php foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>

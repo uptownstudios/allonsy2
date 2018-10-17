@@ -207,12 +207,24 @@ function the_staff_form( $post ) {
 	$post_id = get_the_ID();
 	$staff_data = get_post_meta( $post_id, '_staff', true );
 	$staff_title = get_post_meta( $post->ID, '_staff_title', true );
+	$staff_email = get_post_meta( $post->ID, '_staff_email', true );
+	$staff_phone = get_post_meta( $post->ID, '_staff_phone', true );
 
 	wp_nonce_field( basename( __FILE__ ), 'staff_meta_box_nonce' );
 	?>
 	<p>
-			<label>Staff Member's Title (optional)</label><br />
+			<label>Job Title (optional)</label><br />
 			<input type="text" value="<?php echo $staff_title; ?>" name="staff_title" size="40" />
+	</p>
+
+	<p>
+			<label>Email Address (optional)</label><br />
+			<input type="email" value="<?php echo $staff_email; ?>" name="staff_email" size="40" />
+	</p>
+
+	<p>
+			<label>Phone Number (optional)</label><br />
+			<input type="tel" value="<?php echo $staff_phone; ?>" name="staff_phone" size="40" />
 	</p>
 
 	<?php
@@ -259,6 +271,16 @@ function staff_save_post( $post_id ) {
 	if ( isset( $_REQUEST['staff_title'] ) ) {
 			update_post_meta( $post_id, '_staff_title', sanitize_text_field( $_POST['staff_title'] ) );
 	} else {
-			delete_post_meta( $post_id, '_staff' );
+			delete_post_meta( $post_id, '_staff_title' );
+	}
+	if ( isset( $_REQUEST['staff_phone'] ) ) {
+			update_post_meta( $post_id, '_staff_phone', sanitize_text_field( $_POST['staff_phone'] ) );
+	} else {
+			delete_post_meta( $post_id, '_staff_phone' );
+	}
+	if ( isset( $_REQUEST['staff_email'] ) ) {
+			update_post_meta( $post_id, '_staff_email', sanitize_text_field( $_POST['staff_email'] ) );
+	} else {
+			delete_post_meta( $post_id, '_staff_email' );
 	}
 }

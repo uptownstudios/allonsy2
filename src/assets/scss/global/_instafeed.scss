@@ -1,0 +1,91 @@
+div#instafeed {
+
+  &.has-arrows {
+    padding: 0 rem-calc(30);
+    position: relative;
+
+    .slick-arrow {
+      background: $blue;
+      border-radius: rem-calc(3);
+      color: $white;
+      cursor: pointer;
+      height: rem-calc(24);
+      position: absolute;
+      top: calc(50% - 1rem);
+      transform: translateY(-50%);
+      width: rem-calc(24);
+      @include transition(background);
+
+      &:hover, &:focus {
+        background: $red;
+      }
+      &.slick-prev {
+        left: 0;
+      }
+      &.slick-next {
+        right: 0;
+      }
+    }
+  }
+  a.instagram-image {
+    overflow: hidden;
+    position: relative;
+
+    span.ig-caption {
+      background: $bluealpha;
+      bottom: 0;
+      color: $white;
+      display: block;
+      opacity: 0;
+      position: absolute;
+      text-align: center;
+      transform: translateY(100%);
+      width: 100%;
+      @include transition(all);
+    }
+    img {
+      transform: none;
+      @include transition(all);
+    }
+    &:hover, &:focus {
+
+      span.ig-caption {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      img {
+        transform: scale(1.1) rotate(3deg);
+      }
+    }
+  }
+  .slick-list.draggable {
+    margin-left: rem-calc(-20);
+
+    a.instagram-image.slick-slide {
+      margin-left: rem-calc(20);
+    }
+  }
+}
+ul.slick-dots {
+  line-height: 1;
+  list-style: none;
+  margin: rem-calc(15) 0 0;
+  text-align: center;
+
+  li {
+    background: $white;
+    border: rem-calc(2) solid $blue;
+    border-radius: 100%;
+    cursor: pointer;
+    display: inline-block;
+    height: rem-calc(14);
+    margin: 0 rem-calc(5);
+    text-indent: -9999px;
+    width: rem-calc(14);
+
+    &.slick-active {
+      background: $blue;
+    }
+  }
+
+}

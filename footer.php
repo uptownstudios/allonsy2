@@ -307,8 +307,8 @@
 		// $(window).trigger('resize');
 	});
 
-  $('.portfolio-filter-toggle a').click(function() {
-    $('ul.filter-portfolio-category').slideToggle('slow');
+  $('.portfolio-filter-toggle a, .staff-filter-toggle a').click(function() {
+    $('ul.filter-portfolio-category, ul.filter-staff-category').slideToggle('slow');
     return false;
   });
 
@@ -329,7 +329,15 @@
 	  });
 
 	});
-	<?php if( get_theme_mod( 'sticky-header' ) != '') { ?>
+
+  <?php if( get_theme_mod( 'wpt_off_canvas_menu_type' ) === 'overlap'): ?>
+  $('#masthead').imagesLoaded( function init() {
+    topBarHeight = jQuery('#masthead').outerHeight();
+    jQuery('.mobile-off-canvas-menu.off-canvas.is-transition-overlap').css({'padding-top' : topBarHeight })
+  });
+  <?php endif; ?>
+
+	<?php if( get_theme_mod( 'sticky-header' ) != ''): ?>
 	// Sticky Header Classie script
 	$('#masthead').imagesLoaded( function init() {
 		window.addEventListener('scroll', function(e){
@@ -362,7 +370,7 @@
   	});
 	});
 	// window.onload = init();
-	<?php } ?>
+	<?php endif; ?>
 
 </script>
 

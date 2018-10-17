@@ -50,18 +50,108 @@ function bs_social_urls_shortcode( $atts ) {
 
 
 // 3. Instagram Feed Shortcode
+add_shortcode( 'bs_ig_feed', 'bs_instagram_feed' );
 function bs_instagram_feed( $atts ) {
-  extract( shortcode_atts(array(), $atts) );
-  ob_start(); ?>
+	$args = shortcode_atts( array(
+		'limit' 						=> '6',
+		'user_id' 					=> '',
+		'access_token' 			=> '',
+		'resolution'				=> 'standard_resolution',
+		'slides_to_show'		=> '6',
+		'slides_to_scroll'	=> '6',
+		'arrows'					 	=> 'true',
+		'dots'							=> 'true',
+		'autoplay'					=> 'false',
+		'autoplay_speed'			=> '5000',
+	), $atts, 'bs_instagram_feed' );
 
-  <div id="instafeed"></div>
+	ob_start();
+	$limit = $args['limit'];
+	$user_id = $args['user_id'];
+	$access_token = $args['access_token'];
+	$resolution = $args['resolution'];
+	$slides_to_show = $args['slides_to_show'];
+	$slides_to_scroll = $args['slides_to_scroll'];
+	$arrows = $args['arrows'];
+	$dots = $args['dots'];
+	$autoplay = $args['autoplay'];
+	$autoplay_speed = $args['autoplay_speed'];
+	?>
 
+  <div id="instafeed" class="<?php if( $arrows === 'true' ) { ?>has-arrows<?php } ?>"></div>
+
+	<script src="<?php echo get_stylesheet_directory_uri(); ?>/src/assets/js/vendor/instafeed.js"></script>
+	<script>
+	// Use this for getting new IG accessToken
+	// Log in using clients IG account and go to...
+	// https://www.instagram.com/oauth/authorize/?client_id=564bc1f5f7054a74be9a94523b16e9cf&redirect_uri=http://uptownstudios.net&response_type=token&scope=public_content
+
+	var userFeed = new Instafeed({
+		get: 'user',
+		userId: <?php echo "'" . $user_id . "'"; ?>, // Get client's userId
+		accessToken: <?php echo "'" . $access_token . "'"; ?>,
+		limit: <?php echo $limit; ?>,
+		resolution: '<?php echo $resolution; ?>',
+		template: '<a class="instagram-image" href="{{link}}" target="_blank" rel="noopener" title="{{caption}}"><img class="instafeed-img" src="{{image}}" /><span class="ig-caption"><i class="far fa-heart"></i> {{likes}} &nbsp;•&nbsp; <i class="far fa-comment"></i> {{comments}}</span></a>',
+		after: function() {
+	    jQuery('#instafeed').slick({
+	      infinite: true,
+	      slidesToShow: <?php echo $slides_to_show; ?>,
+	      slidesToScroll: <?php echo $slides_to_scroll; ?>,
+	      rows: 1,
+	      centerPadding: '20px',
+	      arrows: <?php echo $arrows; ?>,
+				dots: <?php echo $dots; ?>,
+	      autoplay: <?php echo $autoplay; ?>,
+	      autoplaySpeed: <?php echo $autoplay_speed; ?>,
+				pauseOnFocus: true,
+				pauseOnHover: true,
+				pauseOnDotsHover: true,
+	      easing: 'ease-out-back',
+	      prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></a>',
+	      nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></a>',
+	      responsive: [{
+	        breakpoint: 1024,
+	        settings: {
+	          slidesToShow: 3,
+	          slidesToScroll: 3,
+	          infinite: true,
+						arrows: false,
+	          dots: <?php echo $dots; ?>,
+	          autoplay: false,
+	        }
+	      },
+	      {
+	        breakpoint: 767,
+	        settings: {
+	          slidesToShow: 2,
+	          slidesToScroll: 2,
+	          infinite: true,
+						arrows: false,
+	          dots: <?php echo $dots; ?>,
+	          autoplay: false,
+	        }
+	      },
+	      {
+	        breakpoint: 480,
+	        settings: {
+	          slidesToShow: 2,
+	          slidesToScroll: 2,
+	          infinite: true,
+						arrows: false,
+	          dots: <?php echo $dots; ?>,
+	          autoplay: false,
+	        }
+	    	}],
+	    });
+	  }
+	});
+	userFeed.run();
+	</script>
   <?php
-    wp_enqueue_script( 'instafeed', get_template_directory_uri() . '/src/assets/js/vendor/instafeed.js', array('jquery'), '1.0', true );
-    $bs_ig_feed_variable = ob_get_clean();
+		$bs_ig_feed_variable = ob_get_clean();
     return $bs_ig_feed_variable;
 }
-add_shortcode( 'bs_ig_feed', 'bs_instagram_feed' );
 
 
 // 4. BS Social Share shortcode
@@ -542,17 +632,20 @@ function bs_section_heading( $atts ) {
 	$args = shortcode_atts( array(
 		'title' => '',
 		'html_tag' => 'h2',
-		'align' => 'none'
+		'align' => 'none',
+		'icon' => '',
+		'color' => '#003a71',
 	), $atts, 'bs_section_heading' );
   ob_start();
 
 	$section_title = $args['title'];
 	$section_html_tag = $args['html_tag'];
 	$section_heading_align = $args['align'];
-
+	$section_icon = $args['icon'];
+	$section_title_color = $args['color'];
 	?>
 
-	<<?php echo $section_html_tag; ?> class="section-heading align<?php echo $section_heading_align; ?>"><span class="section-heading-inner"><?php echo $section_title; ?></span></<?php echo $section_html_tag; ?>>
+	<<?php echo $section_html_tag; ?> class="section-heading align<?php echo $section_heading_align; ?>"><span class="section-heading-inner" style="color: <?php echo $section_title_color;?>;"><?php if( $section_icon ) { ?><i class="<?php echo $section_icon; ?>"></i> <?php } ?><?php echo $section_title; ?></span></<?php echo $section_html_tag; ?>>
 
   <?php $bssectionheading = ob_get_clean(); return $bssectionheading;
 }
@@ -568,6 +661,8 @@ function bs_staff_loop( $atts ) {
 			'grid_cols' => '3', // Select grid columns. Min: 1. Max: 4.
 			'pagination' => '0', // Will paginate after the designated number of posts set in 'ppp'
 			'show_excerpt' => '1', // Show/hide the excerpt
+			'hide_filters' => '0',
+			'id' => '',
     ), $atts, 'bs_staff_loop' );
     ob_start();
 
@@ -578,6 +673,8 @@ function bs_staff_loop( $atts ) {
 		$ppp = $args['ppp'];
 		$pagination = $args['pagination'];
 		$show_excerpt = $args['show_excerpt'];
+		$hide_filters = $args['hide_filters'];
+		$unique_id = $args['id'];
 
 		if ( get_query_var('paged') ) {
 			$paged = get_query_var('paged');
@@ -623,55 +720,96 @@ function bs_staff_loop( $atts ) {
 
 				<div class="small-12 large-12 staffs-wrapper staffs-display-list" role="main">
 
-			<?php endif; ?>
+			<?php endif;
+
+				$taxonomy = 'staff-cat';
+				$tax_terms = get_terms($taxonomy);
+				$all_terms;
+				$filterText = '';
+
+			if( $hide_filters === '0' ) { ?>
+				<div class="staff-filter-toggle"><a href="#" title="View All  Departments">+ Department Categories</a></div>
+				<ul id="filters<?php if( $unique_id ) { echo '-' . $unique_id; } ?>" class="filter-staff-category option-set filter">
+					<!-- <li class="filter-label">Filter portfolio:</li> -->
+					<?php
+						foreach ($tax_terms as $tax_term) {
+							$filterText .= '<li>' . '<a href="#" title="' . sprintf( __( "View all posts in %s" ), $tax_term->name ) . '" data-filter=".' . $tax_term->slug . '" ' . '>' . $tax_term->name.'</a></li>';
+							// $filterText .= '<li>' . '<a href="#" title="' . sprintf( __( "View all posts in %s" ), $tax_term->name ) . '" data-filter=".' . $tax_term->slug . '" ' . '>' . $tax_term->name.'</a><span class="term-num">' . $tax_term->count . '</span></li>';
+							// $all_terms += $tax_term->count;
+						}
+						$filterText = '<li><a class="active" href="#" data-filter="*">All</a></li>' . $filterText;
+						echo $filterText;
+					?>
+				</ul>
+			<?php } ?>
 			<?php /* Start loop */ ?>
-			<div class="staffs-container">
-				<?php
-					while ( $bs_query->have_posts()) : $bs_query->the_post();
-					$image_url = get_the_post_thumbnail_url( get_the_id(), 'full' );
-					$staff_position = get_post_meta( $post->ID, '_staff_title', true );
-					if( $display === 'grid' ):
-				?>
-					<div id="post-<?php the_ID(); ?>" class="single-staff-item">
-						<a href="<?php the_permalink();?>" class="single-staff-link" title="<?php the_title();?>">
-							<section class="staff-content">
-								<h4 class="staff-title"><?php the_title(); ?></h4>
-								<?php /*
-								<?php $terms = get_the_terms( $post->ID , 'staff-cat' );
-								if( $terms ): ?><ul class="staff-category"><?php foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
-								*/ ?>
-								<?php if( $staff_position ): ?><ul class="staff-category"><?php echo '<li class="staff-position">' . $staff_position . '</li>'; endif; ?></ul>
-								<?php /* endif; */
-								if( has_post_thumbnail() ): ?><img src="<?php echo $image_url; ?>" data-src="<?php echo $image_url; ?>" class="staff-thumbnail" alt="<?php the_title();?> staff thumbnail" /><?php endif; ?>
-							</section>
-						</a>
-					</div>
-				<?php endif;
-				if( $display === 'list' ): ?>
-					<div id="post-<?php the_ID(); ?>" class="single-staff-item">
-						<div class="staff-thumbnail">
-							<?php if( has_post_thumbnail() ): ?>
-								<a href="<?php the_permalink();?>" title="<?php the_title();?>">
-									<img src="<?php echo $image_url; ?>" data-src="<?php echo $image_url; ?>" class="staff-thumbnail" alt="<?php the_title();?> staff thumbnail" />
-								</a>
-							<?php endif; ?>
+			<div class="lazy-isotope-wrapper">
+				<div class="staffs-container bs-isotope lazy-isotope">
+					<?php
+						while ( $bs_query->have_posts()) : $bs_query->the_post();
+						$image_url = get_the_post_thumbnail_url( get_the_id(), 'full' );
+						$staff_position = get_post_meta( $post->ID, '_staff_title', true );
+						$staff_email = get_post_meta( $post->ID, '_staff_email', true );
+						$staff_phone = get_post_meta( $post->ID, '_staff_phone', true );
+						if( $display === 'grid' ):
+					?>
+						<div id="post-<?php the_ID(); ?>" class="single-staff-item bs-isotope-item <?php $terms = get_the_terms( $post->ID , 'staff-cat' ); foreach ( $terms as $term ) { echo $term->slug . ' '; } ?> ">
+							<a href="<?php the_permalink();?>" class="single-staff-link" title="<?php the_title();?>">
+								<section class="staff-content">
+									<h4 class="staff-title"><?php the_title(); ?></h4>
+									<?php /*
+									<?php $terms = get_the_terms( $post->ID , 'staff-cat' );
+									if( $terms ): ?><ul class="staff-category"><?php foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
+									*/ ?>
+									<?php if( $staff_position ): ?><ul class="staff-category"><?php echo '<li class="staff-position">' . $staff_position . '</li>'; endif; ?></ul>
+									<?php /* endif; */
+									if( has_post_thumbnail() ): ?><img src="<?php echo $image_url; ?>" data-src="<?php echo $image_url; ?>" class="staff-thumbnail" alt="<?php the_title();?> staff thumbnail" /><?php endif; ?>
+								</section>
+							</a>
 						</div>
-						<div class="staff-content">
-							<h3 class="staff-title"><a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title(); ?></a></h3>
-							<?php if( $staff_position ): echo '<p class="staff-position"><i class="far fa-bookmark"></i> ' . $staff_position . '</p>'; endif; ?>
-							<?php $terms = get_the_terms( $post->ID , 'staff-cat' );
-							if ( $terms ): ?>
-								<ul class="staff-category"><li><i class="far fa-building"></i></li><?php foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
-							<?php endif; ?>
-							<?php if( $show_excerpt ): ?>
-								<div class="staff-excerpt"><?php the_excerpt(); ?></div>
-							<?php endif; ?>
-							<div class="staff-footer">
-								<a class="staff-read-more" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Read More &raquo;</a>
+					<?php endif;
+					if( $display === 'list' ): ?>
+						<div id="post-<?php the_ID(); ?>" class="single-staff-item bs-isotope-item <?php $terms = get_the_terms( $post->ID , 'staff-cat' ); foreach ( $terms as $term ) { echo $term->slug . ' '; } ?> ">
+							<div class="staff-thumbnail">
+								<?php if( has_post_thumbnail() ): ?>
+									<a href="<?php the_permalink();?>" title="<?php the_title();?>">
+										<img src="<?php echo $image_url; ?>" data-src="<?php echo $image_url; ?>" class="staff-thumbnail" alt="<?php the_title();?> staff thumbnail" />
+									</a>
+								<?php endif; ?>
+							</div>
+							<div class="staff-content">
+								<h3 class="staff-title"><a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title(); ?></a></h3>
+								<?php if( $staff_position ): echo '<p class="staff-meta staff-position"><i class="far fa-bookmark"></i> ' . $staff_position . '</p>'; endif; ?>
+								<?php if( $staff_email ): echo '<p class="staff-meta staff-email"><i class="far fa-envelope"></i> ' . $staff_email . '</p>'; endif; ?>
+								<?php if( $staff_phone ): echo '<p class="staff-meta staff-phone"><i class="far fa-phone"></i> ' . $staff_phone . '</p>'; endif; ?>
+								<?php $terms = get_the_terms( $post->ID , 'staff-cat' );
+								if ( $terms ): ?>
+									<ul class="staff-category"><li><i class="far fa-building"></i></li><?php foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
+								<?php endif; ?>
+								<?php if( $show_excerpt ): ?>
+									<div class="staff-excerpt"><?php the_excerpt(); ?></div>
+								<?php endif; ?>
+								<div class="staff-footer">
+									<a class="staff-read-more" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Read More &raquo;</a>
+								</div>
 							</div>
 						</div>
-					</div>
-				<?php endif; endwhile; // End the loop ?>
+					<?php endif; endwhile; // End the loop ?>
+					<script>
+						jQuery(document).ready(function($) {
+							// cache container
+							var $container = $('.staffs-container<?php if( $unique_id ) { echo '-' . $unique_id; } ?>');
+							// filter items when filter link is clicked
+							$('#filters<?php if( $unique_id ) { echo '-' . $unique_id; } ?> a').click(function(){
+								var selector = $(this).attr('data-filter');
+								$container.isotope({ filter: selector });
+								$('#filters<?php if( $unique_id ) { echo '-' . $unique_id; } ?> a.active').not(this).removeClass('active');
+								$(this).addClass('active');
+								return false;
+							});
+						});
+					</script>
+				</div>
 			</div>
 			<?php if ( $pagination ) {
 				custom_pagination($bs_query->max_num_pages,"",$paged);

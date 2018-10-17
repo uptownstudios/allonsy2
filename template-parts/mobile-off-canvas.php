@@ -9,11 +9,16 @@
  $hide_social = get_theme_mod('hide_header_social');
  $alt_nav = get_theme_mod('show_alt_nav');
  $cart_in_alt_nav = get_theme_mod('cart_in_alt_nav');
+ $off_canvas_style = get_theme_mod('wpt_off_canvas_menu_type');
 ?>
 <div class="off-canvas-wrapper">
   <div class="off-canvas-wrapper-inner">
-    <nav class="mobile-off-canvas-menu off-canvas position-right" id="<?php foundationpress_mobile_menu_id(); ?>" data-off-canvas data-auto-focus="false" role="navigation">
-      <?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
+    <nav class="mobile-off-canvas-menu off-canvas position-right" id="<?php foundationpress_mobile_menu_id(); ?>" data-off-canvas data-auto-focus="false" data-transition="<?php echo $off_canvas_style; ?>" role="navigation">
+      <?php if( $off_canvas_style === 'push' ):
+
+        if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); }
+        
+      endif; ?>
       <?php foundationpress_mobile_nav(); ?>
       <?php if( $alt_nav != '' ): foundationpress_top_bar_alt(); endif; ?>
       <?php if( $hide_social == '' ): get_template_part('template-parts/social-media'); endif; ?>

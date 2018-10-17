@@ -10,20 +10,22 @@ import Foundation from 'foundation-sites';
 
 // import './lib/demosite';
 
-import './vendor/stickyfooter';
+import './vendor/stickyfooter.js';
 
 // import './vendor/classie';
 
-// import './vendor/slick.min';
+import './vendor/slick.min';
 
 import './vendor/js.cookie.js';
 
 // import './vendor/jquery.swipebox.min';
 
-import './vendor/imagesloaded.pkgd.min';
+// import './vendor/instafeed.js';
+
+import './vendor/imagesloaded.pkgd.min.js';
 
 import './vendor/lazysizes.min.js';
 
-import './vendor/jquery.waypoints.min';
+import './vendor/jquery.waypoints.min.js';
 
 $(document).foundation();

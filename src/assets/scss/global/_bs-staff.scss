@@ -33,6 +33,60 @@
 /* Staff Shortcode Styles */
 .staffs-wrapper {
 
+  .staff-filter-toggle {
+    display: none;
+    margin-bottom: rem-calc(15);
+
+    @media #{$break767} {
+      display: block;
+    }
+
+    a {
+      background: $blue;
+      color: $white;
+      display: inline-block;
+      font-weight: 700;
+      padding: rem-calc(10);
+      text-decoration: none;
+    }
+  }
+  ul#filters, ul[id*="filters-"] {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    list-style: none;
+    margin: 0 0 rem-calc(20) rem-calc(-15);
+    width: 100%;
+    @include transition(opacity);
+
+    @media #{$break767} {
+      display: none;
+      margin: 0 0 rem-calc(20) 0;
+    }
+
+    li {
+      padding-left: rem-calc(15);
+
+      @media #{$break767} {
+        margin-bottom: rem-calc(2);
+        padding-left: 0;
+      }
+
+      a {
+        background: $blue;
+        color: $white;
+        display: block;
+        font-weight: 700;
+        padding: rem-calc(6) rem-calc(15);
+        text-align: center;
+        text-decoration: none;
+
+        &.active, &:hover, &:focus {
+          background: $red;
+        }
+      }
+    }
+  }
   .single-staff-item {
 
     .staff-thumbnail {
@@ -246,12 +300,12 @@
           width: 100%;
         }
 
-        p.staff-position {
+        p.staff-meta {
           margin-bottom: 0;
 
           i {
             padding-right: rem-calc(6);
-            width: rem-calc(14);
+            width: rem-calc(20);
           }
         }
         ul.staff-category {
@@ -264,8 +318,10 @@
           li {
             display: inline-block;
             padding-right: rem-calc(6);
+            width: rem-calc(23);
           }
           li.cat-name {
+            width: auto;
 
             &:after {
               content: ',';

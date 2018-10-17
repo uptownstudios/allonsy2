@@ -13,13 +13,13 @@ function wpt_register_theme_customizer( $wp_customize ) {
 	$wp_customize->add_panel( 'mobile_menu_settings', array(
 		'priority'       => 1000,
 		'theme_supports' => '',
-		'title'          => __( 'Mobile Menu Settings', 'foundationpress' ),
-		'description'    => __( 'Controls the mobile menu', 'foundationpress' ),
+		'title'          => __( 'Mobile Menu Settings', 'allonsy2' ),
+		'description'    => __( 'Controls the mobile menu', 'allonsy2' ),
 	) );
 
 	// Create custom field for mobile navigation layout
 	$wp_customize->add_section( 'mobile_menu_layout' , array(
-		'title'    => __('Mobile navigation layout','foundationpress'),
+		'title'    => __('Mobile navigation layout','allonsy2'),
 		'panel'    => 'mobile_menu_settings',
 		'priority' => 1000,
 	));
@@ -28,7 +28,7 @@ function wpt_register_theme_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'wpt_mobile_menu_layout',
 		array(
-			'default' => __( 'topbar', 'foundationpress' ),
+			'default' => __( 'topbar', 'allonsy2' ),
 		)
 	);
 
@@ -38,12 +38,39 @@ function wpt_register_theme_customizer( $wp_customize ) {
 			$wp_customize,
 			'mobile_menu_layout',
 			array(
+				'label' 	 => __('Mobile Menu Type', 'allonsy2'),
 				'type'     => 'radio',
 				'section'  => 'mobile_menu_layout',
 				'settings' => 'wpt_mobile_menu_layout',
 				'choices'  => array(
 					'topbar'    => 'Topbar',
 					'offcanvas' => 'Offcanvas',
+				),
+			)
+		)
+	);
+
+	// Set off canvas nav type
+	$wp_customize->add_setting(
+		'wpt_off_canvas_menu_type',
+		array(
+			'default' => __( 'push', 'allonsy2' ),
+		)
+	);
+
+	// Add options for off canvas menu type
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'off_canvas_menu_type',
+			array(
+				'label'		 => __('Off Canvas Menu Type','allonsy2'),
+				'type'     => 'radio',
+				'section'  => 'mobile_menu_layout',
+				'settings' => 'wpt_off_canvas_menu_type',
+				'choices'  => array(
+					'push'    => 'Push',
+					'overlap' => 'Overlap',
 				),
 			)
 		)
