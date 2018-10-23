@@ -26,9 +26,9 @@ If you have not worked with a Sass-based workflow before, I would recommend read
 ### 1. Clone the repository and install with npm
 ```bash
 $ cd my-wordpress-folder/wp-content/themes/
-$ git clone https://github.com/olefredrik/FoundationPress.git
-$ cd FoundationPress
-$ npm install
+$ git clone https://github.com/uptownstudios/allonsy2.git
+$ cd allonsy2
+$ npm install (on Plesk its /opt/plesk/node/6/bin/npm install)
 ```
 
 ### 2. Configuration
@@ -44,7 +44,7 @@ If you want to take advantage of [Browsersync](https://www.browsersync.io/) (aut
 ### 3. Get started
 
 ```bash
-$ npm start
+$ npm start (on Plesk its /opt/plesk/node/6/bin/npm start)
 ```
 
 ### 4. Compile assets for production
@@ -52,7 +52,7 @@ $ npm start
 When building for production, the CSS and JS will be minified. To minify the assets in your `/dist` folder, run
 
 ```bash
-$ npm run build
+$ npm run build  (on Plesk its /opt/plesk/node/6/bin/npm run build)
 ```
 
 ### Project structure

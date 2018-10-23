@@ -1,7 +1,7 @@
-$(window).on('load resize orientationChange', function () {
-  var footer = $("#footer-container");
+jQuery(window).on('load resize orientationChange', function () {
+  var footer = jQuery("#footer-container");
   var pos = footer.position();
-  var height = $(window).height();
+  var height = jQuery(window).height();
   height = height - pos.top;
   height = height - footer.height();
 
@@ -15,6 +15,6 @@ $(window).on('load resize orientationChange', function () {
     stickyFooter();
   }
 });
-$(window).on('load', function() {
-  $(this).resize();
+jQuery(window).on('load', function() {
+  jQuery(this).resize();
 });
