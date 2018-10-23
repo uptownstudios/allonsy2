@@ -1,11 +1,8 @@
 # Allonsy (a FoundationPress fork)
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/olefredrik/foundationpress?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![GitHub version](https://badge.fury.io/gh/olefredrik%2Ffoundationpress.svg)](https://github.com/olefredrik/FoundationPress/releases)
 [![license](https://img.shields.io/npm/l/color-name-list.svg?colorB=ff77b4)](https://github.com/olefredrik/FoundationPress/blob/master/MIT-LICENSE.txt)
-[![Buy Me a Coffee at ko-fi.com](https://img.shields.io/badge/-Buy%20me%20a%20Coffee-orange.svg?colorB=593C1F&colorA=4e798d&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAVUlEQVR4AWNQtnJTQcZ%2Blb2fsWF0dQzYNRHWzIBdE2EDGGCaSNYI47x69fY%2FMRimnmiNyGqwavyflo6MaawRTTP1%2FIiM4dFBQBPl8UggyRHWSHYiBwCwA90T1NTlAQAAAABJRU5ErkJggg%3D%3D%0D%0A&logoWidth=14)](https://ko-fi.com/olefredrik)
 
-This is a starter-theme for WordPress based on Foundation 6, the most advanced responsive (mobile-first) framework in the world. The purpose of FoundationPress, is to act as a small and handy toolbox that contains the essentials needed to build any design. FoundationPress is meant to be a starting point, not the final product.
+This is a starter-theme for WordPress based on Foundation 6, the most advanced responsive (mobile-first) framework in the world. The purpose of Allonsy, is to act as a small and handy toolbox that contains the essentials needed to build any design. Allonsy is meant to be a starting point, not the final product.
 
 Please fork, copy, modify, delete, share or do whatever you like with this.
 
@@ -15,7 +12,7 @@ All contributions are welcome!
 
 **This project requires [Node.js](http://nodejs.org) v4.x.x to v6.11.x to be installed on your machine.** Please be aware that you might encounter problems with the installation if you are using the most current Node version (bleeding edge) with all the latest features.
 
-FoundationPress uses [Sass](http://Sass-lang.com/) (CSS with superpowers). In short, Sass is a CSS pre-processor that allows you to write styles more effectively and tidy.
+Allonsy uses [Sass](http://Sass-lang.com/) (CSS with superpowers). In short, Sass is a CSS pre-processor that allows you to write styles more effectively and tidy.
 
 The Sass is compiled using libsass, which requires the GCC to be installed on your machine. Windows users can install it through [MinGW](http://www.mingw.org/), and Mac users can install it through the [Xcode Command-line Tools](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/).
 
@@ -34,7 +31,7 @@ $ npm install (on Plesk its /opt/plesk/node/6/bin/npm install)
 ### 2. Configuration
 
 #### YAML config file
-FoundationPress includes a `config-default.yml` file. To make changes to the configuration, make a copy of `config-default.yml` and name it `config.yml` and make changes to that file. The `config.yml` file is ignored by git so that each environment can use a different configuration with the same git repo.
+Allonsy includes a `config-default.yml` file. To make changes to the configuration, make a copy of `config-default.yml` and name it `config.yml` and make changes to that file. The `config.yml` file is ignored by git so that each environment can use a different configuration with the same git repo.
 
 At the start of the build process a check is done to see if a `config.yml` file exists. If `config.yml` exists, the configuration will be loaded from `config.yml`. If `config.yml` does not exist, `config-default.yml` will be used as a fallback.
 
@@ -87,8 +84,7 @@ Foundation modules are loaded in the `src/assets/js/app.js` file. By default all
 
 ## Demo
 
-* [Clean FoundationPress install](http://foundationpress.olefredrik.com/)
-* [FoundationPress Kitchen Sink - see every single element in action](http://foundationpress.olefredrik.com/kitchen-sink/)
+* [Clean Allonsy install](https://allonsytheme.com)
 
 ## Local Development
 We recommend using one of the following setups for local WordPress development:
@@ -122,57 +118,32 @@ We recommend using one of the following setups for local WordPress development:
 
 ## Showcase
 
-* [Harvard Center for Green Buildings and Cities](http://www.harvardcgbc.org/)
-* [INTI International University & Colleges](http://international.newinti.edu.my/)
-* [Conservative Leadership Conference](http://civitasclc.com/)
-* [The New Tropic](http://thenewtropic.com/)
-* [Parent-Child Home Program](http://www.parent-child.org/)
-* [Hip and Healthy](http://hipandhealthy.com/)
-* [Threadbird blog](http://blog.threadbird.com/)
-* [Public House Wines](http://publichousewine.com/)
-* [Franchise Career Advisors](http://franchisecareeradvisors.com/)
-* [Le saint](http://www.lesaint.ca/)
-* [Help blog](http://help.com/blog/)
-* [Maren Schmidt](http://marenschmidt.com/)
-* [The Rainbow Venues](http://www.therainbowvenues.co.uk/)
-* [Ameronix](http://www.ameronix.com/)
-* [Finnerodja](http://www.finnerodja.se/)
-* [Glossop Cartons](http://www.glossopcartons.co.uk/)
-* [Ready4Work](http://www.ready4work.my/)
-* [Just Legal](http://www.justlegal.co.jp/en/)
-* [Vintage and Stuff](http://vintageandstuff.com/)
-* [Software for FM](http://softwareforfm.co.uk/)
-* [WP Diamonds](http://www.wpdiamonds.com/)
-* [Storm Arts](http://stormarts.fi/)
-* [USS Illinois](http://ussillinois.org/)
-* [OffGrid Magazine](https://offgridweb.com/)
-* [Axe](http://www.axe.be/)
-* [ProfitGym](http://profitgym.nl/)
-* [Dr Now](http://www.drnow.com/)
-* [Agritur Piasina](http://www.agriturpiasina.it/)
-* [Atomic Interactive](http://atomicinteractive.com/)
-* [Byington Vineyard & Winery](http://byington.com/)
-* [Philanthropy House](http://philanthropyhouse.eu/)
-* [TVA Group](http://www.groupe-tva.com/en/)
-* [Forte Science](https://www.forte-science.co.jp/)
-* [Well Made Studio](http://wellmadestudio.com/)
-* [Show And Tell](http://www.showandtelluk.com/)
-* [Wahl + Case](https://www.wahlandcase.com/)
-* [Forefront Dermatology](https://forefrontdermatology.com/)
-* [Wirthschaftsjunioren](http://www.wirtschaftsjunioren.org/)
-* [Morgridge Institute for Research](https://morgridge.org)
+* [Betty Yee for State Controller](https://bettyyee.com)
+* [Chalk It Up!](https://chalkitup.org)
+* [CommuniCare](https://www.communicarehc.org)
+* [Corner Drug Co.](https://cornerdrugco.com)
+* [The Almonte Center](https://dralmonte.com)
+* [Highlands Community Charter Schools](https://www.hccts.org)
+* [Mickies Miracles](https://mickiesmiracles.org)
+* [OnTarget Consulting](https://ontargetconsulting.net)
+* [Peach Tree Health](https://pickpeach.org)
+* [RIL Sacramento](https://ril-sacramento.org)
+* [Santa Clara County Dental Society](https://sccds.org)
+* [Sutter Park Neighborhood](https://sutterparkneighborhood.com)
+* [Turning Point Community Programs](https://www.tpcp.org)
+* [Tri-City Health](https://tri-cityhealth.org)
+* [ZEE Medical](https://zeesac.com)
 
 
->Credit goes to all the brilliant designers and developers out there. Have **you** made a site that should be on this list? [Please let me know](https://twitter.com/olefredrik)
+>Credit goes to all the brilliant designers and developers out there. Have **you** made a site that should be on this list? [Please let me know](https://twitter.com/uptownbrent)
 
 ## Contributing
 #### Here are ways to get involved:
 
-1. [Star](https://github.com/olefredrik/FoundationPress/stargazers) the project!
-2. Answer questions that come through [GitHub issues](https://github.com/olefredrik/FoundationPress/issues)
+1. [Star](https://github.com/uptownstudios/allonsy2/stargazers) the project!
+2. Answer questions that come through [GitHub issues](https://github.com/uptownstudios/allonsy2/issues)
 3. Report a bug that you find
-4. Share a theme you've built on top of FoundationPress
-5. [Tweet](https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffoundationpress.olefredrik.com%2F&text=Check%20out%20FoundationPress%2C%20the%20ultimate%20%23WordPress%20starter-theme%20built%20on%20%23Foundation%206&tw_p=tweetbutton&url=http%3A%2F%2Ffoundationpress.olefredrik.com&via=olefredrik) and [blog](http://www.justinfriebel.com/my-first-experience-with-foundationpress-a-wordpress-starter-theme-106/) your experience of FoundationPress.
+4. Share a theme you've built on top of Allonsy
 
 #### Pull Requests
 
