@@ -9,6 +9,8 @@
 	get_header();
 	$title_bar = get_theme_mod('internal-title-bar');
 	$breadcrumbs = get_theme_mod('internal-breadcrumbs');
+	$shop_title = get_theme_mod('shop-title');
+	$shop_title_icon = get_theme_mod('shop-title-icon');
 	$shop_layout = get_theme_mod('shop-layout');
 
 	if( !is_shop() ) {
@@ -32,7 +34,7 @@
 
 <?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
 <header class="woocommerce-shop-title max-width-twelve-hundred shop-layout-<?php echo $shop_layout; ?>">
-	<h1 class="entry-title"><i class="fa fa-shopping-cart"></i> Shop Our Store</h1>
+	<h1 class="entry-title"><?php if( $shop_title_icon != 'no-icon' ) { ?><i class="fas <?php echo $shop_title_icon; ?>"></i> <?php } echo $shop_title; ?></h1>
 </header>
 <?php endif; ?>
 

@@ -8,6 +8,7 @@
 
   get_header();
   $title_bar = get_theme_mod('internal-title-bar');
+  $breadcrumbs = get_theme_mod('internal-breadcrumbs');
   $single_post_layout = get_theme_mod('single-post-layout');
   $share_buttons = get_theme_mod('show-share-buttons');
   $share_buttons_position = get_theme_mod('share-buttons-position');
@@ -20,6 +21,12 @@
     get_template_part( 'template-parts/title-bars/blog-title-bar' );
   }
 ?>
+
+<?php if( $breadcrumbs != '' ) { ?>
+  <div class="breadcrumbs-wrapper <?php if( $single_post_layout === 'single-full-width' || $single_post_layout === 'single-narrow-content') { ?>max-width-eight-thirty<?php } else { ?>max-width-twelve-hundred<?php } ?>">
+    <?php foundationpress_breadcrumb(); ?>
+  </div>
+<?php } ?>
 
 <div class="main-wrap <?php echo $single_post_layout . ' '; if( $single_post_layout === 'single-full-width' || $single_post_layout === 'single-narrow-content') {?>no-sidebar<?php } ?>" role="main">
 

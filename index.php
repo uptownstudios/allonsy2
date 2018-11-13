@@ -15,6 +15,7 @@
 
 get_header();
 $title_bar = get_theme_mod('internal-title-bar');
+$breadcrumbs = get_theme_mod('internal-breadcrumbs');
 $blog_title = get_theme_mod('blog-page-title');
 $blog_posts_layout = get_theme_mod('blog-posts-layout');
 $blog_page_layout = get_theme_mod('blog-page-layout');
@@ -25,18 +26,20 @@ $blog_page_layout = get_theme_mod('blog-page-layout');
     'blog-narrow-content' => 'No Sidebar, Narrow Content',
 */
 
-  if( ! $title_bar || $title_bar == 'bs-featured-image') {
+  if( ! $title_bar || $title_bar === 'bs-featured-image') {
     get_template_part( 'template-parts/title-bars/featured-image' );
   }
-  if ( $title_bar == 'bs-title-bar' ) {
+  if ( $title_bar === 'bs-title-bar' ) {
     get_template_part( 'template-parts/title-bars/loop-title-bar' );
   }
 ?>
 
+<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+
 <div class="main-wrap <?php echo $blog_page_layout . ' '; if( $blog_page_layout === 'blog-full-width' || $blog_page_layout === 'blog-narrow-content') { ?>no-sidebar<?php } ?>" role="main">
 	<article class="main-content">
 
-	<?php if( $title_bar === 'bs-hide-featured-image' || $title_bar === 'bs-featured-image') : ?>
+	<?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image') : ?>
 
   	<?php if ( has_post_thumbnail() && $title_bar === 'bs-hide-featured-image' ) :
 

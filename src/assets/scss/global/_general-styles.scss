@@ -62,6 +62,26 @@ h5, h5 span {
 h6, h6 span {
   font-size: $h6;
 }
+.alignright, .alignleft, .aligncenter, .alignnone {
+  @media #{$break600} {
+    float: none;
+    margin: 0 0 rem-calc(20) 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+figure {
+
+  &.alignright, &.alignleft, &.aligncenter, &.alignnone {
+
+    img {
+      @media #{$break600} {
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+}
 .section-heading {
   float: none !important;
 
@@ -288,31 +308,34 @@ form#searchform {
   }
 }
 .bs-btn, .gform_footer input.gform_button, #respond .button {
-  font-size: 1.3125rem;
+  background: $white;
+  border: rem-calc(2) solid $blue;
+  border-radius: rem-calc(100);
+  color: $blue;
+  display: inline-block;
+  font-size: rem-calc(18);
   font-weight: 700 !important;
   line-height: 1 !important;
-  display: inline-block;
-  padding: 1rem 1.625rem;
-  border: 2px solid $black;
-  background: $white;
+  padding: rem-calc(10) rem-calc(15);
+  text-decoration: none !important;
   text-transform: uppercase;
   @include transition(all);
 }
 .bs-btn.bs-btn-white {
   background: $white;
-  border: 2px solid $white;
+  border: rem-calc(2) solid $white;
 }
 .bs-btn.bs-btn-white:hover,
 .bs-btn.bs-btn-white:focus {
   background: $black;
-  border: 2px solid $black;
+  border: rem-calc(2) solid $black;
   color: $white;
 }
 .bs-btn.bs-btn-red,
 .gform_footer input.gform_button,
 #respond .button {
   background: $red;
-  border: 2px solid $red;
+  border: rem-calc(2) solid $red;
   color: $white !important;
 }
 .bs-btn.bs-btn-red:hover,
@@ -322,29 +345,40 @@ form#searchform {
 #respond .button:hover,
 #respond .button:focus {
   background: $black;
-  border: 2px solid $black;
+  border: rem-calc(2) solid $black;
+  color: $white !important;
+}
+.bs-btn.bs-btn-blue {
+  background: $blue !important;
+  border: rem-calc(2) solid $blue !important;
+  color: $white !important;
+}
+.bs-btn.bs-btn-blue:hover,
+.bs-btn.bs-btn-blue:focus {
+  background: $black !important;
+  border: rem-calc(2) solid $black !important;
   color: $white !important;
 }
 .bs-btn.bs-btn-clear {
   background: none !important;
-  border: 2px solid $white !important;
+  border: rem-calc(2) solid $white !important;
   color: $black !important;
 }
 .bs-btn.bs-btn-clear:hover,
 .bs-btn.bs-btn-clear:focus {
   background: $black !important;
-  border: 2px solid $black !important;
+  border: rem-calc(2) solid $black !important;
   color: $white !important;
 }
 .bs-btn.bs-btn-black {
   background: $black;
-  border: 2px solid $black;
+  border: rem-calc(2) solid $black;
   color: $white;
 }
 .bs-btn.bs-btn-black:hover,
 .bs-btn.bs-btn-black:focus {
   background: $white;
-  border: 2px solid $black;
+  border: rem-calc(2) solid $black;
   color: $black;
 }
 .bs-btn:hover,
@@ -354,7 +388,7 @@ form#searchform {
 #respond .button:hover,
 #respond .button:focus {
   background: $black;
-  border: 2px solid $black;
+  border: rem-calc(2) solid $black;
   color: $white;
 }
 .bs-btns-wrapper {
@@ -363,7 +397,7 @@ form#searchform {
 
   .bs-btn {
     display: inline-block;
-    margin: 0 10px 10px 0 ;
+    margin: 0 rem-calc(10) rem-calc(10) 0 ;
 
     @media #{$break600} {
       margin: 0 0 rem-calc(10) 0;
@@ -373,29 +407,34 @@ form#searchform {
   }
 }
 .max-width-sixteen-hundred {
-  max-width: 100rem !important;
+  max-width: rem-calc(1600) !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 .max-width-twelve-hundred {
   width: 100%;
-  max-width: 75rem;
+  max-width: rem-calc(1200);
   margin-left: auto !important;
   margin-right: auto !important;
 }
 .max-width-eleven-seventy {
   width: 100%;
-  max-width: 73.125rem;
+  max-width: rem-calc(1170);
   margin-left: auto !important;
   margin-right: auto !important;
 }
 .max-width-nine-seventy {
-  max-width: 60.625rem !important;
+  max-width: rem-calc(970) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.max-width-eight-thirty {
+  max-width: rem-calc(830) !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 .max-width-eight-hundred {
-  max-width: 50rem !important;
+  max-width: rem-calc(800) !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -486,7 +525,7 @@ form#searchform {
   @media #{$break1024} {
     .small-12.medium-12.large-7 {
       margin-bottom: rem-calc(10);
-      
+
       p {
         text-align: center;
       }

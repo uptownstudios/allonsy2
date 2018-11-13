@@ -12,6 +12,7 @@
  $popup_delay = get_theme_mod('bs_pop_up_delay');
  $popup_content = get_theme_mod('bs_pop_up_content');
  $a11y_toolbar = get_theme_mod('show-a11y-toolbar');
+ $shop_products_layout = get_theme_mod('shop-products-layout');
 ?>
 
 		</section>
@@ -71,6 +72,43 @@
 
 <?php wp_footer(); ?>
 
+<script type="text/javascript">
+
+  jQuery(document).ready(function($) {
+    /**** Greensock Animation Trial ****/
+    // declare variables
+    var tardis = $('#Layer_1-3'),
+        letters = $('.allonsy-letters'),
+        tl;
+
+    // create timeline
+    tl = new TimelineMax();
+
+    // animate timeline
+    tl.set(tardis, {xPixel: 0});
+    tl.set(letters, {xPercent: 0});
+
+    // sequence
+    tl.from(tardis, 2, {autoAlpha: 0, delay: 1}, 0.5)
+      .staggerFrom(letters, 1, {autoAlpha: 0, xPercent: -50, delay: 0, ease:Back.easeOut}, 0.25);
+
+    /* END Greensock Animation Trial */
+  });
+
+  // Animate T.A.R.D.I.S. Waypoint
+  jQuery('#trigger-animate-tardis').waypoint(function() {
+		jQuery('.tardis-animate').toggleClass('animate');
+	}, {
+		offset: '50%'
+	});
+
+  jQuery('svg.logo-w-tardis').waypoint(function() {
+		jQuery('#Layer_1-3').toggleClass('animate');
+	}, {
+		offset: '50%'
+	});
+
+</script>
 <script type="text/javascript">
 
 	var windowWidth;
@@ -210,6 +248,12 @@
 		$('.js-off-canvas-overlay').click(function() {
 			$('button.menu-icon.active').removeClass('active');
 		});
+
+    <?php if ( class_exists( 'WooCommerce' ) && $shop_products_layout === 'grid-masonry' ): ?>
+    // Wrap WC products in masonry markup on shop index page
+      $('.post-type-archive-product .woocommerce-index ul.products').addClass('bs-isotope').wrap('<div class="lazy-isotope"></div>');
+      $('.post-type-archive-product .woocommerce-index ul.products li.product').addClass('bs-isotope-item');
+    <?php endif; ?>
 
 		// Hide WooCommerce notice on checkout page
 		$('.woocommerce-info').append('<span class="clear-notice"><i class="fa fa-times-circle" aria-hidden="hidden"></i></span>');

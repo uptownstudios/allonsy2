@@ -1280,6 +1280,25 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
     // 10. WOOCOMMERCE LAYOUT OPTIONS
     if ( class_exists( 'WooCommerce' ) ) {
 
+      $wp_customize->add_setting( 'shop-title' , array( 'default' => 'Shop Our Store' ));
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'shop-title', array(
+          'label' => __( 'Shop Page Title', 'allonsy2' ),
+          'section' => 'woocommerce_product_catalog',
+          'type' => 'text',
+      ) ) );
+
+      $wp_customize->add_setting( 'shop-title-icon' , array( 'default' => 'fa-shopping-bag' ));
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'shop-title-icon', array(
+          'label' => __( 'Shop Title Icon', 'allonsy2' ),
+          'section' => 'woocommerce_product_catalog',
+          'type' => 'radio',
+          'choices' => array(
+            'fa-shopping-bag' => 'Shopping Bag',
+            'fa-shopping-cart' => 'Shopping Cart',
+            'no-icon' => 'No icon',
+          ),
+      ) ) );
+
       $wp_customize->add_setting( 'shop-layout' , array( 'default' => 'sidebar-right' ));
       $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'shop-layout', array(
           'label' => __( 'Shop Page Layout', 'allonsy2' ),
@@ -1290,6 +1309,17 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
             'sidebar-left' => 'Sidebar Left',
             'full-width' => 'Full Width, No Sidebar',
             'narrow-content' => 'No Sidebar, Narrow Content',
+          ),
+      ) ) );
+
+      $wp_customize->add_setting( 'shop-products-layout' , array( 'default' => 'grid-masonry' ));
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'shop-products-layout', array(
+          'label' => __( 'Shop Products Layout', 'allonsy2' ),
+          'section' => 'woocommerce_product_catalog',
+          'type' => 'radio',
+          'choices' => array(
+            'grid-masonry' => 'Grid (masonry)',
+            'grid-standard' => 'Grid (standard)',
           ),
       ) ) );
 

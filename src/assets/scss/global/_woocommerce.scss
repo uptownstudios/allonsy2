@@ -102,6 +102,7 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
     &.shop-layout-full-width {
 
       article.main-content.woocommerce-index {
+        max-width: 100%;
         width: 100%;
       }
     }
@@ -138,8 +139,11 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
     }
   }
   ul.products {
+    display: flex;
+    flex-wrap: wrap;
 
     & > li.product {
+      float: none;
 
       .woocommerce-loop-category__title {
         font-size: rem-calc(24) !important;
@@ -188,7 +192,8 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
       }
     }
     &.columns-2,
-    &.columns-3 {
+    &.columns-3,
+    &.columns-4 {
       margin-left: rem-calc(-30);
       margin-bottom: 0;
 
@@ -232,8 +237,36 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
           margin-left: rem-calc(15);
         }
         .button {
+          border-radius: 0 !important;
           display: block;
           margin-top: 0;
+        }
+      }
+    }
+    &.columns-2 {
+
+      & > li.product {
+        width: 50%;
+
+        @media #{$break600} {
+          width: 100%;
+        }
+      }
+    }
+    &.columns-4 {
+
+      & > li.product {
+        width: 25%;
+
+        @media #{$break1024} {
+          clear: none !important;
+          width: 33.3333%;
+        }
+        @media #{$break767} {
+          width: 50%;
+        }
+        @media #{$break600} {
+          width: 100%;
         }
       }
     }
@@ -303,7 +336,7 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
   .main-wrap .button, .main-wrap .button.wc-backward, .button, .button.wc-backward, .comment-form p.form-submit input {
     background: $red !important;
     // border: rem-calc(1) solid $whitealpha !important;
-    border-radius: 0 !important;
+    border-radius: rem-calc(100) !important;
     color: $white !important;
     font-family: $fontstack;
     font-size: rem-calc(14);

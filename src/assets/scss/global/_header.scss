@@ -130,8 +130,9 @@ header#masthead {
             width: auto !important;
 
             a {
+              border-radius: rem-calc(100);
               line-height: 1;
-              padding: rem-calc(10);
+              padding: rem-calc(10) rem-calc(15);
               width: auto !important;
             }
           }
@@ -298,12 +299,13 @@ header#masthead {
       a {
         align-items: center;
         //background: $red;
+        border-radius: rem-calc(100);
         //color: $white;
         display: inline-block;
         font-family: $fontstack;
         font-size: rem-calc(15) !important;
         font-weight: 700;
-        padding: rem-calc(7) rem-calc(10);
+        padding: rem-calc(7) rem-calc(15);
         text-transform: uppercase;
         width: auto;
         @include transition(all);

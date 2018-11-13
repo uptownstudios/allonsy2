@@ -1,1 +1,41 @@
+@keyframes materialize {
+  0% { opacity: 1%; }
+  50% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+#trigger-animate-tardis {
+  background-color: #f7f7f7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg %3E%3Ccircle fill='%23f7f7f7' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%23eeeeee' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%23e6e6e6' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23dddddd' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23d4d4d4' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%23cccccc' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: scroll !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+#Layer_1-3.animate {
+  -webkit-animation: materialize 3s 2 alternate ease-in-out 2s;
+  -moz-animation: materialize 3s 2 alternate ease-in-out 2s;
+  animation: materialize 3s 2 alternate ease-in-out 2s;
+  display: block;
+}
+.allonsy-letters, .allonsy-letters path {
+  fill: $blue !important;
+}
+.logo-w-tardis {
+  display: block;
+  margin: 0 auto;
+  max-width: rem-calc(600);
+  width: 100%;
+}
+.tardis-animate {
+  @media #{$break767} {
+    margin-bottom: rem-calc(30) !important;
+    max-width: rem-calc(100);
+  }
+}
+.tardis-text {
 
+  @media #{$break767} {
+    h2 {
+      text-align: center;
+    }
+  }
+}

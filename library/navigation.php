@@ -163,6 +163,7 @@ if ( ! function_exists( 'foundationpress_breadcrumb' ) ) {
 		echo '<ul id="' . $id . '" class="' . $class . '">';
 
 		// Do not display on the homepage
+		$blog_title = get_theme_mod('blog-page-title');
 		if ( ! is_front_page() ) {
 
 			// Home page
@@ -171,8 +172,16 @@ if ( ! function_exists( 'foundationpress_breadcrumb' ) ) {
 				echo '<li class="separator separator-home"> ' . $separator . ' </li>';
 			}
 
-			if ( is_single() && ! is_attachment() ) {
+			if ( is_home() ) {
 
+				echo '<li class="item-current item-blog-page"><strong class="bread-current bread-blog-page" title="' . $blog_title . '">' . $blog_title . '</strong></li>';
+
+			}	elseif ( is_single() && ! is_attachment() ) {
+
+				echo '<li class="item-cat item-blog-page"><a class="bread-cat bread-blog-page" href="' . get_permalink( get_option('page_for_posts') ) . '" title="' . $blog_title . '">' . $blog_title . '</a></li>';
+				if ( $separatorclass ) {
+					echo '<li class="separator separator-blog-page"> ' . $separator . ' </li>';
+				}
 				// Single post (Only display the first category)
 				echo '<li class="item-cat item-cat-' . $category[0]->term_id . ' item-cat-' . $category[0]->category_nicename . '"><a class="bread-cat bread-cat-' . $category[0]->term_id . ' bread-cat-' . $category[0]->category_nicename . '" href="' . get_category_link($category[0]->term_id) . '" title="' . $category[0]->cat_name . '">' . $category[0]->cat_name . '</a></li>';
 				if ( $separatorclass ) {
