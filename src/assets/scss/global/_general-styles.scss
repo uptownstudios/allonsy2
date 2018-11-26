@@ -394,15 +394,21 @@ form#searchform {
 .bs-btns-wrapper {
   text-align: left;
   width: 100%;
+  @media #{$break600} {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
   .bs-btn {
     display: inline-block;
     margin: 0 rem-calc(10) rem-calc(10) 0 ;
 
     @media #{$break600} {
-      margin: 0 0 rem-calc(10) 0;
+      margin: rem-calc(10) rem-calc(5) 0;
       text-align: center;
-      width: 100%;
+      width: auto;
     }
   }
 }

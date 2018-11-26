@@ -81,6 +81,17 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
 
   function newuptown_customize_register( $wp_customize ) {
 
+
+    // 0. SVG LOGO
+    $wp_customize->add_setting( 'svg_logo' , array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'title_tagline', array(
+        'label' => __( 'Inline SVG Logo', 'allonsy2' ),
+        'type' => 'textarea',
+        'description' => 'Paste in inline SVG code here. This will override the logo uploaded above. Useful for animating the logo.',
+        'section' => 'title_tagline',
+        'settings' => 'svg_logo',
+    ) ) );
+
     // 1. GENERAL COLOR SECTION
     $wp_customize->get_section('colors')->panel = 'theme-colors';
     $wp_customize->add_panel( 'theme-colors' , array(
@@ -984,10 +995,42 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
     ) ) );
     $wp_customize->add_setting( 'bs_pop_up_delay' , array( 'default' => '5000', 'transport' => 'postMessage' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bs_pop_up_delay', array(
-        'label' => __( 'Skip to content ID', 'allonsy2' ),
+        'label' => __( 'Site-wide popup delay', 'allonsy2' ),
         'section' => 'general-settings',
         'settings' => 'bs_pop_up_delay',
         'description' => 'Input the amount of time (in milliseconds) to delay the popup from appearing after page load.',
+    ) ) );
+    $wp_customize->add_setting( 'bs_pop_up_mouseleave' , array( 'default' => '', 'transport' => 'postMessage' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bs_pop_up_mouseleave', array(
+        'label' => __( 'Enable popup when the users mouse leaves the window?', 'allonsy2' ),
+        'section' => 'general-settings',
+        'settings' => 'bs_pop_up_mouseleave',
+        'type' => 'checkbox',
+        'description' => 'This will override the popup delay setting and enable the popup when the users mouse leaves the window.',
+    ) ) );
+    $wp_customize->add_setting( 'bs_pop_up_opacity' , array( 'default' => '85', 'transport' => 'postMessage' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bs_pop_up_opacity', array(
+        'label' => __( 'Site-wide popup overlay opacity percentage', 'allonsy2' ),
+        'section' => 'general-settings',
+        'settings' => 'bs_pop_up_opacity',
+        'type' => 'number',
+        'description' => 'Input a number between 0 and 100 representing the opacity level of the popup overlay.',
+        'input_attrs' => array(
+          'min' => 0,
+          'max' => 100,
+        ),
+    ) ) );
+    $wp_customize->add_setting( 'bs_pop_up_position' , array( 'default' => 'popup-centered', 'transport' => 'postMessage' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bs_pop_up_position', array(
+        'label' => __( 'Site-wide popup position?', 'allonsy2' ),
+        'section' => 'general-settings',
+        'type' => 'radio',
+        'choices' => array(
+          'popup-centered' => 'Centered',
+          'popup-bottom-left' => 'Bottom Left',
+          'popup-bottom-right' => 'Bottom Right',
+          'popup-bottom-full' => 'Bottom, 100% Width'
+        ),
     ) ) );
 
     // 7. HEADER LAYOUT OPTIONS
@@ -1071,6 +1114,19 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
         'description' => 'Check this box to enable the pre-footer widget area, which will be an include on all pages.',
         'section' => 'footer-options',
         'type' => 'checkbox'
+    ) ) );
+    // Pre-Footer Columns
+    $wp_customize->add_setting( 'pre-footer-columns' , array( 'default' => 'columns-4' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'pre-footer-columns', array(
+        'label' => __( 'Pre-Footer Columns', 'allonsy2' ),
+        'section' => 'footer-options',
+        'type' => 'radio',
+        'choices' => array(
+          'columns-1' => '1 Column',
+          'columns-2' => '2 Columns',
+          'columns-3' => '3 Columns',
+          'columns-4' => '4 Columns'
+        ),
     ) ) );
     // Footer Columns
     $wp_customize->add_setting( 'footer-columns' , array( 'default' => 'columns-4' ));

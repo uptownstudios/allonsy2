@@ -12,7 +12,7 @@
 			<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle() ?>>
 				<div class="title-bar-left">
 					<div class="title-bar-title">
-						<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
+						<?php get_template_part('template-parts/header_logo'); ?>
 					</div>
 					<button class="menu-icon <?php if ( $menu_layout === 'topbar' ) { ?>menu-type-topbar<?php } ?>" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"><span class="keep-together">Menu <i class="fas fa-caret-right" aria-hidden="hidden"></i></span></button>
 					<!-- <span class="site-mobile-title title-bar-title">
@@ -25,7 +25,7 @@
 				<div class="top-bar-left">
 					<div class="site-desktop-title top-bar-title">
 						<div class="logo-wrapper hide-for-small-only">
-							<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
+							<?php get_template_part('template-parts/header_logo'); ?>
 						</div>
 					</div>
 				</div>

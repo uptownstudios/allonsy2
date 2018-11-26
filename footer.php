@@ -11,6 +11,7 @@
  $popup_enabled = get_theme_mod('bs_pop_up_enable');
  $popup_delay = get_theme_mod('bs_pop_up_delay');
  $popup_content = get_theme_mod('bs_pop_up_content');
+ $popup_mouseleave = get_theme_mod('bs_pop_up_mouseleave');
  $a11y_toolbar = get_theme_mod('show-a11y-toolbar');
  $shop_products_layout = get_theme_mod('shop-products-layout');
 ?>
@@ -21,7 +22,7 @@
 
 			<?php if( is_active_sidebar('pre-footer-widgets') && $pre_footer ) : ?>
 				<div class="pre-footer-container">
-          <div class="pre-footer">
+          <div class="pre-footer grid-x">
 					  <?php dynamic_sidebar('pre-footer-widgets'); ?>
           </div>
 				</div>
@@ -51,16 +52,11 @@
   		<a href="#" title="Back to top"><i class="fa fa-chevron-up"></i></a>
 		</div>
 
-    <?php if( $popup_enabled ): ?>
-    <div id="bs-sitewide-popup" class="bs-sitewide-popup" style="display: none;">
-      <div class="bs-popup-overlay"></div>
-      <a href="#" class="bs-popup-close"><i class="far fa-times"></i></a>
-      <div class="bs-popup-inner">
-        <?php echo apply_filters('the_content', $popup_content); ?>
-        <p style="margin-bottom: 0;"><a class="bs-popup-hide-forever" href="#">Never show this again</a></p>
-      </div>
-    </div>
-    <?php endif; ?>
+    <?php if( $popup_enabled ):
+
+      get_template_part('template-parts/sitewide-popup');
+
+    endif; ?>
 
 		<?php do_action( 'foundationpress_layout_end' ); ?>
 
@@ -89,8 +85,8 @@
     tl.set(letters, {xPercent: 0});
 
     // sequence
-    tl.from(tardis, 2, {autoAlpha: 0, delay: 1}, 0.5)
-      .staggerFrom(letters, 1, {autoAlpha: 0, xPercent: -50, delay: 0, ease:Back.easeOut}, 0.25);
+    tl.staggerFrom(letters, 1, {autoAlpha: 0, xPercent: -50, delay: 1.5, ease:Back.easeOut}, 0.25)
+      .from(tardis, 2, {autoAlpha: 0, delay: 1.5}, 0.5);
 
     /* END Greensock Animation Trial */
   });
@@ -170,7 +166,13 @@
     <?php if( $popup_enabled ): ?>
     // Popup
     $(window).imagesLoaded(function() {
-      $('.bs-sitewide-popup').delay(6000).fadeIn('slow');
+      <?php if( $popup_mouseleave ) { ?>
+        $(document).one('mouseleave', function() {
+          $('.bs-sitewide-popup').addClass('popup-active').fadeIn('slow');
+        });
+      <?php } else { ?>
+        $('.bs-sitewide-popup').addClass('popup-active').delay(<?php echo $popup_delay; ?>).fadeIn('slow');
+      <?php } ?>
     });
     var $popup_cookie = Cookies.get('hide-sitewide-popup');
 		if( $popup_cookie == 'true' ) {

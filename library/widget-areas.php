@@ -10,6 +10,24 @@
 if ( ! function_exists( 'foundationpress_sidebar_widgets' ) ) :
 function foundationpress_sidebar_widgets() {
 
+  $pre_footer_columns = get_theme_mod('pre-footer-columns');
+	switch($pre_footer_columns) {
+		case 'columns-1':
+		 	$pre_footer_cols = 'large-12 medium-12 small-12';
+			break;
+		case 'columns-2':
+		 	$pre_footer_cols = 'large-6 medium-6 small-12';
+			break;
+		case 'columns-3':
+		 	$pre_footer_cols = 'large-4 medium-6 small-12';
+			break;
+		case 'columns-4':
+		 	$pre_footer_cols = 'large-3 medium-6 small-12';
+			break;
+		default;
+			$pre_footer_cols = 'large-4 medium-6 small-12';
+			break;
+	}
 	$footer_columns = get_theme_mod('footer-columns');
 	switch($footer_columns) {
 		case 'columns-1':
@@ -55,7 +73,7 @@ function foundationpress_sidebar_widgets() {
 		'id' => 'pre-footer-widgets',
 		'name' => __( 'Pre Footer widgets', 'foundationpress' ),
 		'description' => __( 'Drag widgets to this pre-footer container. The "Pre-Footer?" checkbox must be checked in the Customizer for these widgets to appear.', 'foundationpress' ),
-		'before_widget' => '<section id="%1$s" class="large-12 medium-12 columns widget %2$s">',
+		'before_widget' => '<section id="%1$s" class="' . $pre_footer_cols . ' columns widget %2$s">',
 		'after_widget' => '</section>',
 		'before_title' => '<h4>',
 		'after_title' => '</h4>',

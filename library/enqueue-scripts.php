@@ -45,7 +45,7 @@ if ( ! function_exists( 'foundationpress_scripts' ) ) :
 		wp_enqueue_script( 'gsap' );
 
 		// Enqueue Foundation scripts
-		wp_enqueue_script( 'foundation', get_stylesheet_directory_uri() . '/dist/assets/js/' . foundationpress_asset_path( 'app.js' ), array( 'jquery' ), '2.10.4', true );
+		wp_enqueue_script( 'foundation', get_stylesheet_directory_uri() . '/dist/assets/js/' . foundationpress_asset_path( 'app.js' ), array( 'jquery' ), '2.10.4', false );
 		// Enqueue FontAwesome from CDN. Uncomment the line below if you need FontAwesome.
 		//wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/5016a31c8c.js', array(), '4.7.0', true );
 		// Add the comment-reply library on pages where it is necessary
@@ -55,3 +55,12 @@ if ( ! function_exists( 'foundationpress_scripts' ) ) :
 	}
 	add_action( 'wp_enqueue_scripts', 'foundationpress_scripts' );
 endif;
+
+if ( ! function_exists('add_async_attribute') ) {
+	function add_async_attribute($tag, $handle) {
+    if ( 'foundation' !== $handle )
+      return $tag;
+    return str_replace( ' src', ' async="async" src', $tag );
+	}
+	add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+}

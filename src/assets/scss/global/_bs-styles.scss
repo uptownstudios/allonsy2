@@ -28,6 +28,8 @@
 .tardis-animate {
   @media #{$break767} {
     margin-bottom: rem-calc(30) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     max-width: rem-calc(100);
   }
 }
