@@ -97,23 +97,19 @@ function sass() {
     .pipe(browser.reload({ stream: true }));
 }
 
-function renderCss() {
-  return gulp.src('dist/assets/css/app.css')
-    .pipe($.if(PRODUCTION, $.uncss({
-      html: ['http://127.0.0.1/allonsy/','http://127.0.0.1/allonsy/*'],
-      ignore: [
-        '/foundation-mq/','/^\.is-.*/',
-        '/open/','/show/','/loaded/','/active/',
-        '/a11y-fontsize/','/a11y-contrast/','/a11y-active/',
-        // '.input-number-increment','.plus','.input-number-decrement','.minus',
-        // '.clear-notice','.hide-notice','.has-label-below',
-        // '.ginput_container_address_label','.mobile','.home','.not-home',
-        // '.sticky-prep','.sticky-header','.logged-in','.admin-bar'
-      ]
-    })))
-    .pipe(gulp.dest(PATHS.dist + '/assets/css'))
-    .pipe(browser.reload({ stream: true }));
-}
+// function renderCss() {
+//   return gulp.src('dist/assets/css/app.css')
+//     .pipe($.if(PRODUCTION, $.uncss({
+//       html: ['http://127.0.0.1/allonsy/','http://127.0.0.1/allonsy/*'],
+//       ignore: [
+//         '/foundation-mq/','/^\.is-.*/',
+//         '/open/','/show/','/loaded/','/active/',
+//         '/a11y-fontsize/','/a11y-contrast/','/a11y-active/',
+//       ]
+//     })))
+//     .pipe(gulp.dest(PATHS.dist + '/assets/css'))
+//     .pipe(browser.reload({ stream: true }));
+// }
 
 // Combine JavaScript into one file
 // In production, the file is minified
@@ -178,13 +174,13 @@ gulp.task('webpack:watch', webpack.watch);
 
 // Copy images to the "dist" folder
 // In production, the images are compressed
-function images() {
-  return gulp.src('src/assets/images/**/*')
-    .pipe($.if(PRODUCTION, $.imagemin({
-      progressive: true
-    })))
-    .pipe(gulp.dest(PATHS.dist + '/assets/images'));
-}
+// function images() {
+//   return gulp.src('src/assets/images/**/*')
+//     .pipe($.if(PRODUCTION, $.imagemin({
+//       progressive: true
+//     })))
+//     .pipe(gulp.dest(PATHS.dist + '/assets/images'));
+// }
 
 // Create a .zip archive of the theme
 function archive() {
@@ -248,12 +244,12 @@ function watch() {
   gulp.watch('**/*.php', reload)
     .on('change', path => log('File ' + colors.bold(colors.magenta(path)) + ' changed.'))
     .on('unlink', path => log('File ' + colors.bold(colors.magenta(path)) + ' was removed.'));
-  gulp.watch('src/assets/images/**/*', gulp.series(images, browser.reload));
+  // gulp.watch('src/assets/images/**/*', gulp.series(images, browser.reload));
 }
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
-  gulp.series(clean, gulp.parallel(sass,'webpack:build', images, copy)/*,renderCss*/));
+  gulp.series(clean, gulp.parallel(sass,'webpack:build',/*images,*/copy)/*,renderCss*/));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
