@@ -251,7 +251,7 @@ add_shortcode( 'blog_loop', 'bs_blog_loop' );
 function bs_blog_loop( $atts ) {
   $args = shortcode_atts( array(
 		'ppp' => '10', // Posts per page
-		'offset' => '0', // Skip the first few posts equal to this number
+		'offset' => '', // Skip the first few posts equal to this number
 		'cat' => '0',
 		'order_by' => 'date',
 		'order' => 'DESC',

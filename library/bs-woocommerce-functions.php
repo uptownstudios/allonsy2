@@ -83,7 +83,7 @@ function woocommerce_cart_link() {
   $fragments['span.cart-contents'] = ob_get_clean();
   return $fragments;
 }
-add_filter('add_to_cart_fragments', 'woocommerce_cart_link');
+add_filter('woocommerce_add_to_cart_fragments', 'woocommerce_cart_link');
 
 
 // Remove Uncategorized from WooCommerce Categories

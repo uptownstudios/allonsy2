@@ -28,4 +28,6 @@ import './vendor/lazysizes.min.js';
 
 import './vendor/jquery.waypoints.min.js';
 
-$(document).foundation();
+$(document).ready(function() {
+  $(document).foundation();
+});
