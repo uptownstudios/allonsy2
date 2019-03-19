@@ -107,7 +107,7 @@ header#masthead.header-option-four {
           //width: 100%;
         }
 
-        ul {
+        ul.social-media-wrapper {
           background: none;
           text-align: right;
           @media #{$break767} {
@@ -116,15 +116,20 @@ header#masthead.header-option-four {
 
           li a {
             color: $white;
-            line-height: rem-calc(36);
           }
-          li:not(.custom-button) a, li.menu-search-wrapper button {
+          li:not(.custom-button):not(.telephone) a, li.menu-search-wrapper button {
             border-radius: 100%;
+            line-height: rem-calc(36);
             @include transition(background);
 
             &:hover, &:focus {
               background: $white;
               color: $blue;
+            }
+          }
+          li.telephone {
+            @media #{$break1024} {
+              text-align: right;
             }
           }
           li.inline-social-search-wrapper {

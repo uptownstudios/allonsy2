@@ -2,6 +2,7 @@
   $a11y_position = get_theme_mod('a11y-position');
   $a11y_skip_to_nav = get_theme_mod('skip-to-nav');
   $a11y_skip_to_content = get_theme_mod('skip-to-content');
+  $backtop_position = get_theme_mod('back-top-position');
 ?>
 
 <?php if( $a11y_skip_to_nav || $a11y_skip_to_content ): ?>
@@ -14,7 +15,7 @@
   <?php } ?>
 </div>
 <?php endif; ?>
-<div id="a11y-toolbar" class="<?php echo $a11y_position; ?>">
+<div id="a11y-toolbar" class="<?php echo $a11y_position . ' ' . $backtop_position; ?>">
   <div id="a11y-fontsize">
     <button class="a11y-fontsize" title="Toggle Large Fontsize Mode"><span data-tooltip class="right" title="Toggle Larger Fontsize"><i class="fa fa-font"></i>+</span></button>
   </div>

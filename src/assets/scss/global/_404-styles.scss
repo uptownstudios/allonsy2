@@ -1,0 +1,12 @@
+.error404 {
+
+  .main-wrap.no-sidebar {
+    display: flex;
+    justify-content: center;
+
+    article.main-content {
+      max-width: rem-calc(800);
+      width: 100%;
+    }
+  }
+}

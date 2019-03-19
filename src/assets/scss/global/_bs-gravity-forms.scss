@@ -1,0 +1,172 @@
+.main-content > .entry-content > .gform_wrapper {
+  margin-top: 0 !important;
+}
+.gform_wrapper {
+
+  form {
+
+    .gform_body {
+      @media only screen and (min-width: 641px) {
+        width: calc(100% + 1rem);
+      }
+
+      li.gfield {
+        margin-top: 0;
+
+        // &:first-child {
+        //   margin-top: 0;
+        // }
+        input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=image]):not([type=file]), select, textarea {
+          border: rem-calc(1) solid $blue !important;
+          border-radius: rem-calc(3) !important;
+          box-shadow: none;
+          min-height: rem-calc(45);
+        }
+        .ginput_container {
+          margin-top: 0 !important;
+
+          input, select, textarea {
+            margin-bottom: rem-calc(20) !important;
+          }
+        }
+        .ginput_complex {
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: rem-calc(-16);
+          margin-right: 0;
+          width: calc(100% + 1rem) !important;
+
+          .ginput_full, .ginput_left, .ginput_right, .name_first, .name_last {
+            display: flex;
+            position: relative;
+            padding-left: rem-calc(16);
+            padding-right: 0;
+
+            input, select, textarea {
+              margin-bottom: rem-calc(20) !important;
+              margin-left: 0 !important;
+
+              & + label {
+                color: $almostblack;
+                font-style: italic;
+                font-weight: 700;
+                line-height: 1.2;
+                // margin-bottom: rem-calc(20);
+                margin: 0 0 0 rem-calc(1);
+                position: absolute;
+                top: calc(100% - 1.125rem);
+                transform: translateY(-100%);
+              }
+            }
+            &.has-label-below {
+
+              input, select, textarea {
+                margin-bottom: rem-calc(35) !important;
+              }
+            }
+          }
+          .ginput_full {
+            width: 100%;
+          }
+          .ginput_left, .ginput_right, .name_first, .name_last {
+            float: none;
+            margin-right: 0;
+            width: 50%;
+            @media #{$break640} {
+              width: 100%;
+            }
+          }
+        }
+        .ginput_container_address_label {
+          background: $ltgray;
+          display: block;
+          padding: rem-calc(16) rem-calc(16) 0 rem-calc(16);
+          width: 100%;
+        }
+        .ginput_complex.ginput_container_address {
+          background: $ltgray;
+          // margin-left: rem-calc(-16);
+          margin-left: 0;
+          margin-bottom: rem-calc(20);
+          padding: rem-calc(4) rem-calc(16) rem-calc(5) 0;
+          // width: calc(100% + 1rem);
+          width: 100% !important;
+
+          .ginput_full, .ginput_left, .ginput_right {
+            margin: 0;
+            padding: 0 0 0 rem-calc(16) !important;
+
+            input, select {
+              margin-bottom: rem-calc(25) !important;
+
+              & + label {
+                top: calc(100% - 0.625rem);
+              }
+            }
+            select {
+              margin-top: 0;
+            }
+          }
+          .ginput_left.address_zip {
+
+          }
+          .ginput_right + .ginput_left {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    .gform_footer {
+      margin: rem-calc(30) 0 0 0;
+      padding: 0;
+
+      input.gform_button {
+        font-family: $fontstack;
+        margin-right: 0;
+        padding: rem-calc(10) rem-calc(15);
+      }
+    }
+  }
+}
+.gform_wrapper.gform_validation_error {
+
+  form {
+
+    .validation_error {
+      background: $red;
+      border-color: $red;
+      color: $white;
+      font-family: $fontstack;
+      font-size: rem-calc(22);
+    }
+    .gform_body {
+
+      ul.gform_fields {
+
+        li.gfield.gfield_error {
+          margin-top: 0 !important;
+          padding-left: rem-calc(5);
+          padding-right: rem-calc(5);
+
+          label.gfield_label {
+            // line-height: 1 !important;
+            margin-top: 0;
+          }
+          .gfield_description.validation_message {
+            color: red;
+            padding: 0;
+          }
+          .ginput_complex {
+
+            .ginput_left, .ginput_right {
+
+              input + label {
+                top: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

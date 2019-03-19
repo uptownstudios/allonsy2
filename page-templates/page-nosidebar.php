@@ -14,9 +14,9 @@ Template Name: No Sidebar, Narrow Content
 	}
 ?>
 
-<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper max-width-nine-seventy no-sidebar"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper max-width-eight-thirty no-sidebar"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
 
-<div class="main-wrap full-width max-width-nine-seventy" role="main">
+<div class="main-wrap full-width max-width-eight-thirty" role="main">
 
 <?php do_action( 'foundationpress_before_content' ); ?>
 <?php while ( have_posts() ) : the_post(); ?>

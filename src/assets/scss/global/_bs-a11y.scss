@@ -53,8 +53,8 @@
 }
 div#a11y-toolbar {
   border: rem-calc(1) solid $gray;
-  border-radius: 0 rem-calc(5) rem-calc(5) 0;
-  box-shadow: rem-calc(1) rem-calc(4) rem-calc(5) $black;
+  border-radius: 0 rem-calc(4) rem-calc(4) 0;
+  // box-shadow: rem-calc(1) rem-calc(4) rem-calc(5) $black;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -106,17 +106,25 @@ div#a11y-toolbar {
       bottom: rem-calc(15);
       top: auto;
       transform: none;
+
+      &.backtop-left {
+        bottom: rem-calc(75);
+      }
     }
   }
   &.a11y-right {
-    box-shadow: rem-calc(-1) rem-calc(4) rem-calc(5) $black;
-    border-radius: rem-calc(5) 0 0 rem-calc(5);
+    // box-shadow: rem-calc(-1) rem-calc(4) rem-calc(5) $black;
+    border-radius: rem-calc(4) 0 0 rem-calc(4);
     border-right: 0;
     right: 0;
     @media #{$break640} {
-      bottom: 0;
+      bottom: rem-calc(15);
       top: auto;
-      transform: translateY(-100%);
+      transform: none;
+
+      &.backtop-right {
+        bottom: rem-calc(75);
+      }
     }
 
     div#a11y-fontsize, div#a11y-contrast {

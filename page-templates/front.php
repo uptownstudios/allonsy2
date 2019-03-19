@@ -12,7 +12,6 @@ get_header(); ?>
   <?php do_action( 'foundationpress_page_before_entry_content' ); ?>
   <div class="entry-content max-width-twelve-hundred pl15 pr15">
    <?php the_content(); ?>
-   <?php edit_post_link( __( '(Edit)', 'foundationpress' ), '<span class="edit-link">', '</span>' ); ?>
   </div>
 </article>
 <?php endwhile;?>

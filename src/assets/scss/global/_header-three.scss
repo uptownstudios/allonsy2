@@ -37,9 +37,19 @@ header#masthead.header-option-three {
 
       .top-bar-social {
 
-        ul {
+        ul.social-media-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
           @media #{$break1024} {
             text-align: center;
+          }
+          li {
+
+            &.telephone {
+              text-align: center;
+            }
           }
         }
       }

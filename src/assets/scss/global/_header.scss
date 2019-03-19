@@ -27,40 +27,6 @@ header#masthead {
       padding-left: rem-calc(15);
       padding-right: rem-calc(15);
     }
-    button.menu-icon {
-      color: $blue;
-      font-size: rem-calc(10);
-      letter-spacing: -.01rem;
-      line-height: 4.25;
-      margin-top: rem-calc(-10);
-      margin-left: 0;
-      margin-right: 0;
-      text-align: left;
-      text-transform: lowercase;
-      width: rem-calc(34);
-
-      span {
-        margin-top: rem-calc(2);
-      }
-      i {
-        bottom: rem-calc(-11.015);
-        color: $blue;
-        display: inline;
-        font-size: rem-calc(11);
-        line-height: 0.7;
-        position: absolute;
-        right: 0;
-      }
-      &.menu-type-topbar {
-
-        span {
-
-          i {
-            transform: rotate(90deg);
-          }
-        }
-      }
-    }
   }
   nav.top-bar {
     align-items: flex-start;
@@ -124,6 +90,19 @@ header#masthead {
                   right: auto;
                 }
               }
+            }
+          }
+          &.telephone {
+            margin-left: 0;
+            margin-bottom: rem-calc(10);
+            text-align: right;
+            width: 100%;
+            @media #{$break1024} {
+              text-align: center;
+            }
+
+            a {
+              font-weight: 700;
             }
           }
           &.custom-button {
@@ -476,5 +455,12 @@ header#masthead {
       //width: calc(100% - 3rem) !important;
       width: 100% !important;
     }
+  }
+}
+
+@media #{$break639} {
+  .title-bar {
+    padding-left: rem-calc(15);
+    padding-right: rem-calc(15);
   }
 }

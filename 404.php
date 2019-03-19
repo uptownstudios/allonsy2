@@ -10,8 +10,8 @@
  $title_bar = get_theme_mod('internal-title-bar');
  $breadcrumbs = get_theme_mod('internal-breadcrumbs');
 
-  if ( ! $title_bar || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' || $title_bar === 'bs-featured-image' ) {
-   get_template_part( 'template-parts/404-title-bar' );
+  if ( ! $title_bar || $title_bar === 'bs-featured-image' || $title_bar === 'bs-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-default-bar' ) {
+    get_template_part( 'template-parts/title-bars/404-title-bar' );
   }
 ?>
 

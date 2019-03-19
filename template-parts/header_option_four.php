@@ -9,17 +9,8 @@
 	<div id="sticky-header-placeholder"></div>
 	<header id="masthead" class="site-header header-option-four <?php if( get_theme_mod( 'sticky-header' ) != '') { ?>sticky-header<?php } ?>" role="banner">
 		<div id="header-inner" class="max-width-twelve-hundred">
-			<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle() ?>>
-				<div class="title-bar-left">
-					<div class="title-bar-title">
-						<?php get_template_part('template-parts/header_logo'); ?>
-					</div>
-					<button class="menu-icon <?php if ( $menu_layout === 'topbar' ) { ?>menu-type-topbar<?php } ?>" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"><span class="keep-together">Menu <i class="fas fa-caret-right" aria-hidden="hidden"></i></span></button>
-					<!-- <span class="site-mobile-title title-bar-title">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-					</span> -->
-				</div>
-			</div>
+
+			<?php get_template_part('template-parts/site-title-bar'); ?>
 
 			<nav class="site-navigation top-bar <?php if( $search_position == 'search-menu' ) { ?>has-search<?php } ?>" role="navigation">
 

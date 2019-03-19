@@ -59,13 +59,20 @@ header#masthead.header-option-two {
         order: 2;
         text-align: right;
 
-        li.inline-social-search-wrapper {
+        ul.social-media-wrapper {
+          @media #{$break1024} {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          li.inline-social-search-wrapper {
 
-          form#searchform {
+            form#searchform {
 
-            &:after {
-              content: '';
-              display: block !important;
+              &:after {
+                content: '';
+                display: block !important;
+              }
             }
           }
         }

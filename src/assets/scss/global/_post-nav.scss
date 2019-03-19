@@ -1,0 +1,13 @@
+footer {
+
+  &.portfolio-navigation {
+
+    nav.navigation.post-navigation {
+      padding: 0 rem-calc(15);
+    }
+  }
+  nav.navigation.post-navigation {
+    margin: rem-calc(32) auto 0;
+    max-width: rem-calc(1200);
+  }
+}

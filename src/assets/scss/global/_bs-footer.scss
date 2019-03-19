@@ -1,0 +1,41 @@
+footer.footer {
+
+  .widget {
+    padding: 0 rem-calc(15);
+    @media #{$break640} {
+      margin-bottom: rem-calc(40);
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  h6 {
+    font-size: rem-calc(24) !important;
+    margin-bottom: rem-calc(5) !important;
+    text-align: left;
+  }
+  ul.menu {
+    flex-direction: column;
+
+    li {
+      display: block;
+      padding: 0;
+
+      a {
+        padding: 0;
+        display: block;
+        line-height: 1.6;
+        text-transform: capitalize;
+        @include transition(color);
+      }
+      &.is-active a {
+        background: none;
+        color: inherit;
+      }
+    }
+  }
+}

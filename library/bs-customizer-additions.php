@@ -836,6 +836,13 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
       'priority' => 30,
       'description' => __( 'Enter the URL to your account for each service for the icon to appear in the header.', 'allonsy2' )
     ) );
+    // Add Phone Setting
+    $wp_customize->add_setting( 'telephone' , array( 'default' => '', 'transport' => 'postMessage' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'telephone', array(
+        'label' => __( 'Phone', 'allonsy2' ),
+        'section' => 'social-media',
+        'settings' => 'telephone',
+    ) ) );
     // Add Facebook Setting
     $wp_customize->add_setting( 'facebook' , array( 'default' => '', 'transport' => 'postMessage' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'facebook', array(
@@ -1030,6 +1037,25 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
           'popup-bottom-left' => 'Bottom Left',
           'popup-bottom-right' => 'Bottom Right',
           'popup-bottom-full' => 'Bottom, 100% Width'
+        ),
+    ) ) );
+    // 6h. Show/hide the back to top button
+    $wp_customize->add_setting( 'hide-back-top' , array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'hide-back-top', array(
+        'label' => __( 'Hide the back to top button?', 'allonsy2' ),
+        'section' => 'general-settings',
+        'type' => 'checkbox',
+    ) ) );
+    // 6i. Back to top position
+    $wp_customize->add_setting( 'back-top-position' , array( 'default' => 'backtop-right', 'transport' => 'refresh' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'back-top-position', array(
+        'label' => __( 'Back to top button position?', 'allonsy2' ),
+        'section' => 'general-settings',
+        'type' => 'radio',
+        'choices' => array(
+          'backtop-right' => 'Right',
+          'backtop-left' => 'Left',
+          'backtop-center' => 'Center',
         ),
     ) ) );
 
@@ -1257,6 +1283,55 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
           'bs-blog-no-excerpt' => 'Show Neither',
         ),
     ) ) );
+
+    // Disable ALL Blog Meta on archives, categories, and single posts
+    $wp_customize->add_setting( 'hide-blog-meta' , array( 'default' => '' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'hide-blog-meta', array(
+        'label' => __( 'Hide blog meta data?', 'allonsy2' ),
+        'section' => 'blog-options',
+        'type' => 'checkbox',
+    ) ) );
+
+    // Disable the date from displaying on archives, categories, and single posts
+    $wp_customize->add_setting( 'hide-blog-date' , array( 'default' => '' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'hide-blog-date', array(
+        'label' => __( 'Hide published date?', 'allonsy2' ),
+        'section' => 'blog-options',
+        'type' => 'checkbox',
+    ) ) );
+
+    // Disable the category from displaying on archives, categories, and single posts
+    $wp_customize->add_setting( 'hide-blog-cats' , array( 'default' => '' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'hide-blog-cats', array(
+        'label' => __( 'Hide the categories?', 'allonsy2' ),
+        'section' => 'blog-options',
+        'type' => 'checkbox',
+    ) ) );
+
+    // Disable the author from displaying on archives, categories, and single posts
+    $wp_customize->add_setting( 'hide-blog-author' , array( 'default' => '' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'hide-blog-author', array(
+        'label' => __( 'Hide the author?', 'allonsy2' ),
+        'section' => 'blog-options',
+        'type' => 'checkbox',
+    ) ) );
+
+    // Show the author avatar if the author is being displayed
+    $wp_customize->add_setting( 'show-author-avatar' , array( 'default' => '' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'show-author-avatar', array(
+        'label' => __( 'Show the author avatar?', 'allonsy2' ),
+        'section' => 'blog-options',
+        'type' => 'checkbox',
+    ) ) );
+
+    // Disable the comments from displaying on archives, categories, and single posts
+    $wp_customize->add_setting( 'hide-blog-comments' , array( 'default' => '' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'hide-blog-comments', array(
+        'label' => __( 'Hide the comments?', 'allonsy2' ),
+        'section' => 'blog-options',
+        'type' => 'checkbox',
+    ) ) );
+
     // Blog Excerpt Length
     $wp_customize->add_setting( 'blog-excerpt-length' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'blog-excerpt-length', array(

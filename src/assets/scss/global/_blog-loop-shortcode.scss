@@ -1,0 +1,301 @@
+.bs-blog-loop {
+
+  .bs-post-title {
+    margin-bottom: rem-calc(10);
+
+    h3 {
+
+      a {
+        display: inline-block;
+      }
+    }
+  }
+  .blog-meta {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: rem-calc(10);
+
+    p {
+      margin-bottom: rem-calc(5);
+
+      a {
+        display: inline-block;
+      }
+      i {
+        display: inline-block;
+        font-size: rem-calc(20);
+        line-height: rem-calc(24);
+        margin-right: rem-calc(3);
+        min-height: rem-calc(24);
+        text-align: center;
+        width: rem-calc(24);
+      }
+      &.bs-post-date {
+        order: 1;
+      }
+      &.bs-post-byline {
+        order: 2;
+
+        span.avatar {
+
+          img {
+            height: auto;
+            margin-right: rem-calc(3);
+            mix-blend-mode: multiply;
+            width: rem-calc(24);
+          }
+        }
+      }
+      &.bs-post-cats {
+        order: 3;
+      }
+      &.bs-post-comments {
+        order: 4;
+      }
+    }
+  }
+  .blog-footer {
+
+    a {
+      font-size: rem-calc(14);
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+  }
+  &.bs-blog-loop-list {
+
+    article.bs-single-post {
+      border-bottom: rem-calc(1) solid $blue;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: rem-calc(25);
+      padding-bottom: rem-calc(20);
+
+      &:last-of-type {
+        border-bottom: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      .blog-featured-image {
+        order: 2;
+        width: rem-calc(300);
+        @media #{$break640} {
+          margin-bottom: rem-calc(10);
+          order: 1;
+          width: 100%;
+        }
+      }
+      .entry-content {
+        order: 1;
+        padding-right: rem-calc(20);
+        width: calc(100% - 18.75rem);
+        @media #{$break640} {
+          order: 2;
+          padding-right: 0;
+          width: 100%;
+        }
+      }
+      .blog-footer {
+
+        a {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  &.bs-blog-loop-grid,
+  &.bs-blog-loop-carousel {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: rem-calc(-30);
+    margin-bottom: rem-calc(-45) !important;
+
+    article.bs-single-post {
+      margin-bottom: rem-calc(45);
+      margin-left: rem-calc(30);
+      @include transition(box-shadow);
+
+      @media #{$break600} {
+        width: calc(100% - 1.875rem);
+      }
+
+      .blog-featured-image {
+        background: $blue;
+        border: rem-calc(2) solid $blue;
+        border-bottom: 0;
+
+        figure, a {
+          display: block;
+          overflow: hidden;
+          width: 100%;
+
+          img {
+            display: block;
+            @include transition(all);
+          }
+        }
+      }
+      .blog-meta {
+
+        .bs-entry-meta {
+          flex-wrap: wrap;
+          margin-bottom: 0;
+
+          p {
+            border: 0;
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+          }
+        }
+      }
+      .entry-content {
+        background: #e1e1e1;
+        border: rem-calc(2) solid $blue;
+        border-top: 0;
+        border-bottom: 0;
+        padding: rem-calc(15);
+      }
+      .bs-post-excerpt {
+        margin-bottom: rem-calc(15);
+      }
+      .blog-footer {
+        margin-bottom: rem-calc(-15);
+        margin-left: rem-calc(-15);
+        margin-right: rem-calc(-15);
+        width: calc(100% + 1.875rem);
+
+        a {
+          background: $blue;
+          color: white;
+          display: block;
+          font-weight: 700;
+          padding: rem-calc(15);
+          text-decoration: none;
+          @include transition(background);
+
+          &:hover, &:focus {
+            background: $red;
+          }
+        }
+      }
+      &:hover, &:focus {
+        box-shadow: 0 rem-calc(20) rem-calc(60) rgba(0,0,80,.45);
+
+        .blog-featured-image {
+
+          figure, a {
+
+            img {
+              transform: scale(1.1) rotate(3deg);
+            }
+          }
+        }
+      }
+    }
+    &.grid-2-cols {
+
+      article.bs-single-post {
+        width: calc(50% - 1.875rem);
+
+        @media #{$break600} {
+          width: calc(100% - 1.875rem);
+        }
+      }
+    }
+    &.grid-3-cols {
+
+      article.bs-single-post {
+        width: calc(33.3333% - 1.875rem);
+
+        @media #{$break767} {
+          width: calc(50% - 1.875rem);
+        }
+        @media #{$break600} {
+          width: calc(100% - 1.875rem);
+        }
+      }
+    }
+    &.grid-4-cols {
+
+      article.bs-single-post {
+        width: calc(25% - 1.875rem);
+
+        @media #{$break1024} {
+          width: calc(50% - 1.875rem);
+        }
+        @media #{$break600} {
+          width: calc(100% - 1.875rem);
+        }
+      }
+    }
+    nav.custom-pagination {
+      margin-left: rem-calc(30);
+    }
+  }
+  &.bs-blog-loop-carousel {
+
+    article.bs-single-post {
+      box-shadow: none !important;
+    }
+    .slick-list {
+      width: 100%;
+    }
+    ul.slick-dots {
+      margin-bottom: rem-calc(35);
+      margin-left: rem-calc(30);
+      margin-top: rem-calc(-30);
+      position: relative;
+      width: calc(100% - 1.875rem);
+      z-index: 99;
+
+      li:only-child {
+        display: none;
+      }
+    }
+  }
+  nav.custom-pagination {
+    border-top: rem-calc(2) solid $blue;
+    margin-top: rem-calc(20);
+    padding-top: rem-calc(15);
+    text-align: center;
+    width: 100%;
+
+    @media #{$break800} {
+      margin-left: rem-calc(15);
+    }
+    .page-numbers {
+      display: inline-block;
+      font-weight: 700;
+      height: rem-calc(30);
+      line-height: rem-calc(30);
+      text-align: center;
+      text-decoration: none;
+      width: rem-calc(30);
+    }
+    span.page-numbers.page-num {
+      font-weight: 700;
+      width: auto;
+    }
+    span.pipe-separator {
+      font-size: rem-calc(20);
+      margin: 0 rem-calc(7);
+    }
+    span.page-numbers.current {
+      background: $red;
+      color: $white !important;
+    }
+    a.page-numbers {
+      // background: $red;
+      // color: white;
+      @include transition(all);
+
+      &:hover, &:focus {
+        background: $blue;
+        color: $white;
+      }
+    }
+  }
+}

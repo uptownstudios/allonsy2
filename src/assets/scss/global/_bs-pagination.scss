@@ -1,0 +1,34 @@
+ul.pagination {
+  border-top: rem-calc(2) solid $blue;
+  margin-top: rem-calc(20);
+  padding-top: rem-calc(15);
+  text-align: center;
+  width: 100%;
+
+  @media #{$break800} {
+    margin-left: rem-calc(15);
+  }
+  li, li span, li a {
+    display: inline-block;
+    font-size: rem-calc(16);
+    font-weight: 700;
+    height: rem-calc(30);
+    line-height: rem-calc(30);
+    padding: 0 !important;
+    text-align: center;
+    width: rem-calc(30);
+  }
+  li span.current {
+    background: $red;
+    color: $white !important;
+  }
+  li a {
+    text-decoration: none !important;
+    transition: all .2s ease-out !important;
+
+    &:hover, &:focus {
+      background: $blue;
+      color: $white !important;
+    }
+  }
+}

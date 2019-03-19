@@ -1,30 +1,53 @@
 <?php
 	$cart_in_alt_nav = get_theme_mod('cart_in_alt_nav');
+	$search_position = get_theme_mod('search-position');
+	$facebook = get_theme_mod('facebook');
+	$twitter = get_theme_mod('twitter');
+	$linkedin = get_theme_mod('linkedin');
+	$flickr = get_theme_mod('flickr');
+	$instagram = get_theme_mod('instagram');
+	$youtube = get_theme_mod('youtube');
+	$pinterest = get_theme_mod('pinterest');
+	$vimeo = get_theme_mod('vimeo');
+	$contact = get_theme_mod('contact');
+	$rss = get_theme_mod('rss');
+	$custom = get_theme_mod('custom');
+	$custom_text = get_theme_mod('custom-text');
+	$telephone = get_theme_mod('telephone');
+	$stripphone = preg_replace('/\D+/', '', $telephone);
 ?>
 
 			<ul class="social-media-wrapper">
-				<?php $search_position = get_theme_mod('search-position'); if( $search_position == 'search-social-menu' ) { ?>
+				<?php if( $telephone ): ?><li class="telephone"><a href="tel:+1<?php echo $stripphone; ?>" target="_blank" rel="noopener noreferrer"><?php echo $telephone; ?></a></li><?php endif; ?>
 
+				<?php if( $search_position == 'search-social-menu' ) { ?>
 					<li class="inline-social-search-wrapper menu-search-wrapper">
 						<button class="search-toggle"><i class="fas fa-search" aria-hidden="true"></i></button>
 						<?php get_search_form(); ?>
 					</li>
-
-				<!-- <li class="inline-social-search-wrapper">
-					<?php get_search_form(); ?>
-				</li> -->
 				<?php } ?>
-				<?php if( get_theme_mod('twitter')): ?><li class="twitter"><a href="<?php echo get_theme_mod('twitter','default'); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('facebook')): ?><li class="facebook"><a href="<?php echo get_theme_mod('facebook','default'); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('linkedin')): ?><li class="linkedin"><a href="<?php echo get_theme_mod('linkedin','default'); ?>" target="_blank"><i class="fab fa-linkedin-in"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('flickr')): ?><li class="flickr"><a href="<?php echo get_theme_mod('flickr','default'); ?>" target="_blank"><i class="fab fa-flickr"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('instagram')): ?><li class="instagram"><a href="<?php echo get_theme_mod('instagram','default'); ?>" target="_blank"><i class="fab fa-instagram"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('youtube')): ?><li class="youtube"><a href="<?php echo get_theme_mod('youtube','default'); ?>" target="_blank"><i class="fab fa-youtube"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('pinterest')): ?><li class="pinterest"><a href="<?php echo get_theme_mod('pinterest','default'); ?>" target="_blank"><i class="fab fa-pinterest"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('vimeo')): ?><li class="vimeo"><a href="<?php echo get_theme_mod('vimeo','default'); ?>" target="_blank"><i class="fab fa-vimeo-v"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('contact')): ?><li class="contact"><a href="<?php echo get_theme_mod('contact','default'); ?>"><i class="far fa-envelope"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('rss')): ?><li class="rss"><a href="<?php echo get_theme_mod('rss','default'); ?>" target="_blank"><i class="fas fa-rss"></i></a></li><?php endif; ?>
-				<?php if( get_theme_mod('custom')): ?><li class="custom-button"><a href="<?php echo get_theme_mod('custom','default'); ?>" target="_blank"><?php echo get_theme_mod('custom-text','default'); ?></a></li><?php endif; ?>
+
+				<?php if( $facebook ): ?><li class="facebook"><a href="<?php echo $facebook; ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li><?php endif; ?>
+
+				<?php if( $twitter ): ?><li class="twitter"><a href="<?php echo $twitter; ?>" target="_blank"><i class="fab fa-twitter"></i></a></li><?php endif; ?>
+
+				<?php if( $linkedin ): ?><li class="linkedin"><a href="<?php echo $linkedin; ?>" target="_blank"><i class="fab fa-linkedin-in"></i></a></li><?php endif; ?>
+
+				<?php if( $flickr ): ?><li class="flickr"><a href="<?php echo $flickr; ?>" target="_blank"><i class="fab fa-flickr"></i></a></li><?php endif; ?>
+
+				<?php if( $instagram ): ?><li class="instagram"><a href="<?php echo $instagram; ?>" target="_blank"><i class="fab fa-instagram"></i></a></li><?php endif; ?>
+
+				<?php if( $youtube ): ?><li class="youtube"><a href="<?php echo $youtube; ?>" target="_blank"><i class="fab fa-youtube"></i></a></li><?php endif; ?>
+
+				<?php if( $pinterest ): ?><li class="pinterest"><a href="<?php echo $pinterest; ?>" target="_blank"><i class="fab fa-pinterest"></i></a></li><?php endif; ?>
+
+				<?php if( $vimeo ): ?><li class="vimeo"><a href="<?php echo $vimeo; ?>" target="_blank"><i class="fab fa-vimeo-v"></i></a></li><?php endif; ?>
+
+				<?php if( $contact ): ?><li class="contact"><a href="<?php echo $contact; ?>"><i class="far fa-envelope"></i></a></li><?php endif; ?>
+
+				<?php if( $rss ): ?><li class="rss"><a href="<?php echo $rss; ?>" target="_blank"><i class="fas fa-rss"></i></a></li><?php endif; ?>
+
+				<?php if( $custom ): ?><li class="custom-button"><a href="<?php echo $custom; ?>" target="_blank"><?php echo $custom_text; ?></a></li><?php endif; ?>
 
 				<?php if( class_exists( 'WooCommerce' ) && !$cart_in_alt_nav ) { ?>
 				<li class="custom-button top-bar-my-cart">

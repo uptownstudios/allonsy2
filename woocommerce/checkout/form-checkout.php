@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  *
- * UPTOWN UPDATE NOTES: I convered col-1 and col-2 into Foundation6 tabs. I also
+ * UPTOWN UPDATE NOTES: I converted col-1 and col-2 into Foundation6 tabs. I also
  * move the Review and Payment section into the tabs instead of them being
  * separate and below the billing and shipping forms.
  *
@@ -19,7 +19,7 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     2.3.0
+ * @version     3.5.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -61,6 +61,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			</div>
 
 			<div class="payment-details tabs-panel" id="payment_show">
+
+				<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+
 				<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
 
 				<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>

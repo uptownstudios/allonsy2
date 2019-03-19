@@ -1,0 +1,17 @@
+.main-wrap {
+
+  .main-content {
+
+    a {
+      text-decoration: underline;
+    }
+    @media #{$break767} {
+      order: 1 !important;
+      width: calc(100% - 1.875rem) !important;
+    }
+  }
+}
+body:not(.home) .main-wrap {
+  margin-top: rem-calc(40);
+  margin-bottom: rem-calc(40);
+}

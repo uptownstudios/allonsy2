@@ -57,6 +57,7 @@ require_once( 'library/bs-custom-shortcodes.php' );
 require_once( 'library/bs-woocommerce-functions.php' );
 require_once( 'library/bs-custom-post-types.php' );
 require_once( 'library/bs-customizer-additions.php' );
+require_once( 'library/bs-customizer-styles.php' );
 require_once( 'library/class-tgm-plugin-activation.php' );
 require_once( 'library/bs-plugin-activation.php' );
 

@@ -1,0 +1,9 @@
+.main-wrap.full-width {
+  width: 100%;
+
+  .main-content {
+    margin-left: rem-calc(15) !important;
+    margin-right: rem-calc(15) !important;
+    width: 100%;
+  }
+}

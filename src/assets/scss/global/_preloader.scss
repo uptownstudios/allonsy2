@@ -23,8 +23,10 @@
     // left: 50%;
     // transform: translate(-50%, -50%);
 
-    @media only screen and (max-width: 630px) {
-      padding: rem-calc(15) rem-calc(40) 0;
+    @media #{$break640} {
+      max-width: 90%;
+      height: auto;
+      padding: rem-calc(15) 0 0;
     }
   }
   .letter-holder {

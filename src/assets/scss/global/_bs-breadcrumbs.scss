@@ -1,0 +1,32 @@
+.breadcrumbs-wrapper {
+  padding: 0 rem-calc(15);
+
+  #breadcrumbs {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: rem-calc(16) 0;
+
+    li {
+      float: none;
+      font-family: $fontstack !important;
+      font-size: rem-calc(14);
+      font-weight: 700;
+      text-transform: none;
+
+      &:after {
+        display: none;
+      }
+      a {
+        font-family: $fontstack !important;
+        font-size: rem-calc(14);
+        font-weight: 700;
+      }
+    }
+    li.separator {
+      font-size: rem-calc(14);
+      font-weight: 700;
+      margin: 0 rem-calc(10);
+    }
+  }
+}
