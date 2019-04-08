@@ -1,26 +1,30 @@
-@media only screen and (min-width: 39.9375rem) { // for screen sizes larger than 640px wide only
+@media only screen and (min-width: 40.0625rem) { // for screen sizes larger than 640px wide only
   #masthead {
-    will-change: top;
+    will-change: opacity, transform;
   }
   // Header Option One
   body.sticky-prep #masthead.sticky-header {
     opacity: 0;
     position: fixed;
     width: 100%;
-    top: -100%;
-    transition: top .5s ease-out
+    top: 0;
+    transform: translateY(-100%);
   }
   body.admin-bar.sticky-prep #masthead.sticky-header {
     opacity: 0;
-    top: -100%;
-    transition: top .5s ease-out;
+    top: 0;
+    transform: translateY(-100%);
   }
   body.sticky-header.sticky-prep #masthead.sticky-header {
     opacity: 1;
     top: 0;
+    transform: translateY(0);
+    transition: transform 1s, opacity 1s;
   }
   body.admin-bar.sticky-header.sticky-prep #masthead.sticky-header {
     opacity: 1;
-    top: 32px;
+    top: rem-calc(32);
+    transform: translateY(0);
+    transition: transform 1s, opacity 1s;
   }
 }

@@ -28,6 +28,7 @@
   5i. Gallery Shortcode Styles
   5j. Pagination Styles
   5k. Gravity Form Styles
+  5l. Search Results Styles
 
 6. BLOG PAGE AND SINGLE BLOG POST STYLES
   6a. Blog Loop Shortcode Styles
@@ -123,6 +124,9 @@
 
 /* 5k. Gravity Form Styles */
 @import "global/bs-gravity-forms";
+
+/* 5l. Search Results Styles */
+@import "global/bs-search-results";
 
 
 /**** 6. BLOG PAGE AND SINGLE BLOG POST STYLES ****/

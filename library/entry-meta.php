@@ -25,21 +25,22 @@ if ( ! function_exists( 'foundationpress_entry_meta' ) ) :
 				echo '<p class="bs-post-date" datetime="' . get_the_time( 'c' ) . '">' . sprintf( __( '<i class="far fa-calendar-alt" aria-hidden="true"></i> %1$s', 'allonsy2' ), get_the_date() ) . '</p>';
 			endif;
 
+			if ( ! $hide_author ):
+				echo '<p class="bs-post-byline byline author">' . __( '<i class="fas fa-user" aria-hidden="true"></i>', 'allonsy2' ) . ' By <a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author();
+				echo '</a></p>';
+			endif;
+
 			if ( ! $hide_cats ):
 				echo '<p class="bs-post-cats"><i class="far fa-sitemap"></i> ';
 				the_category(",");
 				echo '</p>';
 			endif;
 
-			if ( ! $hide_author ):
-				echo '<p class="bs-post-byline byline author">' . __( '<i class="fas fa-user" aria-hidden="true"></i>', 'allonsy2' ) . ' By <a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></p>';
-			endif;
-
 			if ( ! $hide_comments ):
 				echo '<p class="bs-post-comments">' . __( '<i class="far fa-comments" aria-hidden="true"></i> ', 'allonsy2' ); comments_number( 'No comments', '1 comment', '% comments' );
 				echo '</p>';
 			endif;
-			
+
 			echo '</div>';
 
 		endif;

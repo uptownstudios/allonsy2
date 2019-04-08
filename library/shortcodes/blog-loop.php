@@ -78,15 +78,20 @@ function bs_blog_loop( $atts ) {
 
 						<?php if($args['show_author'] == '1') { ?>
 							<p class="bs-post-byline">
-								<?php if($args['show_avatar'] == '1') { ?><span class="avatar"><?php echo get_avatar( get_the_author_meta( 'ID' ), 100 ); ?></span> <?php } ?>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>" title=""><?php the_author_meta( 'display_name' ); ?></a></p>
+								<?php if($args['show_avatar'] == '1') { ?><span class="avatar"><?php echo get_avatar( get_the_author_meta( 'ID' ), 100 ); ?></span> <?php } ?>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>" title=""><?php the_author_meta( 'display_name' ); ?></a>
+              </p>
 						<?php } ?>
 
 						<?php if($args['show_cats'] == '1') { ?>
-							<p class="bs-post-cats"><i class="far fa-sitemap" aria-hidden="true"></i> <?php the_category(','); ?></p>
+							<p class="bs-post-cats">
+                <i class="far fa-sitemap" aria-hidden="true"></i> <?php the_category(','); ?>
+              </p>
 						<?php } ?>
 
 						<?php if($args['show_comments'] == '1') { ?>
-							<p class="bs-post-comments"><i class="far fa-comments" aria-hidden="true"></i> <a href="<?php comments_link(); ?>" title="Join the discussion"><?php comments_number( 'No comments', '1 comment', '% comments' ); ?></a></p>
+							<p class="bs-post-comments">
+                <i class="far fa-comments" aria-hidden="true"></i> <a href="<?php comments_link(); ?>" title="Join the discussion"><?php comments_number( 'No comments', '1 comment', '% comments' ); ?></a>
+              </p>
 						<?php } ?>
 					</div>
 					<?php } ?>

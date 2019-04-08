@@ -58,7 +58,7 @@ div#bs-sitewide-popup {
 
     .bs-popup-inner {
       bottom: 0;
-      left: rem-calc(-50);
+      left: 0;
       right: auto;
       transform: none;
       top: auto;
@@ -68,7 +68,7 @@ div#bs-sitewide-popup {
 
     .bs-popup-inner {
       left: auto;
-      right: rem-calc(-50);
+      right: 0;
     }
   }
   &.popup-bottom-full {

@@ -1,0 +1,27 @@
+body.search-results {
+
+  section#main-container {
+
+    div.main-wrap {
+
+      article.main-content {
+
+        section.bs-blog-loop {
+
+          article.type-page.page {
+
+            .entry-content {
+
+              .blog-meta {
+                display: none;
+              }
+              .bs-post-excerpt {
+                font-family: $fontstack;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

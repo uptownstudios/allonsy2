@@ -325,14 +325,21 @@
 
 	});
 
-	<?php if( get_theme_mod( 'sticky-header' ) != '') { ?>
+	<?php if( get_theme_mod( 'sticky-header' ) != ''): ?>
 	// 7. STICKY HEADER CLASSIE SCRIPT
 	$('#masthead').imagesLoaded( function init() {
+    var stickPrep = jQuery('body:not(".sticky-prep") #masthead').outerHeight() * 2,
+        stickOn = jQuery('body:not(".sticky-prep") #masthead').outerHeight() * 2.5,
+        topBarHeight = jQuery('body:not(".sticky-prep") #masthead').outerHeight();
+
 		window.addEventListener('scroll', function(e){
       var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-        stickPrep = jQuery('#masthead').outerHeight() * 2,
-				topBarHeight = jQuery('#masthead').outerHeight(),
+        // stickPrep = jQuery('body:not(".sticky-prep") #masthead').outerHeight() * 2,
+				// topBarHeight = jQuery('body:not(".sticky-prep") #masthead').outerHeight(),
+        // topBarHeight = '171px',
         header = document.querySelector("body");
+        console.log("distanceY: " + distanceY);
+        console.log("stickPrep: " + stickPrep);
       if (distanceY > stickPrep) {
         classie.add(header,"sticky-prep");
 				$('#sticky-header-placeholder').css({'height' : topBarHeight,'display' : 'block'});
@@ -345,7 +352,7 @@
   	});
     window.addEventListener('scroll', function(e){
       var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-        stickOn = jQuery('#masthead').outerHeight() * 2.5,
+        // stickOn = jQuery('#masthead').outerHeight() * 2.5,
         header = document.querySelector("body");
       if (distanceY > stickOn) {
         classie.add(header,"sticky-header");
@@ -358,6 +365,6 @@
   	});
 	});
 	// window.onload = init();
-	<?php } ?>
+	<?php endif; ?>
 
 </script>
