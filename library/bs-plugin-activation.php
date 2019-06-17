@@ -32,7 +32,7 @@ function allonsy_register_required_plugins() {
 			'slug'               => 'advanced-custom-fields-pro',
 			'source'             => get_template_directory() . '/library/plugins/advanced-custom-fields-pro.zip',
 			'required'           => true,
-			'version'            => '5.7.7',
+			'version'            => '5.8.1',
 			'force_activation'   => false,
 			'force_deactivation' => false,
 			'external_url'       => '',
@@ -43,7 +43,7 @@ function allonsy_register_required_plugins() {
 			'slug'               => 'js_composer', // The plugin slug (typically the folder name).
 			'source'             => get_template_directory() . '/library/plugins/js_composer.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-			'version'            => '5.5.4', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'version'            => '6.0.3', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
 			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
 			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -54,7 +54,7 @@ function allonsy_register_required_plugins() {
 			'slug'               => 'gravityforms',
 			'source'             => get_template_directory() . '/library/plugins/gravityforms_2.3.4.zip',
 			'required'           => true,
-			'version'            => '2.3.4',
+			'version'            => '2.4.9.5',
 			'force_activation'   => false,
 			'force_deactivation' => false,
 			'external_url'       => '',
@@ -65,7 +65,7 @@ function allonsy_register_required_plugins() {
 			'slug'               => 'gravityformsmailchimp',
 			'source'             => get_template_directory() . '/library/plugins/gravityformsmailchimp_4.3.zip',
 			'required'           => true,
-			'version'            => '4.3',
+			'version'            => '4.6',
 			'force_activation'   => false,
 			'force_deactivation' => false,
 			'external_url'       => '',

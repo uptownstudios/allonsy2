@@ -126,8 +126,8 @@ function bs_ajax_blog_loop( $atts ) {
                 pauseOnFocus: true,
                 pauseOnHover: true,
                 pauseOnDotsHover: true,
-                prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></a>',
-                nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></a>',
+                prevArrow: '<button type="button" class="slick-prev"><span class="fas fa-chevron-left"></span></a>',
+                nextArrow: '<button type="button" class="slick-next"><span class="fas fa-chevron-right"></span></a>',
                 respondTo: 'window',
                 responsive: [{
                   breakpoint: 801,
@@ -191,7 +191,7 @@ function bs_ajax_blog_loop( $atts ) {
       					<?php if( ! $hide_meta ) { ?>
       					<div class="bs-post-meta">
       						<?php if( ! $hide_date ) { ?>
-      							<p class="bs-post-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> <?php echo get_the_date(); ?></p>
+      							<p class="bs-post-date"><span class="far fa-calendar-alt" aria-hidden="true"></span> <?php echo get_the_date(); ?></p>
       						<?php } ?>
 
       						<?php if( ! $hide_author ) { ?>
@@ -201,11 +201,11 @@ function bs_ajax_blog_loop( $atts ) {
       						<?php } ?>
 
       						<?php if( ! $hide_cats ) { ?>
-      							<p class="bs-post-cats"><i class="far fa-sitemap" aria-hidden="true"></i> <?php the_category(','); ?></p>
+      							<p class="bs-post-cats"><span class="far fa-sitemap" aria-hidden="true"></span> <?php the_category(','); ?></p>
       						<?php } ?>
 
       						<?php if( ! $hide_comments ) { ?>
-      							<p class="bs-post-comments"><i class="far fa-comments" aria-hidden="true"></i> <a href="<?php comments_link(); ?>" title="Join the discussion"><?php comments_number( 'No comments', '1 comment', '% comments' ); ?></a></p>
+      							<p class="bs-post-comments"><span class="far fa-comments" aria-hidden="true"></span> <a href="<?php comments_link(); ?>" title="Join the discussion"><?php comments_number( 'No comments', '1 comment', '% comments' ); ?></a></p>
       						<?php } ?>
       					</div>
       					<?php } ?>

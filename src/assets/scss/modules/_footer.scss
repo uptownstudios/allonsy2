@@ -27,6 +27,9 @@ body.home div.pre-footer-container {
   border-top: 1px solid $medium-gray;
   margin-top: rem-calc(60);
 }
+body.home .footer-container {
+  margin-top: 0;
+}
 
 .footer {
   @include xy-grid-container;

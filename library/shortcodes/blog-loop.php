@@ -73,7 +73,7 @@ function bs_blog_loop( $atts ) {
 					<?php if($args['show_meta'] == '1') { ?>
 					<div class="blog-meta">
 						<?php if($args['show_date'] == '1') { ?>
-							<p class="bs-post-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> <?php echo get_the_date(); ?></p>
+							<p class="bs-post-date"><span class="far fa-calendar-alt" aria-hidden="true"></span> <?php echo get_the_date(); ?></p>
 						<?php } ?>
 
 						<?php if($args['show_author'] == '1') { ?>
@@ -84,13 +84,13 @@ function bs_blog_loop( $atts ) {
 
 						<?php if($args['show_cats'] == '1') { ?>
 							<p class="bs-post-cats">
-                <i class="far fa-sitemap" aria-hidden="true"></i> <?php the_category(','); ?>
+                <span class="far fa-sitemap" aria-hidden="true"></span> <?php the_category(','); ?>
               </p>
 						<?php } ?>
 
 						<?php if($args['show_comments'] == '1') { ?>
 							<p class="bs-post-comments">
-                <i class="far fa-comments" aria-hidden="true"></i> <a href="<?php comments_link(); ?>" title="Join the discussion"><?php comments_number( 'No comments', '1 comment', '% comments' ); ?></a>
+                <span class="far fa-comments" aria-hidden="true"></span> <a href="<?php comments_link(); ?>" title="Join the discussion"><?php comments_number( 'No comments', '1 comment', '% comments' ); ?></a>
               </p>
 						<?php } ?>
 					</div>
@@ -129,8 +129,8 @@ function bs_blog_loop( $atts ) {
 				pauseOnFocus: true,
 				pauseOnHover: true,
 				pauseOnDotsHover: true,
-				prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></a>',
-				nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></a>',
+				prevArrow: '<button type="button" class="slick-prev"><span class="fas fa-chevron-left"></span></a>',
+				nextArrow: '<button type="button" class="slick-next"><span class="fas fa-chevron-right"></span></a>',
 				respondTo: 'min',
 				responsive: [{
 					breakpoint: 1024,

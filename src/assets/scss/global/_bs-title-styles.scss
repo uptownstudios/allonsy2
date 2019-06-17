@@ -47,8 +47,16 @@ h1.entry-title {
       padding: 0 0 0 rem-calc(12);
     }
   }
-  .blog-meta {
+  .bs-entry-meta {
 
+    p {
+
+      i, span {
+        display: inline-block;
+        text-align: center;
+        width: rem-calc(20);
+      }
+    }
     p.bs-post-date {
       order: 1;
     }

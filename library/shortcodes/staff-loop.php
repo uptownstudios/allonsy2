@@ -126,12 +126,12 @@ function bs_staff_loop( $atts ) {
 							</div>
 							<div class="staff-content">
 								<h3 class="staff-title"><a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title(); ?></a></h3>
-								<?php if( $staff_position ): echo '<p class="staff-meta staff-position"><i class="far fa-bookmark"></i> ' . $staff_position . '</p>'; endif; ?>
-								<?php if( $staff_email ): echo '<p class="staff-meta staff-email"><i class="far fa-envelope"></i> ' . $staff_email . '</p>'; endif; ?>
-								<?php if( $staff_phone ): echo '<p class="staff-meta staff-phone"><i class="far fa-phone"></i> ' . $staff_phone . '</p>'; endif; ?>
+								<?php if( $staff_position ): echo '<p class="staff-meta staff-position"><span class="far fa-bookmark"></span> ' . $staff_position . '</p>'; endif; ?>
+								<?php if( $staff_email ): echo '<p class="staff-meta staff-email"><span class="far fa-envelope"></span> ' . $staff_email . '</p>'; endif; ?>
+								<?php if( $staff_phone ): echo '<p class="staff-meta staff-phone"><span class="far fa-phone"></span> ' . $staff_phone . '</p>'; endif; ?>
 								<?php $terms = get_the_terms( $post->ID , 'staff-cat' );
 								if ( $terms ): ?>
-									<ul class="staff-category"><li><i class="far fa-building"></i></li><?php foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
+									<ul class="staff-category"><li><span class="far fa-building"></span></li><?php foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
 								<?php endif; ?>
 								<?php if( $show_excerpt ): ?>
 									<div class="staff-excerpt"><?php the_excerpt(); ?></div>

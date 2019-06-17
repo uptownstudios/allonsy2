@@ -22,22 +22,22 @@ if ( ! function_exists( 'foundationpress_entry_meta' ) ) :
 			echo '<div class="bs-entry-meta">';
 
 			if ( ! $hide_date ):
-				echo '<p class="bs-post-date" datetime="' . get_the_time( 'c' ) . '">' . sprintf( __( '<i class="far fa-calendar-alt" aria-hidden="true"></i> %1$s', 'allonsy2' ), get_the_date() ) . '</p>';
+				echo '<p class="bs-post-date" datetime="' . get_the_time( 'c' ) . '">' . sprintf( __( '<span class="far fa-calendar-alt" aria-hidden="true"></span> %1$s', 'allonsy2' ), get_the_date() ) . '</p>';
 			endif;
 
 			if ( ! $hide_author ):
-				echo '<p class="bs-post-byline byline author">' . __( '<i class="fas fa-user" aria-hidden="true"></i>', 'allonsy2' ) . ' By <a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author();
+				echo '<p class="bs-post-byline byline author">' . __( '<span class="fas fa-user" aria-hidden="true"></span>', 'allonsy2' ) . ' By <a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author();
 				echo '</a></p>';
 			endif;
 
 			if ( ! $hide_cats ):
-				echo '<p class="bs-post-cats"><i class="far fa-sitemap"></i> ';
+				echo '<p class="bs-post-cats"><span class="far fa-sitemap"></span> ';
 				the_category(",");
 				echo '</p>';
 			endif;
 
 			if ( ! $hide_comments ):
-				echo '<p class="bs-post-comments">' . __( '<i class="far fa-comments" aria-hidden="true"></i> ', 'allonsy2' ); comments_number( 'No comments', '1 comment', '% comments' );
+				echo '<p class="bs-post-comments">' . __( '<span class="far fa-comments" aria-hidden="true"></span> ', 'allonsy2' ); comments_number( 'No comments', '1 comment', '% comments' );
 				echo '</p>';
 			endif;
 

@@ -145,6 +145,25 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
     & > li.product {
       float: none;
 
+      &.outofstock {
+        overflow: hidden;
+
+        &:before {
+          background: $blue;
+          color: $white;
+          content: 'Out of stock';
+          display: block !important;
+          font-size: rem-calc(12);
+          font-weight: 700;
+          right: rem-calc(-32);
+          padding: rem-calc(5) rem-calc(32);
+          position: absolute;
+          text-transform: uppercase;
+          transform: rotate(45deg);
+          top: rem-calc(30);
+          z-index: 99;
+        }
+      }
       .woocommerce-loop-category__title {
         font-size: rem-calc(24) !important;
         padding: 0;
@@ -418,7 +437,7 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
             h2.woocommerce-loop-product__title {
               font-size: rem-calc(22) !important;
             }
-            @media #{$break640} {
+            @media #{$break767} {
               width: 50%;
             }
             @media #{$break400} {
@@ -552,8 +571,13 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
 
     ul.tabs.wc-tabs {
       border: 0;
-      margin-bottom: 0;
+      display: flex;
+      margin-bottom: rem-calc(-1);
       padding-left: 0;
+
+      @media #{$break767} {
+        flex-direction: column;
+      }
 
       &:before {
         border-bottom: rem-calc(1) solid $blue;
@@ -563,8 +587,9 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
         border: rem-calc(1) solid $blue;
         border-radius: 0;
         color: $white;
-        margin: 0;
-        padding: 0 rem-calc(10);
+        margin: 0 rem-calc(2) 0 0;
+        padding: 0;
+        position: relative;
         @include transition(background);
 
         &:before, &:after {
@@ -573,6 +598,10 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
         a {
           color: $white;
           display: block;
+          font-weight: 600;
+          padding: rem-calc(5) rem-calc(10);
+          text-decoration: none !important;
+          text-transform: uppercase;
           width: 100%;
         }
         &:hover, &:focus {
@@ -590,10 +619,15 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
           border-bottom-color: $ltgray !important;
 
           a {
+            border-bottom: rem-calc(1) solid $ltgray;
             color: #333 !important;
+
+            @media #{$break767} {
+              border-bottom: 0;
+            }
           }
         }
-        @media #{$break640} {
+        @media #{$break767} {
           border-bottom: rem-calc(1) solid $ltgray;
           box-shadow: 0 rem-calc(-2) rem-calc(7) #001e61;
           padding: 0 rem-calc(10);
@@ -614,7 +648,7 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
     .woocommerce-Tabs-panel {
       background: $ltgray;
       border: rem-calc(1) solid $blue;
-      border-top: 0;
+      // border-top: 0;
       padding: rem-calc(15) !important;
 
       p:last-of-type {
@@ -626,6 +660,9 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
       }
       h2.woocommerce-Reviews-title, h2.woocommerce-Reviews-title span {
         font-size: rem-calc(24) !important;
+        margin-bottom: rem-calc(15);
+      }
+      .related.products ul[class*="columns-"] li {
         margin-bottom: rem-calc(15);
       }
     }
@@ -1668,7 +1705,7 @@ body.woocommerce, body.woocommerce-page, div.woocommerce {
       z-index: 50;
     }
 
-    @media #{$break640} {
+    @media #{$break767} {
       line-height: 1.2;
       margin: 0 0 rem-calc(20);
       padding: rem-calc(10) rem-calc(45) rem-calc(10) rem-calc(10);

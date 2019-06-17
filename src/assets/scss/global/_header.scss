@@ -410,12 +410,13 @@ header#masthead {
   }
   .menu .dropdown li a {
     height: auto;
-    line-height: 1;
+    line-height: 1.1;
     font-size: rem-calc(15);
     font-weight: 400;
     padding: rem-calc(12) rem-calc(15) rem-calc(13) !important;
     display: block;
     position: relative;
+    white-space: pre-wrap;
     @include transition(all);
   }
   .menu .dropdown li {

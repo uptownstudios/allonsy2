@@ -21,7 +21,7 @@
       a {
         display: inline-block;
       }
-      i {
+      i, span {
         display: inline-block;
         font-size: rem-calc(20);
         line-height: rem-calc(24);
@@ -76,6 +76,10 @@
         border-bottom: 0;
         margin-bottom: 0;
         padding-bottom: 0;
+
+        hr {
+          display: none;
+        }
       }
       .blog-featured-image {
         order: 2;
@@ -100,6 +104,18 @@
 
         a {
           font-weight: 700;
+        }
+      }
+    }
+  }
+  &.bs-blog-loop-list-large {
+
+    article.bs-single-post {
+
+      &:last-of-type {
+
+        hr {
+          display: none;
         }
       }
     }
