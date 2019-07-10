@@ -52,7 +52,7 @@ function allonsy_register_required_plugins() {
 		array(
 			'name'               => 'Gravity Forms',
 			'slug'               => 'gravityforms',
-			'source'             => get_template_directory() . '/library/plugins/gravityforms_2.3.4.zip',
+			'source'             => get_template_directory() . '/library/plugins/gravityforms_2.4.9.5.zip',
 			'required'           => true,
 			'version'            => '2.4.9.5',
 			'force_activation'   => false,
@@ -63,7 +63,7 @@ function allonsy_register_required_plugins() {
 		array(
 			'name'               => 'Gravity Forms - MailChimp Add-On',
 			'slug'               => 'gravityformsmailchimp',
-			'source'             => get_template_directory() . '/library/plugins/gravityformsmailchimp_4.3.zip',
+			'source'             => get_template_directory() . '/library/plugins/gravityformsmailchimp_4.6.zip',
 			'required'           => true,
 			'version'            => '4.6',
 			'force_activation'   => false,

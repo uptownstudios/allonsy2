@@ -45,6 +45,10 @@
 
 11. FOOTER STYLES
 
+12. IE/EDGE STYLES
+
+13. SAFARI STYLES
+
 ** END TABLE OF CONTENTS **/
 
 
@@ -159,3 +163,11 @@
 
 /**** 11. FOOTER STYLES ****/
 @import "global/bs-footer";
+
+
+/**** 12. IE/EDGE STYLES ****/
+@import "global/ie-edge-styles";
+
+
+/**** 13. SAFARI STYLES ****/
+@import "global/safari-styles";

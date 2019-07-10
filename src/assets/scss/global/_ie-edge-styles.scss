@@ -1,0 +1,41 @@
+/* MS Edge Only CSS */
+@supports (-ms-ime-align: auto) {
+	header#masthead nav.site-navigation.top-bar ul.desktop-menu>li.is-active:focus ul.submenu.dropdown,
+  header#masthead nav.site-navigation.top-bar ul.desktop-menu>li.is-active:hover ul.submenu.dropdown {
+    margin-top: 0;
+		opacity: 1;
+		visibility: visible;
+		z-index: 10;
+	}
+}
+
+/* IE10/11 Only CSS */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+  header#masthead #header-inner .top-bar ul.desktop-menu > li.menu-item > a {
+    display: block;
+  }
+	header#masthead nav.site-navigation.top-bar ul.desktop-menu > li.menu-item.is-active:focus ul.submenu.dropdown,
+  header#masthead nav.site-navigation.top-bar ul.desktop-menu > li.menu-item.is-active:hover ul.submenu.dropdown {
+    margin-top: 0;
+		opacity: 1;
+		visibility: visible;
+		z-index: 10;
+	}
+	header#masthead nav.site-navigation.top-bar ul.desktop-menu > li.menu-item-has-children ul.submenu.dropdown:after {
+		display: none;
+	}
+	.gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_full input + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_full select + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_full textarea + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_left input + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_left select + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_left textarea + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_right input + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_right select + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .ginput_right textarea + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .name_first input + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .name_first select + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .name_first textarea + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .name_last input + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .name_last select + label, .gform_wrapper form .gform_body li.gfield .ginput_complex .name_last textarea + label {
+		left: rem-calc(15);
+	}
+	header#masthead nav.top-bar.site-navigation .top-bar-right,
+  header#masthead nav.top-bar.site-navigation .top-bar-bottom {
+		justify-content: space-between;
+	}
+	header#masthead nav.top-bar.site-navigation ul.desktop-menu > li > a {
+		font-size: inherit !important;
+		white-space: pre-wrap;
+	}
+	header#masthead {
+		z-index: 1000;
+	}
+}
