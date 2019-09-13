@@ -75,7 +75,7 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
       font-size: 1.5rem;
       flex-grow: 1;
 
-      a, i {
+      a, i, span[class*="fa-"] {
         width: 100% !important;
       }
     }
@@ -124,7 +124,7 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
     li.custom-button.top-bar-my-cart,
     li.custom-button.alt-nav-my-cart {
 
-      i {
+      i, span[class*="fa-"] {
         display: inline;
         font-size: rem-calc(18);
         margin-right: rem-calc(2);
@@ -140,7 +140,7 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
         min-width: rem-calc(20);
       }
     }
-    li a, li a i {
+    li a, li a i, li a span[class*="fa-"] {
       display: block;
       font-size: 1.5rem;
       width: rem-calc(36);
@@ -150,6 +150,9 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
       &:hover, &:focus {
         background: none !important;
       }
+    }
+    li a span[class*="fa-"] {
+      font-weight: 400 !important;
     }
     li.custom-button a {
       padding: 0 rem-calc(10);
@@ -177,9 +180,10 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
         background: $blue;
       }
     }
-    i {
+    i, span[class*="fa-"] {
       display: inline;
       font-size: rem-calc(18);
+      font-weight: inherit !important;
       margin-right: rem-calc(2);
     }
     span.cart-contents {
@@ -195,57 +199,7 @@ body.topbar header#masthead .top-bar nav#mobile-menu.mobile-menu.vertical.menu {
     }
   }
   form#searchform {
-    position: absolute;
-    right: 0;
-    position: relative;
-    max-width: 100%;
-    width: 100%;
-    text-align: right;
-    border: rem-calc(1) solid $gray;
-    border-radius: rem-calc(3);
-    background: $white;
-    margin: 0;
-    @media #{$break1024} {
-      margin: 0 auto;
-    }
-
-    &:after {
-      color: $white;
-      content: '\f002';
-      cursor: pointer;
-      font-family: fontawesome !important;
-      height: rem-calc(34);
-      line-height: rem-calc(34);
-      position: absolute;
-      right: 0;
-      text-align: center;
-      top: 0;
-      width: rem-calc(34);
-      pointer-events: none;
-    }
-    input#searchsubmit {
-      text-indent: -9999px;
-      margin: 0;
-      width: rem-calc(34);
-      height: rem-calc(34);
-      background: $red;
-      color: $white;
-
-      &:hover, &:focus {
-        background: $black;
-      }
-    }
-    input#s {
-      background: $white;
-      border: 0;
-      box-shadow: none;
-      height: rem-calc(34);
-      line-height: rem-calc(34);
-      max-width: none;
-      padding: 0 rem-calc(10) !important;
-    }
-    .input-group {
-      margin: 0;
-    }
+    max-width: 100% !important;
+    width: 100% !important;
   }
 }

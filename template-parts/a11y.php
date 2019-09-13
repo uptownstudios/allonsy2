@@ -17,9 +17,9 @@
 <?php endif; ?>
 <div id="a11y-toolbar" class="<?php echo $a11y_position . ' ' . $backtop_position; ?>">
   <div id="a11y-fontsize">
-    <button class="a11y-fontsize" title="Toggle Large Fontsize Mode"><span data-tooltip class="right" title="Toggle Larger Fontsize"><i class="fa fa-font"></i>+</span></button>
+    <button class="a11y-fontsize" title="Toggle Large Fontsize Mode"><span data-tooltip class="right" title="Toggle Larger Fontsize"><span class="fa fa-font"></span>+</span></button>
   </div>
   <div id="a11y-contrast">
-    <button class="a11y-contrast" title="Toggle High Contrast Mode"><span data-tooltip data-click-open="true" class="right" title="Toggle High Contrast View"><i class="fa fa-adjust"></i></span></button>
+    <button class="a11y-contrast" title="Toggle High Contrast Mode"><span data-tooltip data-click-open="true" class="right" title="Toggle High Contrast View"><span class="fa fa-adjust"></span></span></button>
   </div>
 </div>

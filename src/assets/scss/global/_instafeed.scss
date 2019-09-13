@@ -43,6 +43,9 @@ div#instafeed {
       width: 100%;
       @include transition(all);
     }
+    span[class*="fa-"] {
+      color: $white;
+    }
     img {
       transform: none;
       @include transition(all);
@@ -61,7 +64,7 @@ div#instafeed {
   .slick-list.draggable {
     margin-left: rem-calc(-20);
 
-    a.instagram-image.slick-slide {
+    .slick-slide {
       margin-left: rem-calc(20);
     }
   }

@@ -219,13 +219,6 @@ header#masthead.header-option-four {
 
         .above-menu-search-wrapper {
           margin: 0 0 rem-calc(5) 0;
-
-          form#searchform {
-
-            &:before {
-              right: rem-calc(10) !important;
-            }
-          }
         }
       }
     }
@@ -237,52 +230,6 @@ header#masthead.header-option-four {
   .inline-social-search-wrapper {
     height: rem-calc(36);
     position: relative;
-
-    form#searchform {
-      background: $white;
-      border: rem-calc(1) solid $gray;
-      border-radius: rem-calc(3);
-      margin: 0;
-      max-width: rem-calc(200);
-      position: relative !important;
-      right: 0;
-      width: 100%;
-      @media #{$break1024} {
-        margin: 0 auto !important;
-      }
-
-      &:after {
-        position: absolute;
-        content: '\f002';
-        font-family: fontawesome !important;
-        width: 34px;
-        height: 34px;
-        line-height: 34px;
-        text-align: center;
-        top: 0;
-        right: 0;
-        cursor: pointer;
-      }
-      input#searchsubmit {
-        text-indent: -9999px;
-        margin: 0 !important;
-        width: 34px;
-        height: 34px;
-        background: none;
-      }
-      input#s {
-        max-width: none;
-        border: 0;
-        box-shadow: none;
-        padding: 0 10px !important;
-        line-height: 34px;
-        height: 34px;
-        background: none;
-      }
-      .input-group {
-        margin: 0;
-      }
-    }
   }
   nav.top-bar.has-search {
 
@@ -326,7 +273,6 @@ header#masthead.header-option-four {
         text-align: center;
       }
       form#searchform {
-        border-radius: 0;
 
         &:after {
           content: '';
@@ -381,7 +327,6 @@ header#masthead.header-option-four {
       right: 0;
 
       &.show {
-
         margin: rem-calc(8) 0 0 0;
       }
     }

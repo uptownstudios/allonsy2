@@ -17,7 +17,7 @@ function bs_section_heading( $atts ) {
 	$section_title_color = $args['color'];
 	?>
 
-	<<?php echo $section_html_tag; ?> class="section-heading align<?php echo $section_heading_align; ?>"><span class="section-heading-inner" style="color: <?php echo $section_title_color;?>;"><?php if( $section_icon ) { ?><i class="<?php echo $section_icon; ?>"></i> <?php } ?><?php echo $section_title; ?></span></<?php echo $section_html_tag; ?>>
+	<<?php echo $section_html_tag; ?> class="section-heading align<?php echo $section_heading_align; ?>"><span class="section-heading-inner" style="color: <?php echo $section_title_color;?>;"><?php if( $section_icon ) { ?><span class="<?php echo $section_icon; ?>"></span> <?php } ?><?php echo $section_title; ?></span></<?php echo $section_html_tag; ?>>
 
   <?php $bssectionheading = ob_get_clean(); return $bssectionheading;
 }

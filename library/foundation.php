@@ -21,24 +21,109 @@ function foundationpress_pagination() {
 		'total' => $wp_query->max_num_pages,
 		'mid_size' => 5,
 		'prev_next' => true,
-		'prev_text' => __( '&laquo;', 'foundationpress' ),
-		'next_text' => __( '&raquo;', 'foundationpress' ),
+		'prev_text' => __( '&laquo;', 'allonsy2' ),
+		'next_text' => __( '&raquo;', 'allonsy2' ),
 		'type' => 'list',
 	) );
 
-	$paginate_links = str_replace( "<ul class='page-numbers'>", "<ul class='pagination text-center' role='navigation' aria-label='Pagination'>", $paginate_links );
-	$paginate_links = str_replace( '<li><span class="page-numbers dots">', "<li><a href='#'>", $paginate_links );
-	$paginate_links = str_replace( '</span>', '</a>', $paginate_links );
-	$paginate_links = str_replace( "<li><span class='page-numbers current'>", "<li class='current'>", $paginate_links );
-	$paginate_links = str_replace( "<li><a href='#'>&hellip;</a></li>", "<li><span class='dots'>&hellip;</span></li>", $paginate_links );
-	$paginate_links = preg_replace( '/\s*page-numbers/', '', $paginate_links );
-
 	// Display the pagination if more than one page is found.
-	if ( $paginate_links ) {
+  if ( $paginate_links ) {
+    // Match patterns for preg_replace
+    $preg_find = [
+      '/\s*page-numbers\s*/', // Captures string 'page-numbers' and any whitespace before and after
+      "/\s*class=''/", // Captures any empty class attributes
+      '/<li><a class="prev" href="(\S+)">/', // '(\S+)' Captures href value for backreference
+      '/<li><a class="next" href="(\S+)">/', // '(\S+)' Captures href value for backreference
+      "/<li><span aria-current='page' class='current'>(\d+)<\/span><\/li>/", // '(\d+)' Captures page number for backreference
+      "/<li><a href='(\S+)'>(\d+)<\/a><\/li>/", // '(\S+)' Captures href value for backreference, (\d+)' Captures page number for backreference
+    ];
+    // preg_replace replacements
+    $preg_replace = [
+      '',
+      '',
+      '<li class="pagination-previous"><a href="$1" aria-label="Previous page">', // '$1' Outputs backreference href value
+      '<li class="pagination-next"><a href="$1" aria-label="Next page">', // '$1' Outputs backreference href value
+      '<li class="current" aria-current="page"><span class="show-for-sr">You\'re on page </span>$1</li>', // '$1' Outputs backreference page number
+      '<li><a href="$1" aria-label="Page $2">$2</a>', // '$1' Ouputs backreference href, '$2' outputs backreference page number
+    ];
+    // Match patterns for str_replace
+    $str_find = [
+      "<ul>",
+      '<li><span class="dots">&hellip;</span></li>',
+    ];
+    // str_replace replacements
+    $str_replace = [
+      '<ul class="pagination text-center">',
+      '<li class="ellipsis" aria-hidden="true"></li>',
+    ];
+    $paginate_links = preg_replace( $preg_find, $preg_replace, $paginate_links );
+    $paginate_links = str_replace( $str_find, $str_replace, $paginate_links );
+    $paginate_links = '<nav aria-label="Pagination">' . $paginate_links . '</nav>';
 		echo $paginate_links;
 	}
 }
 endif;
+
+
+// Custom Comments Pagination.
+if ( ! function_exists( 'foundationpress_get_the_comments_pagination' ) ) :
+	function foundationpress_get_the_comments_pagination( $args = array() ) {
+		$navigation = '';
+		$args = wp_parse_args( $args, array(
+			'prev_text'				=> __( '&laquo;', 'foundationpress' ),
+			'next_text'				=> __( '&raquo;', 'foundationpress' ),
+			'size'					=> 'default',
+			'show_disabled'			=> true,
+		) );
+		$args['type'] = 'array';
+		$args['echo'] = false;
+		$links = paginate_comments_links( $args );
+		if ( $links ) {
+			$link_count = count( $links );
+			$pagination_class = 'pagination';
+			if ( 'large' == $args['size'] ) {
+				$pagination_class .= ' pagination-lg';
+			} elseif ( 'small' == $args['size'] ) {
+				$pagination_class .= ' pagination-sm';
+			}
+			$current = get_query_var( 'cpage' ) ? intval( get_query_var( 'cpage' ) ) : 1;
+			$total = get_comment_pages_count();
+			$navigation .= '<ul class="' . $pagination_class . '">';
+			if ( $args['show_disabled'] && 1 === $current ) {
+				$navigation .= '<li class="page-item disabled">' . $args['prev_text'] . '</li>';
+			}
+			foreach ( $links as $index => $link ) {
+				if ( 0 == $index && 0 === strpos( $link, '<a class="prev' ) ) {
+					$navigation .= '<li class="page-item">' . str_replace( 'prev page-numbers', 'page-link', $link ) . '</li>';
+				} elseif ( $link_count - 1 == $index && 0 === strpos( $link, '<a class="next' ) ) {
+					$navigation .= '<li class="page-item">' . str_replace( 'next page-numbers', 'page-link', $link ) . '</li>';
+				} else {
+					$link = preg_replace( "/(class|href)='(.*)'/U", '$1="$2"', $link );
+					if ( 0 === strpos( $link, '<span class="page-numbers current' ) ) {
+						$navigation .= '<li class="page-item active">' . str_replace( array( '<span class="page-numbers current">', '</span>' ), array( '<a class="page-link" href="#">', '</a>' ), $link ) . '</li>';
+					} elseif ( 0 === strpos( $link, '<span class="page-numbers dots' ) ) {
+						$navigation .= '<li class="page-item disabled">' . str_replace( array( '<span class="page-numbers dots">', '</span>' ), array( '<a class="page-link" href="#">', '</a>' ), $link ) . '</li>';
+					} else {
+						$navigation .= '<li class="page-item">' . str_replace( 'class="page-numbers', 'class="page-link', $link ) . '</li>';
+					}
+				}
+			}
+			if ( $args['show_disabled'] && $current == $total ) {
+				$navigation .= '<li class="page-item disabled">' . $args['next_text'] . '</li>';
+			}
+			$navigation .= '</ul>';
+			$navigation = _navigation_markup( $navigation, 'comments-pagination' );
+		}
+		return $navigation;
+	}
+endif;
+// Custom Comments Pagination.
+if ( ! function_exists( 'foundationpress_the_comments_pagination' ) ) :
+	function foundationpress_the_comments_pagination( $args = array() ) {
+		echo foundationpress_get_the_comments_pagination( $args );
+	}
+endif;
+
 
 /**
  * A fallback when no navigation is selected by default.

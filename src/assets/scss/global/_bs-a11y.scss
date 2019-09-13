@@ -20,23 +20,23 @@
   }
 }
 .tooltip {
-  background: $ltyellow;
+  // background: $ltyellow;
   border-radius: rem-calc(3);
   border: rem-calc(1) solid $blue;
   color: $black;
   font-size: rem-calc(14);
   font-weight: 700;
+  margin-left: rem-calc(10);
   max-width: rem-calc(220);
   padding: rem-calc(6) rem-calc(10);
   width: auto;
 
   &.right:before {
     border: inset rem-calc(6) !important;
-    border-color: transparent $ltyellow transparent transparent !important;
+    border-color: transparent $blue transparent transparent !important;
     z-index: 10;
   }
   &.right:after {
-
     border: inset rem-calc(8) !important;
     border-color: transparent $blue transparent transparent !important;
     content: '';
@@ -54,7 +54,7 @@
 div#a11y-toolbar {
   border: rem-calc(1) solid $gray;
   border-radius: 0 rem-calc(4) rem-calc(4) 0;
-  // box-shadow: rem-calc(1) rem-calc(4) rem-calc(5) $black;
+  box-shadow: $boxshadow;
   display: flex;
   flex-direction: column;
   overflow: hidden;

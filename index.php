@@ -19,6 +19,7 @@ $breadcrumbs = get_theme_mod('internal-breadcrumbs');
 $blog_title = get_theme_mod('blog-page-title');
 $blog_posts_layout = get_theme_mod('blog-posts-layout');
 $blog_page_layout = get_theme_mod('blog-page-layout');
+$bs_site_width = get_theme_mod('bs_site_width'); // options are max-width-twelve-hundred, max-width-fourteen-hundred, and max-width-sixteen-hundred
 /* BLOG PAGE LAYOUT CHOICES
     'blog-sidebar-right' => 'Sidebar Right',
     'blog-sidebar-left' => 'Sidebar Left',
@@ -34,7 +35,7 @@ $blog_page_layout = get_theme_mod('blog-page-layout');
   }
 ?>
 
-<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper <?php echo $bs_site_width; ?>"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
 
 <div class="main-wrap <?php echo $blog_page_layout . ' '; if( $blog_page_layout === 'blog-full-width' || $blog_page_layout === 'blog-narrow-content') { ?>no-sidebar<?php } ?>" role="main">
 	<article class="main-content">

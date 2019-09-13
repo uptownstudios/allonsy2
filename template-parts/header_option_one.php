@@ -5,10 +5,11 @@
 		$hide_social = get_theme_mod('hide_header_social');
 		$alt_nav = get_theme_mod('show_alt_nav');
 		$menu_layout = get_theme_mod('wpt_mobile_menu_layout');
+		$bs_site_width = get_theme_mod('bs_site_width'); // options are max-width-twelve-hundred, max-width-fourteen-hundred, and max-width-sixteen-hundred
 	?>
 	<div id="sticky-header-placeholder"></div>
 	<header id="masthead" class="site-header header-option-one <?php if( get_theme_mod( 'sticky-header' ) != '') { ?>sticky-header<?php } ?>" role="banner">
-		<div id="header-inner" class="max-width-twelve-hundred">
+		<div id="header-inner" class="<?php echo $bs_site_width; ?>">
 
 			<?php get_template_part('template-parts/site-title-bar'); ?>
 
@@ -49,7 +50,7 @@
 
 					<?php if( $search_position == 'search-menu' ) { ?>
 					<div class="menu-search-wrapper">
-						<button class="search-toggle"><i class="fa fa-search" aria-hidden="true"></i></button>
+						<button class="search-toggle"><span class="fa fa-search" aria-hidden="true"></span></button>
 						<?php get_search_form(); ?>
 					</div>
 					<?php } ?>

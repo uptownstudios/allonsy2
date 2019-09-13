@@ -12,6 +12,7 @@
 	$shop_title = get_theme_mod('shop-title');
 	$shop_title_icon = get_theme_mod('shop-title-icon');
 	$shop_layout = get_theme_mod('shop-layout');
+	$bs_site_width = get_theme_mod('bs_site_width'); // options are max-width-twelve-hundred, max-width-fourteen-hundred, and max-width-sixteen-hundred
 
 	if( !is_shop() ) {
 		if( $title_bar === 'bs-featured-image') {
@@ -28,17 +29,17 @@
 ?>
 
 <?php if( $breadcrumbs != '' ) { ?>
-	<?php if( is_shop() ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred shop-layout-<?php echo $shop_layout; ?>"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
-	<?php if( !is_shop() ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred shop-layout-<?php echo $shop_layout; ?>"><?php woocommerce_breadcrumb(); ?></div><?php } ?>
+	<?php if( is_shop() ) { ?><div class="breadcrumbs-wrapper <?php echo $bs_site_width; ?> shop-layout-<?php echo $shop_layout; ?>"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+	<?php if( !is_shop() ) { ?><div class="breadcrumbs-wrapper <?php echo $bs_site_width; ?> shop-layout-<?php echo $shop_layout; ?>"><?php woocommerce_breadcrumb(); ?></div><?php } ?>
 <?php } ?>
 
 <?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
-<header class="woocommerce-shop-title max-width-twelve-hundred shop-layout-<?php echo $shop_layout; ?>">
-	<h1 class="entry-title"><?php if( $shop_title_icon != 'no-icon' ) { ?><i class="fas <?php echo $shop_title_icon; ?>"></i> <?php } echo $shop_title; ?></h1>
+<header class="woocommerce-shop-title <?php echo $bs_site_width; ?> shop-layout-<?php echo $shop_layout; ?>">
+	<h1 class="entry-title"><?php if( $shop_title_icon != 'no-icon' ) { ?><span class="fas <?php echo $shop_title_icon; ?>"></span> <?php } echo $shop_title; ?></h1>
 </header>
 <?php endif; ?>
 
-<div class="main-wrap shop-layout-<?php echo $shop_layout; ?>" role="main">
+<div class="main-wrap <?php echo $bs_site_width; ?> shop-layout-<?php echo $shop_layout; ?>" role="main">
 
 	<?php do_action( 'foundationpress_before_content' ); ?>
 	<?php /* while ( woocommerce_content() ) : the_post(); */ ?>

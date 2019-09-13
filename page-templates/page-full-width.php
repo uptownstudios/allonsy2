@@ -5,6 +5,7 @@ Template Name: Full Width, No Sidebar
 	get_header();
 	$title_bar = get_theme_mod('internal-title-bar');
 	$breadcrumbs = get_theme_mod('internal-breadcrumbs');
+	$bs_site_width = get_theme_mod('bs_site_width'); // options are max-width-twelve-hundred, max-width-fourteen-hundred, and max-width-sixteen-hundred
 
 	if( $title_bar === 'bs-featured-image') {
 		get_template_part( 'template-parts/title-bars/featured-image' );
@@ -14,9 +15,9 @@ Template Name: Full Width, No Sidebar
 	}
 ?>
 
-<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper <?php echo $bs_site_width; ?>"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
 
-<div class="main-wrap full-width" role="main">
+<div class="main-wrap full-width <?php echo $bs_site_width; ?>" role="main">
 
 <?php do_action( 'foundationpress_before_content' ); ?>
 <?php while ( have_posts() ) : the_post(); ?>

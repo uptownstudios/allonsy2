@@ -22,9 +22,9 @@
 
 	<header class="featured-hero featured-hero-title-bar" role="banner" style="background: url(<?php echo $default_image; ?>) <?php echo $default_image_repeat; ?> center center; <?php if( $default_image_repeat === 'no-repeat' ) { ?>background-size: cover;<?php } ?>">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
-		<?php if( $staff_title ): ?><span class="staff-meta staff-title"><i class="far fa-bookmark"></i> <?php echo $staff_title; ?></span><?php endif; ?>
-		<?php if( $staff_email ): ?><span class="staff-meta staff-email"><i class="far fa-envelope"></i> <?php echo $staff_email; ?></span><?php endif; ?>
-		<?php if( $staff_phone ): ?><span class="staff-meta staff-phone"><i class="far fa-phone"></i> <?php echo $staff_phone; ?></span><?php endif; ?>
+		<?php if( $staff_title ): ?><span class="staff-meta staff-title"><span class="far fa-bookmark"></span> <?php echo $staff_title; ?></span><?php endif; ?>
+		<?php if( $staff_email ): ?><span class="staff-meta staff-email"><span class="far fa-envelope"></span> <?php echo $staff_email; ?></span><?php endif; ?>
+		<?php if( $staff_phone ): ?><span class="staff-meta staff-phone"><span class="far fa-phone"></span> <?php echo $staff_phone; ?></span><?php endif; ?>
 	</header>
 
 	<?php endif;

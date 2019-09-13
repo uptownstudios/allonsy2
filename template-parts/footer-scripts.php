@@ -57,6 +57,12 @@
 
 		$(window).imagesLoaded(function() {
 
+			// Safari menu display issue hack
+			var isSafari = /constructor/i.test(window.HTMLElement);
+			if($(isSafari)) {
+				$('header#masthead .top-bar-left').hide().fadeIn('fast');
+			}
+
 			// 1. GENERAL SCRIPTS
 			$('li.menu-item-has-children > a').on('focus focusout', function() {
 	      $(this).parents().toggleClass('is-active');
@@ -310,7 +316,7 @@
     });
 
 		// 6b. Hide WooCommerce notice on checkout page
-		$('.woocommerce-info').append('<span class="clear-notice"><i class="fa fa-times-circle" aria-hidden="hidden"></i></span>');
+		$('.woocommerce-info').append('<span class="clear-notice"><span class="fa fa-times-circle" aria-hidden="hidden"></span></span>');
 		$('.woocommerce-info .clear-notice').click(function() {
 			$(this).parents('.woocommerce-info').addClass('hide-notice');
 			$('form.checkout_coupon.woocommerce-form-coupon').addClass('hide-notice');

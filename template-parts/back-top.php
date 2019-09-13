@@ -6,7 +6,7 @@
 ?>
 
 <div id="back-top" class="<?php echo $backtop_position; ?>">
-	<a href="#" title="Back to top"><i class="fa fa-chevron-up"></i></a>
+	<a href="#" title="Back to top"><span class="fa fa-chevron-up"></span></a>
 </div>
 
 <?php endif; ?>

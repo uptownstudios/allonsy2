@@ -5,7 +5,7 @@
 ?>
 <div id="bs-sitewide-popup" class="bs-sitewide-popup <?php echo $popup_position; ?>" style="display: none;">
 	<div class="bs-popup-overlay" style="background: rgba(0,0,0,<?php if( $popup_opacity > '99' ) { echo '1'; } else { echo '.' . $popup_opacity; } ?>);"></div>
-	<a href="#" class="bs-popup-close" title="Close Modal Window"><i class="far fa-times"></i></a>
+	<a href="#" class="bs-popup-close" title="Close Modal Window"><span class="far fa-times"></span></a>
 	<div class="bs-popup-inner">
 		<?php echo apply_filters('the_content', $popup_content); ?>
 		<p style="margin-bottom: 0;"><a class="bs-popup-hide-forever" href="#">Never show this again</a></p>

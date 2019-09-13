@@ -13,6 +13,7 @@
   $share_buttons = get_theme_mod('show-share-buttons');
   $share_buttons_position = get_theme_mod('share-buttons-position');
   $share_buttons_count = get_theme_mod('share-buttons-count');
+  $bs_site_width = get_theme_mod('bs_site_width'); // options are max-width-twelve-hundred, max-width-fourteen-hundred, and max-width-sixteen-hundred
 
 	if( $title_bar === 'bs-featured-image') {
     get_template_part( 'template-parts/title-bars/featured-image' );
@@ -23,7 +24,7 @@
 ?>
 
 <?php if( $breadcrumbs != '' ) { ?>
-  <div class="breadcrumbs-wrapper <?php if( $single_post_layout === 'single-full-width' || $single_post_layout === 'single-narrow-content') { ?>max-width-eight-thirty<?php } else { ?>max-width-twelve-hundred<?php } ?>">
+  <div class="breadcrumbs-wrapper <?php if( $single_post_layout === 'single-full-width' || $single_post_layout === 'single-narrow-content') { ?>max-width-eight-thirty<?php } else { echo $bs_site_width; } ?>">
     <?php foundationpress_breadcrumb(); ?>
   </div>
 <?php } ?>

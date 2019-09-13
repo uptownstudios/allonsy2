@@ -13,6 +13,7 @@
   get_header();
   $title_bar = get_theme_mod('internal-title-bar');
   $breadcrumbs = get_theme_mod('internal-breadcrumbs');
+  $bs_site_width = get_theme_mod('bs_site_width'); // options are max-width-twelve-hundred, max-width-fourteen-hundred, and max-width-sixteen-hundred
 
   if( $title_bar === 'bs-featured-image') {
     get_template_part( 'template-parts/title-bars/featured-image' );
@@ -22,9 +23,9 @@
   }
 ?>
 
-<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper max-width-twelve-hundred"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
+<?php if( $breadcrumbs != '' ) { ?><div class="breadcrumbs-wrapper <?php echo $bs_site_width; ?>"><?php foundationpress_breadcrumb(); ?></div><?php } ?>
 
-<div class="main-wrap" role="main">
+<div class="main-wrap <?php echo $bs_site_width; ?>" role="main">
 
 <?php do_action( 'foundationpress_before_content' ); ?>
 

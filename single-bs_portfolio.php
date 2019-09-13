@@ -11,6 +11,7 @@
   $share_buttons = get_theme_mod('show-share-buttons');
   $share_buttons_position = get_theme_mod('share-buttons-position');
   $share_buttons_count = get_theme_mod('share-buttons-count');
+  $bs_site_width = get_theme_mod('bs_site_width'); // options are max-width-twelve-hundred, max-width-fourteen-hundred, and max-width-sixteen-hundred
 
 	if( $title_bar === 'bs-featured-image') {
     get_template_part( 'template-parts/title-bars/featured-image' );
@@ -21,10 +22,10 @@
 ?>
 
 <?php if( $share_buttons && $share_buttons_position === 'top' ) { ?>
-  <div class="max-width-twelve-hundred bs-social-share-outer"><?php echo do_shortcode('[bs_social_share show_count="' . $share_buttons_count . '"]'); ?></div>
+  <div class="<?php echo $bs_site_width; ?> bs-social-share-outer"><?php echo do_shortcode('[bs_social_share show_count="' . $share_buttons_count . '"]'); ?></div>
 <?php } ?>
 
-<div class="main-wrap sidebar-left" role="main">
+<div class="main-wrap sidebar-left <?php echo $bs_site_width; ?>" role="main">
 
 <?php do_action( 'foundationpress_before_content' ); ?>
 <?php while ( have_posts() ) : the_post(); ?>
@@ -33,7 +34,7 @@
     <?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
 		<header>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
-      <ul class="portfolio-category"><li><i class="fa fa-list-ul"></i></li><?php $terms = get_the_terms( $post->ID , 'portfolio-cat' ); foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
+      <ul class="portfolio-category"><li><span class="fa fa-list-ul"></span></li><?php $terms = get_the_terms( $post->ID , 'portfolio-cat' ); foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
 		</header>
 		<?php endif; ?>
 		<?php do_action( 'foundationpress_post_before_entry_content' ); ?>
@@ -76,9 +77,9 @@
 </aside>
 </div>
 <?php if( $share_buttons && $share_buttons_position === 'bottom' ) { ?>
-  <div class="max-width-twelve-hundred bs-social-share-outer"><?php echo do_shortcode('[bs_social_share show_count="' . $share_buttons_count . '"]'); ?></div>
+  <div class="<?php echo $bs_site_width; ?> bs-social-share-outer"><?php echo do_shortcode('[bs_social_share show_count="' . $share_buttons_count . '"]'); ?></div>
 <?php } ?>
-<footer class="portfolio-navigation">
+<footer class="portfolio-navigation <?php echo $bs_site_width; ?>">
   <?php the_post_navigation( array(
     'prev_text' => __( '&laquo %title' ),
     'next_text' => __( '%title &raquo;' ),

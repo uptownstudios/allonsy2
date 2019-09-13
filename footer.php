@@ -14,6 +14,7 @@
  $popup_mouseleave = get_theme_mod('bs_pop_up_mouseleave');
  $a11y_toolbar = get_theme_mod('show-a11y-toolbar');
  $shop_products_layout = get_theme_mod('shop-products-layout');
+ $bs_site_width = get_theme_mod('bs_site_width'); // options are max-width-twelve-hundred, max-width-fourteen-hundred, and max-width-sixteen-hundred
 ?>
 
 		</section>
@@ -22,21 +23,21 @@
 
 			<?php if( is_active_sidebar('pre-footer-widgets') && $pre_footer ) : ?>
 				<div class="pre-footer-container">
-          <div class="pre-footer grid-x">
+          <div class="pre-footer <?php echo $bs_site_width; ?> grid-x">
 					  <?php dynamic_sidebar('pre-footer-widgets'); ?>
           </div>
 				</div>
 			<?php endif; ?>
 
 			<div class="footer-container" data-sticky-footer>
-				<footer class="footer grid-x">
+				<footer class="footer <?php echo $bs_site_width; ?> grid-x">
 					<?php do_action( 'foundationpress_before_footer' ); ?>
 					<?php dynamic_sidebar( 'footer-widgets' ); ?>
 					<?php do_action( 'foundationpress_after_footer' ); ?>
 				</footer>
 			</div>
 			<div id="copyright-container">
-				<footer id="copyright" class="max-width-twelve-hundred grid-x <?php if( get_theme_mod('social-copyright') != '' ) { ?>has-social<?php } ?>">
+				<footer id="copyright" class="<?php echo $bs_site_width; ?> grid-x <?php if( get_theme_mod('social-copyright') != '' ) { ?>has-social<?php } ?>">
 					<?php if( get_theme_mod('social-copyright') != '') { ?><div class="small-12 medium-12 large-7 cell"><?php } ?>
 					<?php if( get_theme_mod('copyright')): ?>
 						<p>&copy; <?php echo date('Y'); ?> <?php echo get_theme_mod('copyright','default'); ?></p>

@@ -93,7 +93,7 @@ function bs_services_loop( $atts ) {
 						</div>
 						<div class="service-content">
 							<h3 class="service-title"><a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title(); ?></a></h3>
-							<ul class="service-category"><li><i class="far fa-sitemap"></i></li><?php $terms = get_the_terms( $post->ID , 'service-cat' ); foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
+							<ul class="service-category"><li><span class="far fa-sitemap"></span></li><?php $terms = get_the_terms( $post->ID , 'service-cat' ); foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
 							<?php if( $show_excerpt ): ?>
 								<div class="service-excerpt"><?php the_excerpt(); ?></div>
 							<?php endif; ?>

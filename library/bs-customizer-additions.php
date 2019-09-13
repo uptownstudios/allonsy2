@@ -65,7 +65,8 @@
   6d. A11y Skip to content ID
   6e. Loading Animation
   6f. Loading Animation Image URL
-  6g. Pop-Up Options
+  6g. Base site width
+  6h. Pop-Up Options
 
 7. HEADER LAYOUT OPTIONS
 8. INTERNAL PAGE SECTION
@@ -984,7 +985,21 @@ if ( ! function_exists( 'newuptown_customize_register' ) ) {
         'section' => 'general-settings',
         'settings' => 'loading-animation-image',
     ) ) );
-    //6g. Pop-Up Options
+
+    // 6g. Base site width
+    $wp_customize->add_setting( 'bs_site_width' , array( 'default' => 'max-width-twelve-hundred', 'transport' => 'refresh' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bs_site_width', array(
+        'label' => __( 'Base website width', 'allonsy2' ),
+        'section' => 'general-settings',
+        'type' => 'radio',
+        'choices' => array(
+          'max-width-twelve-hundred' => '1200px',
+          'max-width-fourteen-hundred' => '1400px',
+          'max-width-sixteen-hundred' => '1600px',
+        ),
+    ) ) );
+
+    // 6h. Pop-Up Options
     $wp_customize->add_setting( 'bs_pop_up_enable' , array( 'default' => '', 'transport' => 'postMessage' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bs_pop_up_enable', array(
         'label' => __( 'Enable site-wide popup?', 'allonsy2' ),
@@ -1522,7 +1537,7 @@ header#masthead, .top-bar, .top-bar ul.social-media-wrapper, .top-bar-left, .top
     background-color: <?php echo esc_attr(get_theme_mod('header_color','#FFFFFF')); ?>;
   }
 }
-#main-container p, #main-container li, #main-container span, #main-container time {
+#main-container p, #main-container li, #main-container span:not(.fab):not(.fa):not(.fas):not(.fal):not(.far), #main-container time {
   color: <?php echo esc_attr(get_theme_mod('paragraph_color','#272e31')); ?>;
 }
 a, .breadcrumbs a, .woocommerce .woocommerce-breadcrumb a, ul.pagination li a {
@@ -1614,7 +1629,7 @@ nav.off-canvas ul.social-media-wrapper li.custom-button a:focus,
 #main-container .featured-hero-title-bar ul li,
 #main-container .featured-hero-title-bar span,
 #main-container .featured-hero-title-bar a {
-  color: <?php echo esc_attr(get_theme_mod('titlebar_color','#FFFFFF')); ?>;
+  color: <?php echo esc_attr(get_theme_mod('titlebar_color','#FFFFFF')); ?> !important;
 }
 #main-container .about-the-author-wrap {
   background-color: <?php echo esc_attr(get_theme_mod('about_author_bg_color','#F2F2F2')); ?>;
@@ -1738,7 +1753,7 @@ nav.off-canvas .submenu li.is-active a {
   box-shadow: 0 7px 0 <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }
 form#searchform {
-  background: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?> !important;
+  background: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;
 }
 .highlight-bg {
   background-color: <?php echo esc_attr(get_theme_mod('highlight_color','#b01f23')); ?>;

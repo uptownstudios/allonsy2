@@ -1,0 +1,85 @@
+html form#searchform {
+  background: $white;
+  border: rem-calc(1) solid $blue;
+  display: block;
+  max-width: rem-calc(300) !important;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100% !important;
+
+  &:before {
+    color: $white;
+    content: '\f002';
+    cursor: pointer;
+    display: block;
+    font-family: "Font Awesome 5 Pro", 'fontawesome' !important;
+    font-size: rem-calc(18);
+    font-weight: 900;
+    height: rem-calc(34);
+    line-height: rem-calc(34);
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    right: 0;
+    top: 0;
+    width: rem-calc(36);
+  }
+  .input-group {
+    margin: 0;
+  }
+  input#s {
+    background: $white;
+    border: 0;
+    box-shadow: none;
+    height: rem-calc(34);
+    line-height: rem-calc(34);
+    max-width: none;
+    margin: 0;
+    padding: 0 rem-calc(10) !important;
+  }
+  input#searchsubmit {
+    background: $blue !important;
+    height: rem-calc(34);
+    line-height: rem-calc(34);
+    margin: 0;
+    min-width: rem-calc(36);
+    padding: 0;
+    text-indent: -9999px;
+    @include transition(all);
+
+    &:hover, &:focus {
+      background: $black !important;
+    }
+  }
+}
+html .menu-search-wrapper {
+  position: relative;
+
+  form#searchform {
+    background: $red;
+    padding: rem-calc(15) !important;
+    position: absolute;
+    width: rem-calc(300) !important;
+
+    &:before {
+      right: rem-calc(15);
+      top: rem-calc(15);
+    }
+  }
+}
+html .above-menu-search-wrapper {
+
+  form#searchform {
+    position: relative;
+    width: 100%;
+  }
+}
+html nav.off-canvas {
+
+  form#searchform {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: calc(100% - 2rem) !important;
+  }
+}

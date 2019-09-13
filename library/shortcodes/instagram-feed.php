@@ -41,7 +41,7 @@ function bs_instagram_feed( $atts ) {
 		accessToken: <?php echo "'" . $access_token . "'"; ?>,
 		limit: <?php echo $limit; ?>,
 		resolution: '<?php echo $resolution; ?>',
-		template: '<a class="instagram-image" href="{{link}}" target="_blank" rel="noopener" title="{{caption}}"><img class="instafeed-img" src="{{image}}" /><span class="ig-caption"><i class="far fa-heart"></i> {{likes}} &nbsp;•&nbsp; <i class="far fa-comment"></i> {{comments}}</span></a>',
+		template: '<a class="instagram-image" href="{{link}}" target="_blank" rel="noopener" title="{{caption}}"><img class="instafeed-img" src="{{image}}" /><span class="ig-caption"><span class="far fa-heart"></span> {{likes}} &nbsp;•&nbsp; <span class="far fa-comment"></span> {{comments}}</span></a>',
 		after: function() {
 	    jQuery('#instafeed').slick({
 	      infinite: true,
@@ -57,8 +57,8 @@ function bs_instagram_feed( $atts ) {
 				pauseOnHover: true,
 				pauseOnDotsHover: true,
 	      easing: 'ease-out-back',
-	      prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></a>',
-	      nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></a>',
+	      prevArrow: '<button type="button" class="slick-prev"><span class="fas fa-chevron-left"></span></a>',
+	      nextArrow: '<button type="button" class="slick-next"><span class="fas fa-chevron-right"></span></a>',
 	      responsive: [{
 	        breakpoint: 1024,
 	        settings: {

@@ -1,32 +1,28 @@
 #preloader {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 9999999;
-  width: 100%;
+  background: $white;
+  display: flex;
   height: 100%;
+  justify-content: center;
+  left: 0;
   overflow: visible;
-  background: #FFF;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999999;
 
   .preloader-inner {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
   img {
-    padding: 25px;
-    // position: absolute;
-    // top: 30%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
+    display: block;
+    height: auto;
+    width: rem-calc(400);
 
     @media #{$break640} {
-      max-width: 90%;
-      height: auto;
-      padding: rem-calc(15) 0 0;
+      width: rem-calc(200);
     }
   }
   .letter-holder {
@@ -34,11 +30,12 @@
     padding: 1rem;
   }
   .letter {
+    color: $blue;
     float: left;
     font-family: $fontstack;
     font-size: rem-calc(25);
     font-weight: 700;
-    color: $blue;
+    text-transform: uppercase;
   }
   .animate-loading {
     // position: absolute;
@@ -69,9 +66,9 @@
   }
 }
 .admin-bar #preloader img {
-  margin-top: 16px;
+  margin-top: rem-calc(16);
 
   @media only screen and (max-width: 782px) {
-    margin-top: 23px;
+    margin-top: rem-calc(23);
   }
 }

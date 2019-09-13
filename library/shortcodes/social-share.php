@@ -11,7 +11,9 @@ $show_count = $args['show_count']; ?>
 
 		<div class="single-social-share social-share-twitter">
 			<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
-			<a class="twitter-button" href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>%2E&amp;url=<?php the_permalink(); ?>&amp;via=uptownstudios" data-social-action="Twitter : Tweet" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+			<span data-tooltip class="bottom" tabindex="2" title="Share on Twitter">
+				<a class="twitter-button" href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>%2E&amp;url=<?php the_permalink(); ?>&amp;via=uptownstudios" data-social-action="Twitter : Tweet" title="Share on Twitter"><span class="fab fa-twitter"></span></a>
+			</span>
 		</div>
 
 		<div class="single-social-share social-share-facebook">
@@ -38,7 +40,9 @@ $show_count = $args['show_count']; ?>
 		      $like_count =  $like_array['shares'];
 		      return ($like_count) ? $like_count : "0";
 		  } ?>
-			<a href="javascript:void(0)" class="btn" onClick="fb_share()" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a><?php if( $show_count ) { ?><span><?php echo customFShare(); ?></span><?php } ?>
+			<span data-tooltip class="bottom" tabindex="2" title="Share on Facebook">
+				<a href="javascript:void(0)" class="btn" onClick="fb_share()" title="Share on Facebook"><span class="fab fa-facebook-f"></span></a><?php if( $show_count ) { ?><span><?php echo customFShare(); ?></span><?php } ?>
+			</span>
 		</div>
 
 		<div class="single-social-share social-share-google">
@@ -59,7 +63,9 @@ $show_count = $args['show_count']; ?>
 			};
 			$url = get_permalink();
 			?>
-			<a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" data-link="https://plus.google.com/share?url=<?php the_permalink(); ?>" target="_blank" title="Share on Google+"><i class="fab fa-google-plus-g"></i></a><?php if( $show_count ) { ?><span><?php echo $google_plusones ("$url"); ?></span><?php } ?>
+			<span data-tooltip class="bottom" tabindex="2" title="Share on Google+">
+				<a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" data-link="https://plus.google.com/share?url=<?php the_permalink(); ?>" target="_blank" title="Share on Google+"><span class="fab fa-google-plus-g"></span></a><?php if( $show_count ) { ?><span><?php echo $google_plusones ("$url"); ?></span><?php } ?>
+			</span>
 		</div>
 
 		<div class="single-social-share social-share-linkedin">
@@ -69,7 +75,9 @@ $show_count = $args['show_count']; ?>
 				$li_json = json_decode($li_json_string, true);
 				return isset($li_json['count'])?intval($li_json['count']):0;
 			}; ?>
-			<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title();?>&source=uptownstudios.net" target="_blank" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a><?php if( $show_count ) { ?><span><?php $url = get_permalink(); echo $linkedin_shares ("$url"); ?></span><?php } ?>
+			<span data-tooltip class="bottom" tabindex="2" title="Share on LinkedIn">
+				<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title();?>&source=uptownstudios.net" target="_blank" title="Share on LinkedIn"><span class="fab fa-linkedin-in"></span></a><?php if( $show_count ) { ?><span><?php $url = get_permalink(); echo $linkedin_shares ("$url"); ?></span><?php } ?>
+			</span>
 		</div>
 
 		<div class="single-social-share social-share-pinterest">
@@ -80,7 +88,9 @@ $show_count = $args['show_count']; ?>
 				$count = json_decode( $body );
 				return $count->count;
 			}; ?>
-			<a href="https://www.pinterest.com/pin/create/button/" data-pin-count="true" data-pin-custom="true" title="Share on Pinterest"><i class="fab fa-pinterest-p"></i></a><?php if( $show_count ) { ?><span><?php $url = get_permalink(); echo $pinterest_pins ("$url"); ?></span><?php } ?>
+			<span data-tooltip class="bottom" tabindex="2" title="Share on Pinterest">
+				<a href="https://www.pinterest.com/pin/create/button/" data-pin-count="true" data-pin-custom="true" title="Share on Pinterest"><span class="fab fa-pinterest-p"></span></a><?php if( $show_count ) { ?><span><?php $url = get_permalink(); echo $pinterest_pins ("$url"); ?></span><?php } ?>
+			</span>
 		</div>
 
 	</div>

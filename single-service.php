@@ -41,7 +41,7 @@
     <?php if( $title_bar === 'bs-hide-title-bar' || $title_bar === 'bs-default-image' || $title_bar === 'bs-featured-image' ) : ?>
 		<header>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
-			<ul class="service-category"><li><i class="far fa-sitemap"></i></li><?php $terms = get_the_terms( $post->ID , 'service-cat' ); foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
+			<ul class="service-category"><li><span class="far fa-sitemap"></span></li><?php $terms = get_the_terms( $post->ID , 'service-cat' ); foreach ( $terms as $term ) { echo '<li class="cat-name">' . $term->name . '</li>'; } ?></ul>
 		</header>
 		<?php endif; ?>
 		<?php do_action( 'foundationpress_post_before_entry_content' ); ?>

@@ -128,19 +128,12 @@ header#masthead {
     .menu-search-wrapper {
 
       form#searchform {
-        //background: $red;
-        border: 0;
-        border-radius: 0;
-        display: block;
         margin: rem-calc(40) 0 0 0;
-        max-width: none;
         opacity: 0;
-        padding: rem-calc(14);
-        position: absolute;
+        // position: absolute;
         right: 0;
         top: 100%;
         visibility: hidden;
-        width: rem-calc(300);
         z-index: 1;
         @include transition(all);
 
@@ -153,17 +146,6 @@ header#masthead {
           opacity: 1;
           visibility: visible;
           z-index: 99;
-        }
-        &:before {
-          color: $white;
-          content: '\f002';
-          cursor: pointer;
-          font-family: fontawesome;
-          right: rem-calc(23);
-          pointer-events: none;
-          position: absolute;
-          top: rem-calc(17);
-          z-index: 10;
         }
         &:after {
           border: solid transparent;
@@ -226,8 +208,6 @@ header#masthead {
       margin: rem-calc(12) 0 0 0;
 
       form#searchform {
-        background: none;
-        border: rem-calc(1) solid $blue;
         margin: 0;
         opacity: 1;
         overflow: hidden;
@@ -235,10 +215,6 @@ header#masthead {
         top: 0;
         visibility: visible;
 
-        &:before {
-          right: rem-calc(8);
-          top: rem-calc(5);
-        }
         &:after {
           display: none;
         }
@@ -292,7 +268,7 @@ header#masthead {
           //background: $blue;
         }
       }
-      i {
+      i, span[class*="fa-"] {
         display: inline;
         font-size: rem-calc(18);
         margin-right: rem-calc(2);
@@ -340,9 +316,16 @@ header#masthead {
     }
   }
   .desktop-menu {
-    width: 100%;
     display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    flex-basis: auto;
+    -webkit-justify-content: space-between;
     justify-content: space-between;
+    width: 100%;
+  }
+  .desktop-menu.menu > li {
+    display: inline-block !important;
   }
   .desktop-menu.menu > li > a {
     white-space: nowrap;

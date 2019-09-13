@@ -4,7 +4,7 @@
 ?>
 <div id="preloader">
 	<div class="preloader-inner">
-		<img src="<?php if( $loading_animation_img != '' ) { echo $loading_animation_img; } else { echo $default_loading_animation_img; }?>" width="600" class="preloader-logo">
+		<?php if( $loading_animation_img != '' ) { ?><img src="<?php echo $loading_animation_img; ?>" class="preloader-logo"><?php } ?>
 		<div class="animate-loading">
 	    <div class="letter-holder">
 	      <div class="l-1 letter">L</div>
